@@ -17,7 +17,8 @@ const axiosFetch = ()=>{
     
     const axiosInstance = axios.create({
         baseURL:"https://work-record-manager.herokuapp.com/",
-        headers:headers
+        credentials: "same-origin",
+        headers:headers,
     })
     axiosInstance.defaults.headers.common.accept = 'application/json'
     return  axiosInstance
