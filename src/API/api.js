@@ -23,7 +23,7 @@ export const LoginUser = (userData) =>(dispatch)=> {
         console.log(error)
         dispatch({
         type:actionTypes.LOGIN_ERROR,
-        payload:error.response.data
+        payload:error
     })
     })
 }
@@ -32,7 +32,7 @@ export const userWork = (userID)=>(dispatch)=>{
     dispatch({
         type:actionTypes.WORK_LOADING
     })
-    axiosFetch().get(`work/user/${userID}`)
+    axiosFetch().get(`users/${userID}`)
     .then((response)=>{
         console.log(response.data)
         console.log(response.status)
