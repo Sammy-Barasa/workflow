@@ -1,11 +1,10 @@
 import React ,{ useContext } from 'react'
 import { Admin, Resource, fetchUtils, ListGuesser } from 'react-admin';
-import { WorkList } from "./WorkList"
-import  WorkShow  from "./WorkShow"
-import  WorkEdit  from "./WorkEdit"
+// import { WorkList } from "./WorkList"
+// import  WorkShow  from "./WorkShow"
+// import  WorkEdit  from "./WorkEdit"
 import jsonapiClient from "ra-jsonapi-client";
-import simpleRestProvider from 'ra-data-simple-rest';
-import drfProvider from 'ra-data-drf';
+// import simpleRestProvider from 'ra-data-simple-rest';
 import Cookies from "js-cookie";
 import { Redirect, useHistory } from "react-router-dom"
 import StateContext from '../Context/stateContext';
@@ -44,7 +43,7 @@ const WorkAdmin = () => {
     // edit={WorkEdit} update={WorkUpdate} 
     // <Resource name="work" list={ListGuesser} edit={WorkEdit} show={WorkShow}/>
     return (
-        <Admin dataProvider={drfProvider('http://127.0.0.1:8000',httpClient)}>
+        <Admin dataProvider={jsonapiClient('http://127.0.0.1:8000',httpClient)}>
             
             <Resource name={`users/${userId}`} list={ListGuesser}/>
          

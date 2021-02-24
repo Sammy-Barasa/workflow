@@ -1,5 +1,5 @@
 import React from 'react'
-import { Create, Edit, SimpleForm, TextInput, DateInput, ReferenceManyField, Datagrid, TextField, NumberInput,BooleanInput, EditButton } from 'react-admin';
+import { Edit, SimpleForm, TextInput, DateInput, NumberInput,BooleanInput, EditButton } from 'react-admin';
 
 const WorkEdit = (props) => {
     return (

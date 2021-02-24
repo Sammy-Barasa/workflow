@@ -3,7 +3,7 @@ import { userWork } from '../API/api'
 import { Button } from 'semantic-ui-react'
 import StateContext from '../Context/stateContext'
 import { useHistory } from "react-router-dom"
-import { List, Grid,Statistic,Image,Icon } from 'semantic-ui-react'
+import { List,Statistic,Icon } from 'semantic-ui-react'
 
 const UserWorkList = () => {
     const { state, dispatch } = useContext(StateContext)
