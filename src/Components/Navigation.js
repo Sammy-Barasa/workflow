@@ -6,12 +6,6 @@ const Navigation = () => {
         <div>
             <ul>
                 <li>
-                    <Link to='/user'>work list</Link>
-                </li>
-                <li>
-                    <Link to='/:id'>User work list</Link>
-                </li>
-                <li>
                     <Link to='/login'>login</Link>
                 </li>
             </ul>
