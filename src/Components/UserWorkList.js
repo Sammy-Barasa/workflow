@@ -15,9 +15,9 @@ const UserWorkList = () => {
         userWork(user.id)(dispatch)
     },[dispatch, user.id])
     useEffect(() => {
-        console.log(state)
+        // console.log(state)
         setWorkdata(work?.data)
-        console.log(workdata)
+        // console.log(workdata)
     },[dispatch, work,state,workdata])
     const handleClick = (e)=>{
         history.push(`/${user.id}`)

@@ -9,8 +9,8 @@ export const LoginUser = (userData) =>(dispatch)=> {
     })
     axiosFetch().post('auth/login',userData)
     .then((response)=>{
-        console.log(response.data)
-        console.log(response.status)
+        // console.log(response.data)
+        // console.log(response.status)
         dispatch({
         type:actionTypes.SET_USER,
         payload:response.data
@@ -20,7 +20,7 @@ export const LoginUser = (userData) =>(dispatch)=> {
         payload:response
     })
     }).catch((error)=>{
-        console.log(error)
+        // console.log(error)
         dispatch({
         type:actionTypes.LOGIN_ERROR,
         payload:error
@@ -34,13 +34,13 @@ export const userWork = (userID)=>(dispatch)=>{
     })
     axiosFetch().get(`users/${userID}`)
     .then((response)=>{
-        console.log(response.data)
-        console.log(response.status)
+        // console.log(response.data)
+        // console.log(response.status)
         dispatch({
         type:actionTypes.WORK_SUCCESS,
         payload:response.data
     })}).catch((error)=>{
-        console.log(error)
+        // console.log(error)
         dispatch({
         type:actionTypes.WORK_ERROR,
         payload:error
