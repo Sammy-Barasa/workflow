@@ -42,16 +42,16 @@ self.addEventListener('fetch',(event)=>{
         )  
 })
 
-// Activate the serviceWorker
+Activate the serviceWorker
 self.addEventListener('activate',(event)=>{
-    event.waitUntil(
-        caches.keys().then((cacheNames)=>{
-            cacheNames.map((cache)=>{
-                if(CACHE_NAME!==cacheNames){
-                    return caches.delete(cache)
-                }
-            }
-            )
-        })
+    // event.waitUntil(
+    //     caches.keys().then((cacheNames)=>{
+    //         cacheNames.map((cache)=>{
+    //             if(CACHE_NAME!==cacheNames){
+    //                 return caches.delete(cache)
+    //             }
+    //         }
+    //         )
+    //     })
     )
 })

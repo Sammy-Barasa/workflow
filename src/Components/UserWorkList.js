@@ -54,20 +54,20 @@ const UserWorkList = () => {
                                                 <Statistic.Group size="mini">
                                                     <Statistic>
                                                         <Statistic.Value>
-                                                        <Icon name='check square'  color='green'/>
+                                                        <Icon name='check square'  color='green' size="mini"/>
                                                        </Statistic.Value>
                                                         <Statistic.Label as="h6">Cancelled status</Statistic.Label>
                                                     </Statistic>
                                                     <Statistic>
                                                         <Statistic.Value>
-                                                        <Icon name='check square'  color='green'/>
+                                                        <Icon name='check square'  color='green' size="mini"/>
                                                        </Statistic.Value>
                                                         <Statistic.Label as="h6">Completed status</Statistic.Label>
                                                     </Statistic>
                                                 
                                                     <Statistic>
                                                         <Statistic.Value>
-                                                        <Icon name='check square'  color='green'/>
+                                                        <Icon name='check square'  color='green' size="mini"/>
                                                        </Statistic.Value>
                                                         <Statistic.Label as="h6">Paid status</Statistic.Label>
                                                     </Statistic>                                                   
