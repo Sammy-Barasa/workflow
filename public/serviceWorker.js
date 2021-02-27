@@ -42,7 +42,7 @@ self.addEventListener('fetch',(event)=>{
         )  
 })
 
-Activate the serviceWorker
+// Activate the serviceWorker
 self.addEventListener('activate',(event)=>{
     // event.waitUntil(
     //     caches.keys().then((cacheNames)=>{
