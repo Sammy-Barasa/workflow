@@ -34,7 +34,7 @@ self.addEventListener('activate',(event)=>{
     //         }
     //         )
     //     })
-    )
+    
 })
 
 // listen for requests
