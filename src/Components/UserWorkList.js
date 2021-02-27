@@ -25,6 +25,7 @@ const UserWorkList = () => {
 
     const handleLogOut= (e)=>{
         localStorage.removeItem("token");
+        history.push("/login")
     }
     
     return (
