@@ -24,19 +24,22 @@ self.addEventListener('install',(event)=>{
 // listen for requests
 self.addEventListener('fetch',(event)=>{
     event.respondWith(
-        // make a copy of the request and make the request
-       const cacheAndrunRequest=(initialRequest)=>{ 
+        //  make the request and make a copy of the  result
+       const cacheAndrunRequest=(initialRequest)=>{
+           fetch(initialRequest).then((res)=>{
            caches.open(CACHE_NAME).then((cache)=>{
-                const requestClone = initialRequest.clone()
-                cache.put(initialRequest,requestClone)
-                return fetch(initialRequest)
+                const resClone = res.clone()
+                cache.put(initialRequest,resClone)
+                )
+            return res
+           }
         })
        }
         // if request is in cache return else make request
         caches.match(event.request).then((cachedResponse)=>{
             return cachedResponse||cacheAndrunReques(event.request)
-        })
-    )
+            })
+        )  
 })
 
 // Activate the serviceWorker
