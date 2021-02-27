@@ -24,13 +24,31 @@ self.addEventListener('install',(event)=>{
 // listen for requests
 self.addEventListener('fetch',(event)=>{
     event.respondWith(
+        // make a copy of the request and make the request
+       const cacheAndrunRequest=(initialRequest)=>{ 
+           caches.open(CACHE_NAME).then((cache)=>{
+                const requestClone = initialRequest.clone()
+                cache.put(initialRequest,requestClone)
+                return fetch(initialRequest)
+        })
+       }
+        // if request is in cache return else make request
         caches.match(event.request).then((cachedResponse)=>{
-            return cachedResponse||fetch(event.request)
+            return cachedResponse||cacheAndrunReques(event.request)
         })
     )
 })
 
 // Activate the serviceWorker
 self.addEventListener('activate',(event)=>{
-    
+    event.waitUntil(
+        caches.keys().then((cacheNames)=>{
+            cacheNames.map((cache)=>{
+                if(CACHE_NAME!==cacheNames){
+                    return caches.delete(cache)
+                }
+            }
+            )
+        })
+    )
 })

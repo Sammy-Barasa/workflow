@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 function Home() {
     const classes = useStyles();
     const { state } = useContext(StateContext)
-    console.log(state)
+    // console.log(state)
     const user= state.user
     
     return (

@@ -22,12 +22,17 @@ const UserWorkList = () => {
     const handleClick = (e)=>{
         history.push(`/${user.id}`)
     }
+
+    const handleLogOut= (e)=>{
+        localStorage.removeItem("token");
+    }
     
     return (
         <div>
             {workdata?<div>
             <h1>Work list</h1>
             <Button  primary onClick={handleClick}>Admin</Button>
+            <Button  danger onClick={handleLogOut}>Admin</Button>
                 <List divided relaxed> 
                     {
                         workdata[0]?.map((workItem,index)=>{
