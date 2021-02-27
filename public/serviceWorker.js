@@ -39,8 +39,7 @@ self.addEventListener('activate',(event)=>{
 
 // listen for requests
 self.addEventListener('fetch',(event)=>{
-    event.respondWith(
-        //  make the request and make a copy of the  result
+    //  make the request and make a copy of the  result
        const cacheAndrunRequest=(initialRequest)=>{
            fetch(initialRequest).then((res)=>{
            caches.open(CACHE_NAME).then((cache)=>{
@@ -51,6 +50,8 @@ self.addEventListener('fetch',(event)=>{
            }
         })
        }
+    event.respondWith(
+        
         // if request is in cache return else make request
         caches.match(event.request).then((cachedResponse)=>{
             return cachedResponse||cacheAndrunReques(event.request)
