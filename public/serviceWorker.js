@@ -54,7 +54,7 @@ self.addEventListener('fetch',(event)=>{
         
         // if request is in cache return else make request
         caches.match(event.request).then((cachedResponse)=>{
-            return cachedResponse||cacheAndrunReques(event.request)
+            return cachedResponse||cacheAndrunRequest(event.request)
             })
         )  
 })
