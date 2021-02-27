@@ -21,6 +21,21 @@ self.addEventListener('install',(event)=>{
     )
 })
 
+// Activate the serviceWorker
+self.addEventListener('activate',(event)=>{
+    console.log("Ready!!!")
+    // event.waitUntil(
+    //     caches.keys().then((cacheNames)=>{
+    //         cacheNames.map((cache)=>{
+    //             if(CACHE_NAME!==cacheNames){
+    //                 return caches.delete(cache)
+    //             }
+    //         }
+    //         )
+    //     })
+    )
+})
+
 // listen for requests
 self.addEventListener('fetch',(event)=>{
     event.respondWith(
@@ -42,16 +57,3 @@ self.addEventListener('fetch',(event)=>{
         )  
 })
 
-// Activate the serviceWorker
-self.addEventListener('activate',(event)=>{
-    // event.waitUntil(
-    //     caches.keys().then((cacheNames)=>{
-    //         cacheNames.map((cache)=>{
-    //             if(CACHE_NAME!==cacheNames){
-    //                 return caches.delete(cache)
-    //             }
-    //         }
-    //         )
-    //     })
-    )
-})
