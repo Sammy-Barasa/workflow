@@ -45,11 +45,11 @@ self.addEventListener('fetch',(event)=>{
            caches.open(CACHE_NAME).then((cache)=>{
                 const resClone = res.clone()
                 cache.put(initialRequest,resClone)
-                )
+                })
             return res
-           }
-        })
-       }
+           })
+        }
+       
     event.respondWith(
         
         // if request is in cache return else make request
