@@ -27,15 +27,17 @@ self.addEventListener('activate',(event)=>{
     console.log("Ready!!!")
     event.waitUntil(
         caches.keys().then((cacheNames)=>{
-           return Promise.all(cacheNames.map((cacheName)=>{
+           return Promise.all(cacheNames.map(
+               (cacheName)=>{
                 if(CACHE_NAME!==cacheName){
                     return caches.delete(cacheName)
                 }
             }
             ))
         })
-    
+    )   
 })
+
 
 // listen for requests
 self.addEventListener('fetch',(event)=>{
