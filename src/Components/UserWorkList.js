@@ -2,7 +2,7 @@ import React, { useEffect,useContext,useState } from 'react'
 import { userWork } from '../API/api'
 import { Button } from 'semantic-ui-react'
 import StateContext from '../Context/stateContext'
-import { useHistory } from "react-router-dom"
+import { useHistory,Redirect } from "react-router-dom"
 import { List,Statistic,Icon } from 'semantic-ui-react'
 
 const UserWorkList = () => {
@@ -25,7 +25,12 @@ const UserWorkList = () => {
 
     const handleLogOut= (e)=>{
         localStorage.removeItem("token");
-        history.push("/login")
+       
+       return <Redirect
+                to={{
+                    pathname: "/login",
+                    state: { referrer: history.location }
+                }}/>
     }
     
     return (
@@ -55,22 +60,22 @@ const UserWorkList = () => {
                                                 <Statistic.Group size="mini">
                                                     <Statistic>
                                                         <Statistic.Value>
-                                                        <Icon name='check square'  color='green' size="mini"/>
+                                                        <Icon name='check square'  color='green' size="tiny"/>
                                                        </Statistic.Value>
-                                                        <Statistic.Label as="h6">Cancelled status</Statistic.Label>
+                                                        <Statistic.Label size="tiny">Cancelled status</Statistic.Label>
                                                     </Statistic>
                                                     <Statistic>
                                                         <Statistic.Value>
-                                                        <Icon name='check square'  color='green' size="mini"/>
+                                                        <Icon name='check square'  color='green' size="tiny"/>
                                                        </Statistic.Value>
-                                                        <Statistic.Label as="h6">Completed status</Statistic.Label>
+                                                        <Statistic.Label size="tiny">Completed status</Statistic.Label>
                                                     </Statistic>
                                                 
                                                     <Statistic>
                                                         <Statistic.Value>
-                                                        <Icon name='check square'  color='green' size="mini"/>
+                                                        <Icon name='check square'  color='green' size="tiny"/>
                                                        </Statistic.Value>
-                                                        <Statistic.Label as="h6">Paid status</Statistic.Label>
+                                                        <Statistic.Label size="tiny">Paid status</Statistic.Label>
                                                     </Statistic>                                                   
                                                 </Statistic.Group>
                                                 
