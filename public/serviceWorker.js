@@ -1,4 +1,4 @@
-const CACHE_NAME= "v2"
+const CACHE_NAME= "v3"
 const urlsToCache=[
     '/',
     'index.html',
@@ -25,36 +25,39 @@ self.addEventListener('install',(event)=>{
 // Activate the serviceWorker
 self.addEventListener('activate',(event)=>{
     console.log("Ready!!!")
-    // event.waitUntil(
-    //     caches.keys().then((cacheNames)=>{
-    //         cacheNames.map((cache)=>{
-    //             if(CACHE_NAME!==cacheNames){
-    //                 return caches.delete(cache)
-    //             }
-    //         }
-    //         )
-    //     })
+    event.waitUntil(
+        caches.keys().then((cacheNames)=>{
+           return Promise.all(cacheNames.map((cacheName)=>{
+                if(CACHE_NAME!==cacheName){
+                    return caches.delete(cacheName)
+                }
+            }
+            ))
+        })
     
 })
 
 // listen for requests
 self.addEventListener('fetch',(event)=>{
-    //  make the request and make a copy of the  result
-       const cacheAndrunRequest=(initialRequest)=>{
-           fetch(initialRequest).then((res)=>{
-           caches.open(CACHE_NAME).then((cache)=>{
-                const resClone = res.clone()
-                cache.put(initialRequest,resClone)
-                })
-            return res
-           })
-        }
-       
+    
     event.respondWith(
         
         // if request is in cache return else make request
         caches.match(event.request).then((cachedResponse)=>{
-            return cachedResponse||cacheAndrunRequest(event.request)
+            if (cachedResponse){
+                return cachedResponse
+            }
+            return fetch(event.request).then((res)=>{
+                // checkof we receive a valid response
+                if(!res.ok||!res){
+                    return res
+                }
+                let responseToCache = res.clone()
+                caches.open(CACHE_NAME).then((cache)=>{
+                    cache.put(event.request, responseToCache)
+                })
+                return res
+            })
             })
         )  
 })
