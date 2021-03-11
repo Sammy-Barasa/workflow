@@ -1,9 +1,13 @@
+
 import axiosFetch from '../Axios'
 import { actionTypes } from '../Context/stateReducer'
 
 
 
+
+
 export const LoginUser = (userData) =>(dispatch)=> {
+    
     dispatch({
         type:actionTypes.LOGIN_LOADING
     })
@@ -24,7 +28,10 @@ export const LoginUser = (userData) =>(dispatch)=> {
         dispatch({
         type:actionTypes.LOGIN_ERROR,
         payload:error
+        
     })
+    
+    
     })
 }
 

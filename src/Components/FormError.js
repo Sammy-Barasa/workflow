@@ -1,12 +1,12 @@
 import React from 'react'
 import { Form, Message } from 'semantic-ui-react'
 
-const FormError = ({errorMessage}) => (
+const FormError = (errorMessage) => (
   <Form error>
     <Message
       error
-      header={errorMessage}
-      content={`${errorMessage}`}
+      header={errorMessage.response?.statusText||errorMessage.message}
+      content={errorMessage.response?.data.detail||errorMessage.stack}
     />
   </Form>
 )

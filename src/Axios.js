@@ -12,17 +12,11 @@ const axiosFetch = ()=>{
         }
     const csrftoken = Cookies.get("csrftoken")
     
-    console.log(csrftoken)
-    
     if(userToken){
-        headers.Authorization = `Bearer ${userToken}`
-    }else{
-        delete headers["Authorization"]
+        headers["Authorization"] = `Bearer ${userToken}`
     }
     if(csrftoken){
         headers["X-CSRFToken"] = `${csrftoken}`
-    }else{
-        delete headers["X-CSRFToken"]
     }
     console.log(headers)
     const axiosInstance = axios.create({

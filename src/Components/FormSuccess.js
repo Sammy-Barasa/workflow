@@ -7,7 +7,7 @@ const FormSuccess = ({responsestatusText}) => (
     <Message
       success
       header={responsestatusText}
-      content="Successfull login"
+      content="login Successfull"
     />
     <Button>Submit</Button>
   </Form>

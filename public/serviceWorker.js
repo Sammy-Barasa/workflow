@@ -1,4 +1,4 @@
-const CACHE_NAME= "v3"
+const CACHE_NAME= "v4"
 const urlsToCache=[
     '/',
     'index.html',
@@ -28,6 +28,7 @@ self.addEventListener('activate',(event)=>{
     event.waitUntil(
         caches.keys().then((cacheNames)=>{
            return Promise.all(cacheNames.map(
+               // eslint-disable-next-line array-callback-return
                (cacheName)=>{
                 if(CACHE_NAME!==cacheName){
                     return caches.delete(cacheName)
@@ -51,7 +52,7 @@ self.addEventListener('fetch',(event)=>{
             }
             return fetch(event.request).then((res)=>{
                 // checkof we receive a valid response
-                if(!res.ok||!res){
+                if(!res.ok||!res||res.type !=='basic'){
                     return res
                 }
                 let responseToCache = res.clone()

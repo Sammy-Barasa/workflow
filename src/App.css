@@ -6,11 +6,55 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
+.App-Header {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-around;
+}
 .paper {
   justify-content: center;
   align-items: center;
-  margin-top: 10%;
+  height: 60vh;
+  width: auto;
+  margin-top: 5%;
+  
+}
+
+.container {
+  display:flex;
+  flex-direction: column;
+}
+
+.row-header {
+  display:flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.list-header-left{
+  flex: 0.5;
+}
+.list-header-center{
+  flex: 4.5;
+}
+.list-header-right {
+  flex: 7;
+  flex-wrap: nowrap;
+  flex-shrink: initial;
+  justify-content: flex-end;
+}
+.list-body {
+  display:flex;
+}
+
+.list-body-left{
+  flex: 6;
+  justify-content: flex-start;
+}
+
+.list-body-right{
+  flex: 6;
+  justify-content: flex-start;
 }
 /* 
 @keyframes App-logo-spin {

@@ -21,32 +21,61 @@ const stateReducer = (state,action) =>{
       case actionTypes.LOGIN_LOADING:
         return {
           ...state,
-          auth: {...state.auth,login:{...state.auth.login,loading:true,},
-        },};
+          auth: {
+            ...state.auth,
+            login:{...state.auth.login,
+                    loading:true,},
+                },
+      };
       case actionTypes.LOGIN_SUCCESS:
         return {
           ...state,
-          auth: {...state.auth,login:{...state.auth.login,loading:false,data:action.payload},
-        },};
+              auth: {
+                      ...state.auth,
+                      login:{
+                              ...state.auth.login,
+                              loading:false,
+                              data:action.payload
+                            },
+                    },    
+      };
       case actionTypes.LOGIN_ERROR:
         return {
           ...state,
-          auth:{...state.auth,login:{...state.auth.login,loading:false,error:action.payload},
-        },};
+              auth:{
+                    ...state.auth,
+                    login:{
+                        ...state.auth.login,
+                        loading:false,
+                        error:action.payload
+                      },
+                   },
+      };
       case actionTypes.WORK_LOADING:
         return {
           ...state,
-          work: {...state.work,loading:true},
+          work: {
+                  ...state.work,
+                  loading:true
+                },
         };
       case actionTypes.WORK_SUCCESS:
         return {
-          ...state,
-          work: {...state.work,loading:false,data:[action.payload]},
+            ...state,
+            work: {
+                    ...state.work,
+                    loading:false,
+                    data:[action.payload]
+                  },
         };
       case actionTypes.WORK_ERROR:
         return {
-          ...state,
-          work: {...state.work,loading:false,error:action.payload},
+            ...state,
+            work: {
+                    ...state.work,
+                    loading:false,
+                    error:action.payload
+                  },
         };
       default:
         return state;
