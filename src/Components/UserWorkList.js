@@ -40,7 +40,7 @@ const UserWorkList = () => {
                                         <div className="row-header">
                                             <div className="list-header-left">
                                                 
-                                                    <List.Icon name='sticky note' size='large'color='olive' verticalAlign='middle' />
+                                                    <List.Icon name='sticky note' size='large'color='grey' verticalAlign='middle' />
                                             </div>
                                             <div className="list-header-center" >
                                                     <List.Content>
