@@ -3,7 +3,7 @@ import { userWork } from '../API/api'
 // import { Button } from 'semantic-ui-react'
 import StateContext from '../Context/stateContext'
 // import { useHistory } from "react-router-dom"
-import { List,Statistic,Icon } from 'semantic-ui-react'
+import { List,Icon } from 'semantic-ui-react'
 import { withRouter,Link } from "react-router-dom"
 import '../App.css'
 
@@ -27,11 +27,12 @@ const UserWorkList = () => {
     // }
     
     return (
-        <div>
-            {workdata?<div>
+        <div >
             <h1>My Work list</h1>
+            {workdata?<div className='worklist-container'>
+            
             {/* <Button  primary onClick={handleClick}>Admin</Button> */}
-                <List divided relaxed> 
+                <List relaxed> 
                     {                                                                                                                                                                               
                         workdata[0]?.map((workItem,index)=>{
                             return <List.Item key={index}>
@@ -39,7 +40,7 @@ const UserWorkList = () => {
                                         <div className="row-header">
                                             <div className="list-header-left">
                                                 
-                                                    <List.Icon name='github' size='small' verticalAlign='middle' />
+                                                    <List.Icon name='sticky note' size='large'color='olive' verticalAlign='middle' />
                                             </div>
                                             <div className="list-header-center" >
                                                     <List.Content>
@@ -53,27 +54,24 @@ const UserWorkList = () => {
                                             </div>
                                             <div className="list-header-right">
                                                
-                                                <Statistic.Group size="mini">
-                                                    <Statistic>
-                                                        <Statistic.Value>
-                                                       { workItem.cancelled?<Icon name='check square'  color='green' size="tiny"/>:""}
-                                                       </Statistic.Value>
-                                                       { workItem.cancelled?<p>Cancelled</p>:""}
-                                                    </Statistic>
-                                                    <Statistic>
-                                                        <Statistic.Value>
-                                                        {workItem.completed?<Icon name='check square'  color='green' size="tiny"/>:<Icon name='cancel'  color='red' size="tiny"/>}
-                                                       </Statistic.Value>
-                                                        <p>Completed</p>
-                                                    </Statistic>
-                                                
-                                                    <Statistic>
-                                                        <Statistic.Value>
-                                                        {workItem.paid?<Icon name='check square'  color='green' size="tiny"/>:<Icon name='cancel'  color='red' size="tiny"/>}
-                                                       </Statistic.Value>
-                                                        <p>Paid</p>
-                                                    </Statistic>                                                   
-                                                </Statistic.Group>
+                                                <div>
+                                                    { workItem.cancelled?<Icon name='check square'  color='green' size="small"/>:""}
+                                                      
+                                                       { workItem.cancelled?<p> Cancelled </p>:""}
+                                                </div>
+                                                       
+                                                <div>
+                                                    {workItem.completed?<Icon name='check square'  color='green' size="small"/>:<Icon name='cancel'  color='red' size="small"/>}
+                                                    <p> Completed </p>
+                                                </div>
+                                                        
+                                                <div>
+                                                        {workItem.paid?<Icon name='check square'  color='green' size="small"/>:<Icon name='cancel'  color='red' size="small"/>}
+                                                   
+                                                        <p> Paid  </p>
+                                                </div>
+                                                        
+                                                  
                                                 
                                             </div>
                                         </div>
@@ -81,18 +79,26 @@ const UserWorkList = () => {
                                             
                                                 <div className="list-body-left">
                                                     <List.Content>
-                                                        <List.Description as='h5'>{`Date assigned: ${workItem.date}`}</List.Description>
-                                                        <List.Description as='p'>{`Type of work: ${workItem.type_of_work}`}</List.Description> 
-                                                        <List.Description as='p'>{`Assigned by: ${workItem.person}`}</List.Description> 
+                                                        <List.Description as='h4'>{`Date assigned:   `}</List.Description>
+                                                        <List.Description as='h5'>{workItem.date}</List.Description>
+                                                        <List.Description as='p'>{`Type of work: ${workItem.type_of_work}`}</List.Description>
+                                                    </List.Content> 
+                                                </div>
+                                                <div className="list-body-bottom">
+                                                    <List.Content>
+                                                        <List.Description as='p'>{`Assigned by:`}</List.Description>
+                                                        <List.Description>{` ${workItem.person}`}</List.Description> 
                                                     </List.Content> 
                                                 </div>
 
                                                 <div className="list-body-right">
                                                    <List.Content>
                                                     <List.Description as='h4'>Work description: </List.Description>
-                                                    <List.Description >{`${workItem.number_of_words} number of words, ${workItem.pages} pages`}</List.Description>
+                                                    <List.Description >{`${workItem.number_of_words} number of words, `}</List.Description>
+                                                    <List.Description >{`${workItem.pages} pages`}</List.Description>
                                                    </List.Content>
                                                 </div>
+                                                
                                         </div>
                                     </div>
                                 </List.Item>}

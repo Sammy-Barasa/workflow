@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
 import Auth from '../Utils/Auth'
 import { Redirect } from 'react-router-dom'
+import '../App.css'
 
 const Login = () => {
     const [form,setForm]= useState({});
@@ -55,7 +56,7 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div className='login-form'>
             <Header as="h2">Login to your account</Header>
                 <Form success warning onSubmit={handleLogin}> 
                 

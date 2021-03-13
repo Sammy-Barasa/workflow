@@ -41,7 +41,8 @@ function Home() {
             <div>
              
             </div>
-            <Switch>
+            <div className='App-body'>
+              <Switch>
                 <Route exact path='/'>
                   <Navigation/>
                 </Route>
@@ -59,6 +60,7 @@ function Home() {
                   <PageNotFound/>
                 </Route>
             </Switch>
+            </div>
           </div>
         </Paper>
     )
