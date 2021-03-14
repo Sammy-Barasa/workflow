@@ -9,18 +9,12 @@ class Auth {
         this.authenticated = false
     }
 authenticate(){
-    const userToken=localStorage.getItem('token')
-    if(userToken){
-    this.authenticated= true 
-    }
+    
     this.authenticated= true   
 }
 
 signOut(){
-    const userToken=localStorage.getItem('token')
-    if(!userToken){
-    this.authenticated= true     
-    }
+    
     localStorage.removeItem('token')
     this.authenticated= false
     

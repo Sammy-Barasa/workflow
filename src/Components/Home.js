@@ -1,6 +1,4 @@
 import React, {useContext} from 'react'
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
 import StateContext from "../Context/stateContext"
 import { Route, Switch } from 'react-router-dom';
 import UserWorkList from './UserWorkList'
@@ -9,20 +7,13 @@ import Navigation from './Navigation'
 import '../App.css'
 import Login from './Login'
 import { ProtectedRoute } from "./ProtectedRoute"
-import { Button } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 import Auth from '../Utils/Auth'
 import PageNotFound from './PageNotFound'
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    height:'fitContent',
-    width:'fitContent',
-    alignSelf:'center',
-  },
-}));
+
+
 
 function Home() {
-    const classes = useStyles();
     
     const { state } = useContext(StateContext)
     const user = state.user
@@ -30,18 +21,21 @@ function Home() {
     
     
     return (
-        <Paper className={classes.root} elevation={3}>
+        
           <div className="App">
-            <div className="App-Header">
-              <h3>WorkRecord</h3>
-              {user?<Button color="red" onClick={()=>{
-                Auth.signOut()
-              }}> LogOut </Button>:""}
+            <div className="App-header">
+              <div className='app-title'>
+                <h2>
+                  Work Record Manager
+                </h2>
+              </div>
+              <div className="app-logout">
+                  {user?<Icon name="power off" bordered color="red" onClick={()=>{
+                      Auth.signOut()
+                    }}/>:""}
+              </div> 
             </div>
-            <div>
-             
-            </div>
-            <div className='App-body'>
+            <div className="App-body">
               <Switch>
                 <Route exact path='/'>
                   <Navigation/>
@@ -62,7 +56,7 @@ function Home() {
             </Switch>
             </div>
           </div>
-        </Paper>
+        
     )
 }
 

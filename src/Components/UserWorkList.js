@@ -3,8 +3,9 @@ import { userWork } from '../API/api'
 // import { Button } from 'semantic-ui-react'
 import StateContext from '../Context/stateContext'
 // import { useHistory } from "react-router-dom"
-import { List,Icon } from 'semantic-ui-react'
+import { List,Icon,Statistic } from 'semantic-ui-react'
 import { withRouter,Link } from "react-router-dom"
+import CountUp from 'react-countup'
 import '../App.css'
 
 
@@ -28,7 +29,59 @@ const UserWorkList = () => {
     
     return (
         <div >
-            <h1>My Work list</h1>
+            <h3>My Work Summary</h3>
+            <div className='worklist-container'>
+                
+                    {
+                        workdata?<div className="user-statistics">
+                            <div>
+                                <Statistic.Group widths='two'>
+                                    <Statistic>
+                                        <Statistic.Value>
+                                            {<CountUp end={workdata.length}/>}
+                                        </Statistic.Value>
+                                        <Statistic.Label>
+                                            work totals
+                                        </Statistic.Label>
+                                    </Statistic>
+                                    <Statistic>
+                                        <Statistic.Value>
+                                            <Icon name='user circle outline' >{<CountUp end={workdata.length}/>}</Icon>
+                                        </Statistic.Value>
+                                        <Statistic.Label>
+                                            work assigner totals
+                                        </Statistic.Label>
+                                    </Statistic>
+                                </Statistic.Group>
+                                
+                                
+                            </div>
+                            <div>
+                        
+                                <Statistic.Group widths='two'>
+                                    <Statistic color="green">
+                                        <Statistic.Value>
+                                            {<CountUp end={workdata.length}/>}
+                                        </Statistic.Value>
+                                        <Statistic.Label>
+                                            work paid totals
+                                        </Statistic.Label>
+                                    </Statistic>
+                                    <Statistic color="red">
+                                        <Statistic.Value>
+                                            {<CountUp end={workdata.length}/>}
+                                        </Statistic.Value>
+                                        <Statistic.Label>
+                                            work not paid totals
+                                        </Statistic.Label>
+                                    </Statistic>
+                                </Statistic.Group>
+                            </div>
+                        </div>:"loading ..."
+                    }    
+                
+            </div>
+            <h3>My List of Works</h3>
             {workdata?<div className='worklist-container'>
             
             {/* <Button  primary onClick={handleClick}>Admin</Button> */}
@@ -55,18 +108,18 @@ const UserWorkList = () => {
                                             <div className="list-header-right">
                                                
                                                 <div>
-                                                    { workItem.cancelled?<Icon name='check square'  color='green' size="small"/>:""}
+                                                    { workItem.cancelled?<Icon name='check square'  color='green' size='large'/>:""}
                                                       
                                                        { workItem.cancelled?<p> Cancelled </p>:""}
                                                 </div>
                                                        
                                                 <div>
-                                                    {workItem.completed?<Icon name='check square'  color='green' size="small"/>:<Icon name='cancel'  color='red' size="small"/>}
+                                                    {workItem.completed?<Icon name='check square'  color='green' size='large'/>:<Icon name='cancel'  color='red' size='large'/>}
                                                     <p> Completed </p>
                                                 </div>
                                                         
                                                 <div>
-                                                        {workItem.paid?<Icon name='check square'  color='green' size="small"/>:<Icon name='cancel'  color='red' size="small"/>}
+                                                        {workItem.paid?<Icon name='check square'  color='green' size='large'/>:<Icon name='cancel'  color='red' size='large'/>}
                                                    
                                                         <p> Paid  </p>
                                                 </div>

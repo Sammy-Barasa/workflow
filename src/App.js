@@ -15,9 +15,9 @@ function App() {
   return (
     <StateProvider>
        <Router>
-         <div className='paper'> 
+         
            <Home/>
-         </div> 
+         
       </Router>
      </StateProvider>
     
