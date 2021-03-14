@@ -177,6 +177,11 @@ const UserWorkList = () => {
                 mainButtonStyles={{
                 backgroundColor: "blue",
                 }}
+                actionButtonStyles={
+                    {
+                backgroundColor: "blue",
+                }
+                }
                 style={{ bottom: 24,
                      right: 24
                     }}
@@ -189,13 +194,13 @@ const UserWorkList = () => {
                     text="Add work record"
                     onClick={handleNewWorkRecordClick}
                 >
-                    <Icon name="file alternate" size="large" color="blue"/>
+                    <Icon name="file alternate" size="large" color="white"/>
                 </Action>
                 <Action
                     text="Add work employer"
                     onClick={handleNewEmployerClick}
                 >
-                    <Icon name="add user" size="large" color="blue"/>
+                    <Icon name="add user" size="large" color="white"/>
                 </Action>
             </Fab>
         </div>
