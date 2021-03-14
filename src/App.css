@@ -47,6 +47,7 @@
 }
 .user-statistics{
 padding: 7px;
+background-color: #f8f8f8;
 }
 
 .container {
@@ -58,6 +59,7 @@ padding: 7px;
   border-width: 1px;
   border-color: #dfe5f5;
   border-radius: 5px;
+  background-color: #f8f8f8;
 }
 
 .row-header {
@@ -65,7 +67,7 @@ padding: 7px;
   justify-content: space-around;
   flex-wrap: nowrap;
   margin-bottom: 10px;
-  border-bottom:solid #dbe4fa;
+  border-bottom:solid #d0d9ee;
 }
 
 .list-header-left{

@@ -39,7 +39,7 @@ const UserWorkList = () => {
         history.push('/employer/create')
     }
 
-    const mediaQuery = window.matchMedia('(max-width: 600px)')
+    const mediaQuery = window.matchMedia('(max-width: 500px)')
     return (
         <div >
             <h3>My Work Summary</h3>
@@ -175,13 +175,11 @@ const UserWorkList = () => {
             
             <Fab
                 mainButtonStyles={{
-                backgroundColor: "blue",
+                    backgroundColor: "blue",
                 }}
-                actionButtonStyles={
-                    {
-                backgroundColor: "blue",
-                }
-                }
+                actionButtonStyles={{
+                    backgroundColor: "blue",
+                }}
                 style={{ bottom: 24,
                      right: 24
                     }}
