@@ -2,10 +2,12 @@ import React, { useEffect,useContext,useState } from 'react'
 import { userWork } from '../API/api'
 // import { Button } from 'semantic-ui-react'
 import StateContext from '../Context/stateContext'
-// import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { List,Icon,Statistic } from 'semantic-ui-react'
 import { withRouter,Link } from "react-router-dom"
 import CountUp from 'react-countup'
+import { Fab, Action } from 'react-tiny-fab';
+import 'react-tiny-fab/dist/styles.css';
 import '../App.css'
 
 
@@ -14,7 +16,7 @@ const UserWorkList = () => {
     const [workdata,setWorkdata]=useState([])
     const user = state.user
     const work = state.work
-    // const history=useHistory()
+    const history=useHistory()
     useEffect(() => {
         userWork(user.id)(dispatch)
     },[dispatch, user.id])
@@ -26,7 +28,18 @@ const UserWorkList = () => {
     // const handleClick = (e)=>{
     //     history.push(`/${user.id}`)
     // }
-    
+    const handleNewWorkRecordClick=(e)=>{
+        e.preventDefault(
+        history.push('/works/create')
+        )
+    }
+
+    const handleNewEmployerClick=(e)=>{
+        e.preventDefault()
+        history.push('/employer/create')
+    }
+
+    const mediaQuery = window.matchMedia('(max-width: 600px)')
     return (
         <div >
             <h3>My Work Summary</h3>
@@ -160,7 +173,31 @@ const UserWorkList = () => {
                 </List> 
             </div>:"loading...." } 
             
-           
+            <Fab
+                mainButtonStyles={{
+                backgroundColor: "blue",
+                }}
+                style={{ bottom: 24,
+                     right: 24
+                    }}
+                icon={<Icon name="add" size="small" color="white"/>}
+                event={mediaQuery.matches?"click":"hover"}
+                alwaysShowTitle={true}
+                
+            >
+                <Action
+                    text="Add work record"
+                    onClick={handleNewWorkRecordClick}
+                >
+                    <Icon name="file alternate" size="large" color="blue"/>
+                </Action>
+                <Action
+                    text="Add work employer"
+                    onClick={handleNewEmployerClick}
+                >
+                    <Icon name="add user" size="large" color="blue"/>
+                </Action>
+            </Fab>
         </div>
     )
 }

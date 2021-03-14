@@ -3,6 +3,8 @@ import StateContext from "../Context/stateContext"
 import { Route, Switch } from 'react-router-dom';
 import UserWorkList from './UserWorkList'
 import WorkAdmin from './WorkAdmin'
+import WorkCreate from './WorkCreate'
+import EmployerCreate from './EmployerCreate'
 import Navigation from './Navigation'
 import '../App.css'
 import Login from './Login'
@@ -46,6 +48,12 @@ function Home() {
                 </ProtectedRoute>
                 <ProtectedRoute exact path="/works/:id/show">
                   <WorkAdmin/>
+                </ProtectedRoute> 
+                <ProtectedRoute exact path="/works/create">
+                  <WorkCreate/>
+                </ProtectedRoute> 
+                <ProtectedRoute exact path="/employer/create">
+                  <EmployerCreate/>
                 </ProtectedRoute> 
                 <Route exact path='/login'>
                   <Login/>
