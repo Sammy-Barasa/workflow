@@ -9,6 +9,7 @@ import EmployerCreate from './EmployerCreate'
 import Navigation from './Navigation'
 import '../App.css'
 import Login from './Login'
+import Register from './Register'
 import { ProtectedRoute } from "./ProtectedRoute"
 import { Icon } from 'semantic-ui-react'
 import Auth from '../Utils/Auth'
@@ -33,7 +34,8 @@ function Home() {
                 </h2>
               </div>
               <div className="app-logout">
-                  {user?<Icon name="power off" bordered color="red" onClick={()=>{
+                  {user?<Icon name="power off" bordered color="red" onClick={(e)=>{
+                      e.preventDefault()
                       Auth.signOut()
                     }}/>:""}
               </div> 
@@ -44,25 +46,24 @@ function Home() {
                   <Navigation/>
                 </Route>
                 
-                <ProtectedRoute exact path="/users/:username">
-                  <UserWorkList/>
-                </ProtectedRoute>
-                <ProtectedRoute exact path="/works/:id/show">
-                  <WorkShow/>
-                </ProtectedRoute> 
-                <ProtectedRoute exact path="/works/create">
-                  <WorkCreate/>
-                </ProtectedRoute>
-                <ProtectedRoute exact path="/works/edit">
-                  <WorkEdit/>
-                </ProtectedRoute> 
-                <ProtectedRoute exact path="/employer/create">
-                  <EmployerCreate/>
-                </ProtectedRoute> 
+                <ProtectedRoute exact path="/users/:username" component={UserWorkList}/>
+                  
+                <ProtectedRoute exact path="/works/:id/show" component={WorkShow}/>
+                 
+                <ProtectedRoute exact path="/works/create" component={WorkCreate}/>
+                  
+                
+                <ProtectedRoute exact path="/works/edit" component={WorkEdit}/>
+                
+                <ProtectedRoute exact path="/employer/create" component={EmployerCreate}/>
+                  
                 <Route exact path='/login'>
                   <Login/>
                 </Route>
-                <Route path=''>
+                <Route exact path='/register'>
+                  <Register/>
+                </Route>
+                <Route path='*'>
                   <PageNotFound/>
                 </Route>
             </Switch>

@@ -6,8 +6,12 @@ const Navigation = () => {
         <div>
             <ul>
                 <li>
+                    <Link to='/register'>Register</Link>
+                </li>
+                <li>
                     <Link to='/login'>login</Link>
                 </li>
+
             </ul>
         </div>
     )

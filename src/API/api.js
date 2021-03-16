@@ -56,7 +56,7 @@ export const LoginUser = (userData) =>(dispatch)=> {
     })
 }
 
-export const userWork = (userID)=>(dispatch)=>{
+export const UsersWork = (userID)=>(dispatch)=>{
     dispatch({
         type:actionTypes.WORK_LOADING
     })
@@ -76,12 +76,12 @@ export const userWork = (userID)=>(dispatch)=>{
     })
 }
 
-export const CreateWork = (userID,workData) =>(dispatch)=> {
+export const CreateWork = (userid,workData) =>(dispatch)=> {
     
     dispatch({
         type:actionTypes.CREATE_WORK_LOADING
     })
-    axiosFetch().post(`users/${userID}`,workData)
+    axiosFetch().post(`users/${userid}`,workData)
     .then((response)=>{
         // console.log(response.data)
         // console.log(response.status)
@@ -89,7 +89,8 @@ export const CreateWork = (userID,workData) =>(dispatch)=> {
         type:actionTypes.CREATE_WORK_SUCCESS,
         payload:response.data
     })
-    }).catch((error)=>{
+    })
+    .catch((error)=>{
         // console.log(error)
         dispatch({
         type:actionTypes.CREATE_WORK_ERROR,

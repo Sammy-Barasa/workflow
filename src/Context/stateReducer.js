@@ -39,8 +39,10 @@ const stateReducer = (state,action) =>{
           ...state,
           auth: {
             ...state.auth,
-            register:{...state.auth.register,
-                    loading:true,},
+            register:{
+                        ...state.auth.register,
+                    loading:true,
+                    },
                 },
       };
 
@@ -73,8 +75,10 @@ const stateReducer = (state,action) =>{
           ...state,
           auth: {
             ...state.auth,
-            login:{...state.auth.login,
-                    loading:true,},
+            login:{
+                  ...state.auth.login,
+                    loading:true,
+                  },
                 },
       };
       case actionTypes.LOGIN_SUCCESS:
@@ -115,7 +119,7 @@ const stateReducer = (state,action) =>{
             work: {
                     ...state.work,
                     loading:false,
-                    data:[action.payload]
+                    data:action.payload
                   },
         };
       case actionTypes.WORK_ERROR:
@@ -123,6 +127,33 @@ const stateReducer = (state,action) =>{
             ...state,
             work: {
                     ...state.work,
+                    loading:false,
+                    error:action.payload
+                  },
+        };
+        case actionTypes.CREATE_WORK_LOADING:
+        return {
+            ...state,
+            workcreate: {
+                    ...state.workcreate,
+                    loading:true,
+                  },
+        };
+      case actionTypes.CREATE_WORK_SUCCESS:
+        return {
+            ...state,
+            workcreate: {
+                    ...state.workcreate,
+                    loading:false,
+                    data:action.payload
+                  },
+        };
+
+      case actionTypes.CREATE_WORK_ERROR:
+        return {
+            ...state,
+            workcreate: {
+                    ...state.workcreate,
                     loading:false,
                     error:action.payload
                   },

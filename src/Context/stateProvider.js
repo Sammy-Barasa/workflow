@@ -7,15 +7,29 @@ const StateProvider = (props) =>{
 
   const initialState = {
     user: null,
-    auth: {login:{
-      loading:false,
-      data:null,
-      error:null, 
-    },
-    work:{loading:false,
+    auth: {
+          login:{
+                loading:false,
+                data:null,
+                error:null, 
+                },
+          register:{
+                loading:false,
+                data:null,
+                error:null, 
+                }
+          },
+    work:{
+          loading:false,
           data:[],
-          error:null},
-  }};
+          error:null
+        },
+    workcreate:{
+          loading:false,
+          data:null,
+          error:null
+        },
+  };
 
   const [state, dispatch] = useReducer(stateReducer, initialState);
   const contextValue= useMemo(() =>(

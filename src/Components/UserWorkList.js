@@ -1,10 +1,8 @@
-import React, { useEffect,useContext,useState } from 'react'
-import { userWork } from '../API/api'
+import React, { useContext } from 'react'
 // import { Button } from 'semantic-ui-react'
 import StateContext from '../Context/stateContext'
-import { useHistory } from "react-router-dom"
+import { useHistory,Link} from "react-router-dom"
 import { List,Icon,Statistic } from 'semantic-ui-react'
-import { withRouter,Link } from "react-router-dom"
 import CountUp from 'react-countup'
 import { Fab, Action } from 'react-tiny-fab';
 import 'react-tiny-fab/dist/styles.css';
@@ -12,25 +10,20 @@ import '../App.css'
 
 
 const UserWorkList = () => {
-    const { state, dispatch } = useContext(StateContext)
-    const [workdata,setWorkdata]=useState([])
-    const user = state.user
+    const { state } = useContext(StateContext)
+    // const [workdata,setWorkdata]=useState([])
+    // const [workerror,setWorkerror]=useState()
+    
     const work = state.work
     const history=useHistory()
-    useEffect(() => {
-        userWork(user.id)(dispatch)
-    },[dispatch, user.id])
-    useEffect(() => {
-        console.log(state)
-        setWorkdata(work?.data)
-        // console.log(workdata)
-    },[dispatch, work,state,workdata])
-    // const handleClick = (e)=>{
-    //     history.push(`/${user.id}`)
-    // }
-    const handleNewWorkRecordClick=(e)=>{
+
+
+    
+    // const workderror=work?.error
+
+    function handleNewWorkRecordClick(e) {
         e.preventDefault(
-        history.push('/works/create')
+            history.push('/works/create')
         )
     }
 
@@ -44,14 +37,14 @@ const UserWorkList = () => {
         <div >
             <h3>My Work Summary</h3>
             <div className='worklist-container'>
-                
+                {/* {workerror?<div>{workerror.statusText}</div>:""} */}
                     {
-                        workdata?<div className="user-statistics">
+                        work?.data.length?<div className="user-statistics">
                             <div>
                                 <Statistic.Group widths='two'>
                                     <Statistic>
                                         <Statistic.Value>
-                                            {<CountUp end={workdata.length}/>}
+                                            {<CountUp end={work.data.length}/>}
                                         </Statistic.Value>
                                         <Statistic.Label>
                                             work totals
@@ -59,7 +52,7 @@ const UserWorkList = () => {
                                     </Statistic>
                                     <Statistic>
                                         <Statistic.Value>
-                                            <Icon name='user circle outline' >{<CountUp end={workdata.length}/>}</Icon>
+                                            <Icon name='user circle outline' >{<CountUp end={work.data.length}/>}</Icon>
                                         </Statistic.Value>
                                         <Statistic.Label>
                                             work assigner totals
@@ -74,7 +67,7 @@ const UserWorkList = () => {
                                 <Statistic.Group widths='two'>
                                     <Statistic color="green">
                                         <Statistic.Value>
-                                            {<CountUp end={workdata.length}/>}
+                                            {<CountUp end={work.data.length}/>}
                                         </Statistic.Value>
                                         <Statistic.Label>
                                             work paid totals
@@ -82,7 +75,7 @@ const UserWorkList = () => {
                                     </Statistic>
                                     <Statistic color="red">
                                         <Statistic.Value>
-                                            {<CountUp end={workdata.length}/>}
+                                            {<CountUp end={work.data.length}/>}
                                         </Statistic.Value>
                                         <Statistic.Label>
                                             work not paid totals
@@ -95,12 +88,12 @@ const UserWorkList = () => {
                 
             </div>
             <h3>My List of Works</h3>
-            {workdata?<div className='worklist-container'>
+            {work?.data.length?
+            <div className='worklist-container'>
             
-            {/* <Button  primary onClick={handleClick}>Admin</Button> */}
                 <List relaxed> 
                     {                                                                                                                                                                               
-                        workdata[0]?.map((workItem,index)=>{
+                        work.data.map((workItem,index)=>{
                             return <List.Item key={index}>
                                     <div className="container">
                                         <div className="row-header">
@@ -162,6 +155,7 @@ const UserWorkList = () => {
                                                     <List.Description as='h4'>Work description: </List.Description>
                                                     <List.Description >{`${workItem.number_of_words} number of words, `}</List.Description>
                                                     <List.Description >{`${workItem.pages} pages`}</List.Description>
+                                                    <List.Description as='p'>{`Expected Amount: ${workItem.expected_amount}`}</List.Description>
                                                    </List.Content>
                                                 </div>
                                                 
@@ -189,13 +183,13 @@ const UserWorkList = () => {
                 
             >
                 <Action
-                    text="Add work record"
+                    text="New work order"
                     onClick={handleNewWorkRecordClick}
                 >
                     <Icon name="file alternate" size="large" color="white"/>
                 </Action>
                 <Action
-                    text="Add work employer"
+                    text="New work employer"
                     onClick={handleNewEmployerClick}
                 >
                     <Icon name="add user" size="large" color="white"/>
@@ -205,4 +199,4 @@ const UserWorkList = () => {
     )
 }
 
-export default withRouter(UserWorkList)
+export default UserWorkList

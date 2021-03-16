@@ -1,12 +1,13 @@
 import React, { useState,useContext,useEffect } from 'react'
 import { Button, Form , Header} from 'semantic-ui-react'
 import {LoginUser} from '../API/api'
+import { UsersWork } from '../API/api'
 import StateContext from '../Context/stateContext';
 import { useHistory } from "react-router-dom"
 // import FormSuccess  from "./FormSuccess"
 import  FormError  from "./FormError"
 import Auth from '../Utils/Auth'
-import { Redirect } from 'react-router-dom'
+import { Redirect,Link } from 'react-router-dom'
 import '../App.css'
 
 const Login = () => {
@@ -51,7 +52,7 @@ const Login = () => {
     const loginFormInvalid =
     !form?.email?.length || !form.password || !form.password.length;
     if(redirectTrue){
-
+        UsersWork(state.user.id)(dispatch)
         return <Redirect to={`/users/${userName}`}/>
     }
 
@@ -63,14 +64,18 @@ const Login = () => {
                     {errorMessage?FormError(errorMessage):""}
                     <Form.Field>
                         <label>Email</label>
-                        <input type="Email" name='email' placeholder='email' value={form.email} onChange={onchange}/>
+                        <input type="Email" name='email' placeholder='Enter your email' value={form.email||""} onChange={onchange}/>
                     </Form.Field>
                     <Form.Field>
                         <label>Password</label>
-                        <input type='Password' name='password' placeholder='password' value={form.password} onChange={onchange}/>
+                        <input type='Password' name='password' placeholder='Enter your password' value={form.password||""} onChange={onchange}/>
                     </Form.Field>
                     <Button disabled={loginFormInvalid} loading={loading} fluid primary type='submit'>Login</Button>
                 </Form>
+                <div>
+                    <p>Dont have an account? <Link to="/register">Register here</Link></p>
+                </div>
+                
         </div>
                  
     )

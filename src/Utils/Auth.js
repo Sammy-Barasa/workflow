@@ -3,26 +3,25 @@
 
 
 
-class Auth {
+const Auth = {
 
-    constructor(){
-        this.authenticated = false
-    }
+
+        authenticated:false,
+    
 authenticate(){
     
-    this.authenticated= true   
-}
-
+    this.authenticated=true  
+},
 signOut(){
     
     localStorage.removeItem('token')
     this.authenticated= false
     
-}
+},
 
 isAuthenticated(){
     return this.authenticated
 }
 }
 
-export default new Auth()
+export default Auth

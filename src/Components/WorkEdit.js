@@ -3,7 +3,7 @@ import React from 'react'
 const WorkEdit = (props) => {
     return (
         <div>
-            <h2>Work edit</h2>
+            <h2>Work update</h2>
         </div>
     )
 }
