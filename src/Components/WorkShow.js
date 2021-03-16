@@ -1,17 +1,26 @@
 import React,{useContext} from 'react'
 import { List,Icon } from 'semantic-ui-react'
 import StateContext from '../Context/stateContext'
+import { useHistory } from "react-router-dom"
 
 const WorkShow = (props) => {
 
     const { state } = useContext(StateContext)
+    const history = useHistory()
+
     const workId=props.match.params.id
     // eslint-disable-next-line
     let workItem = state.work.data.find(element=>{return element.id==workId})
+    const handleIconClick =()=>{
+        history.push(`/works/update/${workId}`)
+    }
     
     return (
         <div>
-            <h2>Work detail</h2>
+            <div className="show-header">
+                <h2>Work detail</h2><Icon name='ellipsis vertical' size="large" onClick={handleIconClick} />
+            </div>
+            
             <div className="worklist-container">
                 
                     <div className="container">
@@ -68,7 +77,7 @@ const WorkShow = (props) => {
                                                 <div className="list-body-bottom">
                                                     <List.Content className="person-detail">
                                                         <List.Description as='h5'>{`Assigned by:`}</List.Description>
-                                                        <List.Description as='h5'>{`${workItem.person}`}</List.Description> 
+                                                        <List.Description as='h5'><Icon name='user circle outline' >{`${workItem.person}`}</Icon></List.Description> 
                                                     </List.Content> 
                                                 </div>
 

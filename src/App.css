@@ -114,10 +114,16 @@ background-color: #f8f8f8;
   display:flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items:baseline;
+  align-content: flex-end;
+  
 
 }
-
+.show-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 /* 
 @keyframes App-logo-spin {
   from {

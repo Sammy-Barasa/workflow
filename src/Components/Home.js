@@ -53,7 +53,7 @@ function Home() {
                 <ProtectedRoute exact path="/works/create" component={WorkCreate}/>
                   
                 
-                <ProtectedRoute exact path="/works/edit" component={WorkEdit}/>
+                <ProtectedRoute exact path="/works/update/:id" component={WorkEdit}/>
                 
                 <ProtectedRoute exact path="/employer/create" component={EmployerCreate}/>
                   
