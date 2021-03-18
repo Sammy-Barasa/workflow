@@ -81,7 +81,7 @@ export const CreateWork = (userid,workData) =>(dispatch)=> {
     dispatch({
         type:actionTypes.CREATE_WORK_LOADING
     })
-    axiosFetch().post(`users/${userid}`,workData)
+    axiosFetch().post(`users/${userid}/`,workData)
     .then((response)=>{
         // console.log(response.data)
         // console.log(response.status)
@@ -105,16 +105,16 @@ export const UpdateWork = (workID,workData) =>(dispatch)=> {
     dispatch({
         type:actionTypes.UPDATE_WORK_LOADING
     })
-    axiosFetch().patch(`works/${workID}`,workData)
+    axiosFetch().put(`works/${workID}/`,workData)
     .then((response)=>{
-        // console.log(response.data)
+        console.log(response.data)
         // console.log(response.status)
         dispatch({
         type:actionTypes.UPDATE_WORK_SUCCESS,
         payload:response.data
     })
     }).catch((error)=>{
-        // console.log(error)
+        console.log(error)
         dispatch({
         type:actionTypes.UPDATE_WORK_ERROR,
         payload:error
@@ -128,7 +128,7 @@ export const CreatePerson = (personData) =>(dispatch)=> {
     dispatch({
         type:actionTypes.CREATE_PERSON_LOADING
     })
-    axiosFetch().post('/persons',personData)
+    axiosFetch().post('/persons/',personData)
     .then((response)=>{
         // console.log(response.data)
         // console.log(response.status)
@@ -151,7 +151,7 @@ export const UpdatePerson = (personID,personData) =>(dispatch)=> {
     dispatch({
         type:actionTypes.UPDATE_PERSON_LOADING
     })
-    axiosFetch().patch(`persons/${personID}`,personData)
+    axiosFetch().put(`persons/${personID}/`,personData)
     .then((response)=>{
         // console.log(response.data)
         // console.log(response.status)

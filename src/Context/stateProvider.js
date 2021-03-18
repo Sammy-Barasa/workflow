@@ -29,6 +29,11 @@ const StateProvider = (props) =>{
           data:null,
           error:null
         },
+    workupdate:{
+          loading:false,
+          data:null,
+          error:null
+        },
   };
 
   const [state, dispatch] = useReducer(stateReducer, initialState);

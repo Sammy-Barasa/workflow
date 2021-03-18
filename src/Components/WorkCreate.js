@@ -41,7 +41,9 @@ const WorkCreate = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
     }; 
     const workcreateFormInvalid =
-    !form?.topic?.length || !form.password || !form.password.length;
+    !form?.topic || !form.person || !form.type_of_work;
+    // const loginFormInvalid =
+    // !form?.email?.length || !form.password || !form.password.length;
     return (
         <div className="work-create">
             <h2>Create Work Record</h2>
@@ -77,17 +79,17 @@ const WorkCreate = () => {
                         <input type='number' name='expected_amount' placeholder='Expected amount when completed' value={form.expected_amount} onChange={onchange}/>
                     </Form.Field>
                     <Form.Field >
-                        <Checkbox name="cancelled" label="Cancelled" value={form.cancelled}/>
+                        <Checkbox name="cancelled" label="Cancelled" checked={form.cancelled}/>
                     </Form.Field>
                     <Form.Field >
-                        <Checkbox name="completed" label="Completed" value={form.completed}/>
+                        <Checkbox name="completed" label="Completed" checked={form.completed}/>
                     </Form.Field>
                     <Form.Field>
                         <label>Amount received</label>
                         <input type='number' name='amount_received' placeholder='Amount received... (optional)' value={form.amount_received||0} onChange={onchange}/>
                     </Form.Field>
                     <Form.Field >
-                        <Checkbox name="paid" label="Paid" value={form.paid}/>
+                        <Checkbox name="paid" label="Paid" checked={form.paid}/>
                     </Form.Field>
                     <Button disabled={workcreateFormInvalid} loading={loading} fluid primary type='submit'>Add work order</Button>
                 </Form>

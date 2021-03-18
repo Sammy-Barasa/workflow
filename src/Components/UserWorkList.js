@@ -31,7 +31,7 @@ const UserWorkList = () => {
         e.preventDefault()
         history.push('/employer/create')
     }
-
+    
     const mediaQuery = window.matchMedia('(max-width: 500px)')
     return (
         <div >
@@ -95,7 +95,8 @@ const UserWorkList = () => {
                     {                                                                                                                                                                               
                         work.data.map((workItem,index)=>{
                             return <List.Item key={index}>
-                                    <div className="container">
+                                    <div className="container" onClick={(e)=>{ e.preventDefault()
+                                    history.push(`/works/${workItem.id}/show`)}}>
                                         <div className="row-header">
                                             <div className="list-header-left">
                                                 

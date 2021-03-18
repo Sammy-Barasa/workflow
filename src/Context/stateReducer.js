@@ -158,6 +158,34 @@ const stateReducer = (state,action) =>{
                     error:action.payload
                   },
         };
+
+      case actionTypes.UPDATE_WORK_LOADING:
+        return {
+            ...state,
+            workupdate: {
+                    ...state.workupdate,
+                    loading:true,
+                  },
+        };
+      case actionTypes.UPDATE_WORK_SUCCESS:
+        return {
+            ...state,
+            workupdate: {
+                    ...state.workupdate,
+                    loading:false,
+                    data:action.payload
+                  },
+        };
+
+      case actionTypes.UPDATE_WORK_ERROR:
+        return {
+            ...state,
+            workupdate: {
+                    ...state.workupdate,
+                    loading:false,
+                    error:action.payload
+                  },
+        };
       default:
         return state;
     }
