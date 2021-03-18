@@ -22,11 +22,11 @@ const Login = () => {
     
     
     useEffect(() => {
-        console.log(state)
+        // console.log(state)
         if (data?.status === 200) {
             window.localStorage.setItem("token", data.data.tokens.access);
             Auth.authenticate()
-            console.log(state)
+            // console.log(state)
             const username= data.data.username
             setUserName(username)
             setForm({})
@@ -43,7 +43,7 @@ const Login = () => {
         e.preventDefault()
         LoginUser(form)(dispatch);
         setForm({});
-        console.log(state)
+        // console.log(state)
     }
 
     const onchange = (e) => {

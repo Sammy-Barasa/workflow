@@ -18,12 +18,12 @@ const Register = () => {
     
     useEffect(() => {
         console.log(state)
-        if (data?.status === 200) {
-            console.log(state)
+        if (data?.status === 201) {
+            // console.log(state)
             setForm({})
             setRedirectTrue(true)
         }else{
-        console.log(state)
+        // console.log(state)
         setForm({})
         }
         
@@ -31,6 +31,7 @@ const Register = () => {
 
     function handleRegister(e) {
         e.preventDefault()
+        delete form.confirmpassword
         RegisterUser(form)(dispatch);
         setForm({});
         console.log(state)
@@ -55,6 +56,10 @@ const Register = () => {
                     <Form.Field>
                         <label>Email</label>
                         <input type="Email" name='email' required placeholder='Enter your email' value={form.email||""} onChange={onchange}/>
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Username</label>
+                        <input type="text" name='username' required  placeholder='Enter your username' value={form.username||""} onChange={onchange}/>
                     </Form.Field>
                     <Form.Field>
                         <label>Password</label>

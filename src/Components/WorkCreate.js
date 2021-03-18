@@ -18,13 +18,13 @@ const WorkCreate = () => {
     
     
     useEffect(() => {
-        console.log(state)
+        // console.log(state)
         if (data?.status === 200) {
             const username= state.user.username
             setForm({})
             history.push(`users/${username}`)  
         }else{
-        console.log(state)
+        // console.log(state)
         setForm({})
         }
         
@@ -34,7 +34,7 @@ const WorkCreate = () => {
         e.preventDefault()
         CreateWork(state.user.id,form)(dispatch);
         setForm({});
-        console.log(state)
+        // console.log(state)
     }
 
     const onchange = (e) => {

@@ -11,14 +11,14 @@ export const RegisterUser = (userData) =>(dispatch)=> {
     })
     axiosFetch().post('auth/register',userData)
     .then((response)=>{
-        // console.log(response.data)
+        console.log(response.data)
         // console.log(response.status)
         dispatch({
         type:actionTypes.REGISTER_SUCCESS,
-        payload:response.data
+        payload:response
     })
     }).catch((error)=>{
-        // console.log(error)
+        console.log(error)
         dispatch({
         type:actionTypes.REGISTER_ERROR,
         payload:error

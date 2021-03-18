@@ -77,7 +77,7 @@ const WorkShow = (props) => {
                                                 <div className="list-body-bottom">
                                                     <List.Content className="person-detail">
                                                         <List.Description as='h5'>{`Assigned by:`}</List.Description>
-                                                        <List.Description as='h5'><Icon name='user circle outline' >{`${workItem.person}`}</Icon></List.Description> 
+                                                        <List.Description as='h5'><Icon name='user circle outline' size="large" >{`${workItem.person}`}</Icon></List.Description> 
                                                     </List.Content> 
                                                 </div>
 
