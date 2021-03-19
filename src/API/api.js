@@ -112,7 +112,7 @@ export const UpdateWork = (workID,workData) =>(dispatch)=> {
         // console.log(response.status)
         dispatch({
         type:actionTypes.UPDATE_WORK_SUCCESS,
-        payload:response.data
+        payload:response
     })
     }).catch((error)=>{
         console.log(error)
@@ -121,6 +121,28 @@ export const UpdateWork = (workID,workData) =>(dispatch)=> {
         payload:error
         
     })  
+    })
+}
+export const DeleteWork = (workID) =>(dispatch)=> {
+    
+    // dispatch({
+    //     type:actionTypes.UPDATE_WORK_LOADING
+    // })
+    axiosFetch().delete(`works/${workID}/`)
+    .then((response)=>{
+        console.log(response.data)
+        // console.log(response.status)
+    //     dispatch({
+    //     type:actionTypes.UPDATE_WORK_SUCCESS,
+    //     payload:response
+    // })
+    }).catch((error)=>{
+        console.log(error)
+    //     dispatch({
+    //     type:actionTypes.UPDATE_WORK_ERROR,
+    //     payload:error
+        
+    // })  
     })
 }
 

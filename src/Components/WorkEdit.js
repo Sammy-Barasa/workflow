@@ -4,58 +4,59 @@ import { Button, Form } from 'semantic-ui-react'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import Checkbox from '@material-ui/core/Checkbox';
-import {UpdateWork,UsersWork} from '../API/api'
+import {UpdateWork,UsersWork, DeleteWork} from '../API/api'
 import StateContext from '../Context/stateContext';
-import { Redirect } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
-import { actionTypes } from '../Context/stateReducer'
+// import { actionTypes } from '../Context/stateReducer'
 
 
 const WorkEdit = (props) => {
 
     
     const {dispatch,state}= useContext(StateContext)
-    // const history = useHistory()
+    const history = useHistory()
     const loading = state.workupdate.loading
-    const data = state.workupdate.data
+    // const data = state.workupdate.data
     const error = state.workupdate.error
     const workId=props.match.params.id
     const userId = state.user.id
+    const username = state.user.username    
     
     const [form,setForm]= useState(state.work.data.find(element=>{
             // eslint-disable-next-line
             return element.id==workId}));
 
-    useEffect(() => {
-        if(data?.status===200){
-            UsersWork(userId)(dispatch)
-            setForm({})
-            
-            dispatch({
-                type:actionTypes.UPDATE_WORK_COMPLETE,
-            })
-            return <Redirect to={`/works/${workId}/show`}/>
-        }   
-    }, [data?.status, workId, dispatch, userId])
-
+    
     const [Cancelled,setCancelled] = useState(form.cancelled)
     const [Completed,setCompleted] = useState(form.completed)
     const [Paid,setPaid] = useState(form.paid)
+
+    useEffect(()=>{
+
+    },[])
     
+    function handleDelete(e){
+        e.preventDefault()
+        DeleteWork(workId)(dispatch)
+        UsersWork(userId)(dispatch)
+        return history.push(`/users/${username}`)
+    }
+
    function handleEdit(e) {
         e.preventDefault()
         console.log(form)
         UpdateWork(workId,form)(dispatch);
-        
+        UsersWork(userId)(dispatch)
         console.log(state)
+        return history.push(`/works/${workId}/show`)
     }
 
     const onchange = (e) => {
         
         setForm({ ...form, [e.target.name]: e.target.value });
         
-    }; 
-    
+    };  
     return (
         <div className="work-edit">
             <h2>Work Edit</h2>
@@ -142,7 +143,7 @@ const WorkEdit = (props) => {
                         label="Paid" 
                         />
                     </Form.Field>
-                    <Button negative>Delete order</Button><Button   primary role='submit' loading={loading}>Update order</Button>
+                    <Button negative onClick={handleDelete}>Delete order</Button><Button   primary role='submit' loading={loading}>Update order</Button>
                 </Form>
                 <div>
                 </div>

@@ -5,18 +5,18 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import Checkbox from '@material-ui/core/Checkbox';
 import {CreateWork,UsersWork} from '../API/api'
 import StateContext from '../Context/stateContext';
-import { Redirect } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
-import { actionTypes } from '../Context/stateReducer'
+// import { actionTypes } from '../Context/stateReducer'
 
 
 const WorkCreate = () => {
 
     
     const {dispatch,state}= useContext(StateContext)
-    // const history = useHistory()
+    const history = useHistory()
     const loading = state.workcreate.loading
-    const data = state.workcreate.data
+    // const data = state.workcreate.data
     const errorMessage = state.workcreate.error
     const userId = state.user.id;
     const username= state.user.username
@@ -29,23 +29,17 @@ const WorkCreate = () => {
     
     
     useEffect(()=>{
-            if(data?.status===201){
-                UsersWork(userId)(dispatch)
-                dispatch({
-                type:actionTypes.CREATE_WORK_COMPLETE,
-                })
-                
-                setForm({})
-                return <Redirect to={`/users/${username}`}/>
-                }  
+            
          
-    },[data, dispatch, userId, username])
+    },[])
 
     function handleCreate(e) {
         e.preventDefault();
         console.log(form);
         CreateWork(userId, form)(dispatch);
+        UsersWork(userId)(dispatch)
         console.log(state)
+        return history.push(`/users/${username}`)
         
     }
 
