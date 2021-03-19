@@ -158,7 +158,7 @@ export const UpdatePerson = (personID,personData) =>(dispatch)=> {
         // console.log(response.status)
         dispatch({
         type:actionTypes.UPDATE_PERSON_SUCCESS,
-        payload:response.data
+        payload:response
     })
     }).catch((error)=>{
         // console.log(error)

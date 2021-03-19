@@ -5,7 +5,7 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import Checkbox from '@material-ui/core/Checkbox';
 import {CreateWork,UsersWork} from '../API/api'
 import StateContext from '../Context/stateContext';
-import { useHistory } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 import  FormError  from "./FormError"
 import { actionTypes } from '../Context/stateReducer'
 
@@ -14,7 +14,7 @@ const WorkCreate = () => {
 
     
     const {dispatch,state}= useContext(StateContext)
-    const history = useHistory()
+    // const history = useHistory()
     const loading = state.workcreate.loading
     const data = state.workcreate.data
     const errorMessage = state.workcreate.error
@@ -27,16 +27,19 @@ const WorkCreate = () => {
     const [Completed,setCompleted] = useState(false)
     const [Paid,setPaid] = useState(false)
     
+    
     useEffect(()=>{
             if(data?.status===201){
+                UsersWork(userId)(dispatch)
                 dispatch({
-                type:actionTypes.WORK_CREATE_COMPLETE,
+                type:actionTypes.CREATE_WORK_COMPLETE,
                 })
+                
                 setForm({})
-                return history.push(`/users/${username}`)
-        }  
+                return <Redirect to={`/users/${username}`}/>
+                }  
          
-    },[data, dispatch, history, userId, username])
+    },[data, dispatch, userId, username])
 
     function handleCreate(e) {
         e.preventDefault();
@@ -47,14 +50,14 @@ const WorkCreate = () => {
     }
 
     
-    const onchange = (e) => { 
-        setForm((form)=>{
-            return{
-            ...form,
-            [e.target.name]:e.target.value
-            }
-        })
-    };
+    function onchange(e) {
+        setForm((form) => {
+            return {
+                ...form,
+                [e.target.name]: e.target.value
+            };
+        });
+    }
     
 
     // const workcreateFormInvalid =
@@ -62,6 +65,7 @@ const WorkCreate = () => {
     // disabled={workcreateFormInvalid}
     // const loginFormInvalid =
     // !form?.email?.length || !form.password || !form.password.length;
+   
     return (
         <div className="work-create">
             <h2>Create Work Record</h2>

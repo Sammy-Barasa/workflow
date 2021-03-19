@@ -6,7 +6,7 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import Checkbox from '@material-ui/core/Checkbox';
 import {UpdateWork,UsersWork} from '../API/api'
 import StateContext from '../Context/stateContext';
-import { useHistory } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 import  FormError  from "./FormError"
 import { actionTypes } from '../Context/stateReducer'
 
@@ -15,43 +15,38 @@ const WorkEdit = (props) => {
 
     
     const {dispatch,state}= useContext(StateContext)
-    const history = useHistory()
+    // const history = useHistory()
     const loading = state.workupdate.loading
     const data = state.workupdate.data
     const error = state.workupdate.error
     const workId=props.match.params.id
-
+    const userId = state.user.id
+    
     const [form,setForm]= useState(state.work.data.find(element=>{
             // eslint-disable-next-line
             return element.id==workId}));
 
     useEffect(() => {
         if(data?.status===200){
+            UsersWork(userId)(dispatch)
             setForm({})
             
             dispatch({
-                type:actionTypes.WORK_EDIT_COMPLETE,
+                type:actionTypes.UPDATE_WORK_COMPLETE,
             })
-           return history.push(`/works/${workId}/show`)
-            
-        }
-     return ()=>{history.push(`/works/${workId}/show`)}
-        
-        
-    }, [data?.status, workId, history, dispatch])
+            return <Redirect to={`/works/${workId}/show`}/>
+        }   
+    }, [data?.status, workId, dispatch, userId])
 
     const [Cancelled,setCancelled] = useState(form.cancelled)
     const [Completed,setCompleted] = useState(form.completed)
     const [Paid,setPaid] = useState(form.paid)
-
     
-
-
    function handleEdit(e) {
         e.preventDefault()
         console.log(form)
         UpdateWork(workId,form)(dispatch);
-        UsersWork(state.user.id)(dispatch)
+        
         console.log(state)
     }
 
@@ -61,7 +56,6 @@ const WorkEdit = (props) => {
         
     }; 
     
-
     return (
         <div className="work-edit">
             <h2>Work Edit</h2>
@@ -70,11 +64,11 @@ const WorkEdit = (props) => {
                     {error?FormError(error):""}
                     <Form.Field>
                         <label>Topic</label>
-                        <input type="text" name='topic' placeholder='Topic order falls in' value={form.topic} onChange={onchange}/>
+                        <input type="text" name='topic' placeholder='Topic order falls in' value={form.topic} onChange={onchange} disabled />
                     </Form.Field>
                     <Form.Field>
                         <label>Person</label>
-                        <input type='text' name='person' placeholder='Person who assigned the order' value={form.person} onChange={onchange}/>
+                        <input type='text' name='person' disabled placeholder='Person who assigned the order' value={form.person} onChange={onchange}/>
                     </Form.Field>
                     <Form.Field>
                         <label>Type of work</label>

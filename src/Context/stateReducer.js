@@ -12,13 +12,14 @@ export const actionTypes = {
   CREATE_WORK_LOADING:"CREATE_WORK_LOADING",
   CREATE_WORK_SUCCESS:"CREATE_WORK_SUCCESS",
   CREATE_WORK_ERROR:"CREATE_WORK_ERROR",
+  CREATE_WORK_COMPLETE:"CREATE_WORK_COMPLETE",
   UPDATE_WORK_LOADING:"UPDATE_WORK_LOADING",
   UPDATE_WORK_SUCCESS:"UPDATE_WORK_SUCCESS",
   UPDATE_WORK_ERROR:"UPDATE_WORK_ERROR",
+  UPDATE_WORK_COMPLETE:"UPDATE_WORK_COMPLETE",
   CREATE_PERSON_LOADING:"CREATE_PERSON_LOADING",
   CREATE_PERSON_SUCCESS:"CREATE_PERSON_SUCCESS",
   CREATE_PERSON_ERROR:"CREATE_PERSON_ERROR",
-  CREATE_WORK_COMPLETE:"CREATE_WORK_COMPLETE",
   UPDATE_PERSON_LOADING:"UPDATE_PERSON_LOADING",
   UPDATE_PERSON_SUCCESS:"UPDATE_PERSON_SUCCESS",
   UPDATE_PERSON_ERROR:"UPDATE_PERSON_ERROR",
@@ -197,11 +198,11 @@ const stateReducer = (state,action) =>{
                   },
         };
 
-      case actionTypes.CREATE_WORK_UPDATE:
+      case actionTypes.UPDATE_WORK_COMPLETE:
         return {
             ...state,
-            workcreate: {
-                    ...state.workcreate,
+            workupdate: {
+                    ...state.workupdate,
                     loading:false,
                     data:null,
                     error:null,
