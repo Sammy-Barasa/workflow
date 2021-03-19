@@ -18,6 +18,7 @@ export const actionTypes = {
   CREATE_PERSON_LOADING:"CREATE_PERSON_LOADING",
   CREATE_PERSON_SUCCESS:"CREATE_PERSON_SUCCESS",
   CREATE_PERSON_ERROR:"CREATE_PERSON_ERROR",
+  CREATE_WORK_COMPLETE:"CREATE_WORK_COMPLETE",
   UPDATE_PERSON_LOADING:"UPDATE_PERSON_LOADING",
   UPDATE_PERSON_SUCCESS:"UPDATE_PERSON_SUCCESS",
   UPDATE_PERSON_ERROR:"UPDATE_PERSON_ERROR",
@@ -158,7 +159,16 @@ const stateReducer = (state,action) =>{
                     error:action.payload
                   },
         };
-
+        case actionTypes.CREATE_WORK_COMPLETE:
+        return {
+            ...state,
+            workcreate: {
+                    ...state.workcreate,
+                    loading:false,
+                    data:null,
+                    error:null,
+                  },
+        };
       case actionTypes.UPDATE_WORK_LOADING:
         return {
             ...state,
@@ -184,6 +194,17 @@ const stateReducer = (state,action) =>{
                     ...state.workupdate,
                     loading:false,
                     error:action.payload
+                  },
+        };
+
+      case actionTypes.CREATE_WORK_UPDATE:
+        return {
+            ...state,
+            workcreate: {
+                    ...state.workcreate,
+                    loading:false,
+                    data:null,
+                    error:null,
                   },
         };
       default:

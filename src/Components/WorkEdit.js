@@ -1,10 +1,14 @@
 import React,{useState, useContext,useEffect} from 'react'
  
-import { Button, Form,Checkbox } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormHelperText from '@material-ui/core/FormHelperText'
+import Checkbox from '@material-ui/core/Checkbox';
 import {UpdateWork,UsersWork} from '../API/api'
 import StateContext from '../Context/stateContext';
 import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
+import { actionTypes } from '../Context/stateReducer'
 
 
 const WorkEdit = (props) => {
@@ -22,38 +26,39 @@ const WorkEdit = (props) => {
             return element.id==workId}));
 
     useEffect(() => {
-        if(data?.status==="200"){
+        if(data?.status===200){
+            setForm({})
             
-            history.push(`/works/${workId}/show`)
+            dispatch({
+                type:actionTypes.WORK_EDIT_COMPLETE,
+            })
+           return history.push(`/works/${workId}/show`)
+            
         }
-        return ()=>{
-            history.push(`/works/${workId}/show`)
-        }
+     return ()=>{history.push(`/works/${workId}/show`)}
         
-    }, [data?.status, workId, history])
+        
+    }, [data?.status, workId, history, dispatch])
 
-   async function handleEdit(e) {
+    const [Cancelled,setCancelled] = useState(form.cancelled)
+    const [Completed,setCompleted] = useState(form.completed)
+    const [Paid,setPaid] = useState(form.paid)
+
+    
+
+
+   function handleEdit(e) {
         e.preventDefault()
         console.log(form)
         UpdateWork(workId,form)(dispatch);
-        setForm({});
         UsersWork(state.user.id)(dispatch)
         console.log(state)
     }
 
     const onchange = (e) => {
-        if(e.target.name==="cancelled"){
-            e.preventDefault()
-            setForm({ ...form, [e.target.name]: e.target.checked });
-        }else if(e.target.name==="completed"){
-            e.preventDefault()
-            setForm({ ...form, [e.target.name]: e.target.checked });
-        }else if(e.target.name==="paid"){
-            e.preventDefault()
-            setForm({ ...form, [e.target.name]: e.target.checked });
-        }else{
+        
         setForm({ ...form, [e.target.name]: e.target.value });
-        }
+        
     }; 
     
 
@@ -92,17 +97,56 @@ const WorkEdit = (props) => {
                         <input type='number' name='expected_amount' placeholder='Expected amount when completed' value={form.expected_amount} onChange={onchange}/>
                     </Form.Field>
                     <Form.Field >
-                        <Checkbox name="cancelled" label="Cancelled" checked={form.cancelled} onChange={onchange}/>
+                        <FormHelperText>Has the order been cancelled?</FormHelperText>
+                        <FormControlLabel
+                        control={<Checkbox 
+                        id="cancelled" 
+                        color="primary" 
+                        checked={Cancelled} 
+                        onChange={(event)=>{
+                            setCancelled(event.target.checked)
+                            form.cancelled=event.target.checked 
+                            }}
+                       
+                        />}
+                        label="Cancelled"
+                        />
                     </Form.Field>
                     <Form.Field >
-                        <Checkbox name="completed" label="Completed" checked={form.completed} onChange={onchange}/>
+                        <FormHelperText>Has the order been completed?</FormHelperText>
+                        <FormControlLabel
+                        control={<Checkbox 
+                        id="completed" 
+                        color="primary"
+                        checked={Completed} 
+                        onChange={(event)=>{
+                            setCompleted(event.target.checked)
+                            form.completed=event.target.checked
+                        }}
+                        
+                        />}
+                        label="Completed" 
+                        />
                     </Form.Field>
                     <Form.Field>
                         <label>Amount received</label>
                         <input type='number' name='amount_received' placeholder='Amount received... (optional)' value={form.amount_received} onChange={onchange}/>
                     </Form.Field>
                     <Form.Field >
-                        <Checkbox name="paid" label="Paid" checked={form.paid} onChange={onchange}/>
+                        <FormHelperText>Has the order been paid?</FormHelperText>
+                        <FormControlLabel
+                        control={<Checkbox
+                            id="paid"
+                            color="primary"
+                            checked={Paid}
+                            onChange={(event)=>{
+                                setPaid(event.target.checked)
+                                form.paid= event.target.checked
+                                
+                            }}  
+                        />}
+                        label="Paid" 
+                        />
                     </Form.Field>
                     <Button negative>Delete order</Button><Button   primary role='submit' loading={loading}>Update order</Button>
                 </Form>

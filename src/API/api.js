@@ -81,13 +81,14 @@ export const CreateWork = (userid,workData) =>(dispatch)=> {
     dispatch({
         type:actionTypes.CREATE_WORK_LOADING
     })
+    workData.user=userid
     axiosFetch().post(`users/${userid}/`,workData)
     .then((response)=>{
         // console.log(response.data)
         // console.log(response.status)
         dispatch({
         type:actionTypes.CREATE_WORK_SUCCESS,
-        payload:response.data
+        payload:response
     })
     })
     .catch((error)=>{
