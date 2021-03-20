@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useContext,useEffect} from 'react'
 import { List,Icon } from 'semantic-ui-react'
 import StateContext from '../Context/stateContext'
 import { useHistory } from "react-router-dom"
@@ -7,7 +7,8 @@ const WorkShow = (props) => {
 
     const { state } = useContext(StateContext)
     const history = useHistory()
-
+    const loading = state.work.loading
+    useEffect(()=>{},[loading])
     const workId=props.match.params.id
     // eslint-disable-next-line
     let workItem = state.work.data.find(element=>{return element.id==workId})

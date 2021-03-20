@@ -8,9 +8,10 @@ import {UpdateWork,UsersWork, DeleteWork} from '../API/api'
 import StateContext from '../Context/stateContext';
 import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
+import Modal from 'react-modal';
 // import { actionTypes } from '../Context/stateReducer'
 
-
+Modal.setAppElement('#root')
 const WorkEdit = (props) => {
 
     
@@ -21,8 +22,7 @@ const WorkEdit = (props) => {
     const error = state.workupdate.error
     const workId=props.match.params.id
     const userId = state.user.id
-    const username = state.user.username    
-    
+    // const username = state.user.username    
     const [form,setForm]= useState(state.work.data.find(element=>{
             // eslint-disable-next-line
             return element.id==workId}));
@@ -31,27 +31,33 @@ const WorkEdit = (props) => {
     const [Cancelled,setCancelled] = useState(form.cancelled)
     const [Completed,setCompleted] = useState(form.completed)
     const [Paid,setPaid] = useState(form.paid)
+    // const [modalOpen,setModalOpen] = useState(false)
 
-    useEffect(()=>{
-
-    },[])
+    useEffect(()=>{},[loading])
     
     function handleDelete(e){
         e.preventDefault()
         DeleteWork(workId)(dispatch)
         UsersWork(userId)(dispatch)
-        return history.push(`/users/${username}`)
+        // setModalOpen(false)
+        history.goBack()
     }
 
-   function handleEdit(e) {
+    // function deleteButton(e){
+    //     e.preventDefault()
+    //     setModalOpen(true)
+    // }
+
+  async function handleEdit(e) {
         e.preventDefault()
         console.log(form)
         UpdateWork(workId,form)(dispatch);
         UsersWork(userId)(dispatch)
         console.log(state)
-        return history.push(`/works/${workId}/show`)
+        history.goBack()
     }
 
+    
     const onchange = (e) => {
         
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -60,6 +66,16 @@ const WorkEdit = (props) => {
     return (
         <div className="work-edit">
             <h2>Work Edit</h2>
+                {/* <Modal
+                isOpen={modalOpen}
+                contentLabel={`Delete work: ${form.topic} ?`}
+                >
+                    <h5>{`Order no: ${form.order_number}`}</h5>
+                    <p>Once deleted it can not be recovered</p>
+                    <Button negative onClick={handleDelete}>Delete order</Button>
+                </Modal> */}
+
+            
             <Form success warning onSubmit={handleEdit}> 
                 
                     {error?FormError(error):""}
@@ -143,7 +159,7 @@ const WorkEdit = (props) => {
                         label="Paid" 
                         />
                     </Form.Field>
-                    <Button negative onClick={handleDelete}>Delete order</Button><Button   primary role='submit' loading={loading}>Update order</Button>
+                    <Button negative onClick={handleDelete}>Delete order</Button> <Button   primary role='submit' loading={loading}>Update order</Button>
                 </Form>
                 <div>
                 </div>

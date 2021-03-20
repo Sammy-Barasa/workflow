@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext,useEffect } from 'react'
 // import { Button } from 'semantic-ui-react'
 import StateContext from '../Context/stateContext'
 import { List } from 'semantic-ui-react'
@@ -13,7 +13,9 @@ const UserWorkList = () => {
     // const [workdata,setWorkdata]=useState([])
     // const [query,setQuery]=useState("")
     
-    const work= state.work   
+    const work= state.work 
+    const loading = state.work.loading 
+    useEffect(()=>{},[loading]) 
     // const workderror=work?.error
     // const searchChange=async (query)=>{
         // let filtered = work.filter((sinlework)=>{

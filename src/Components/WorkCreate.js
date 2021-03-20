@@ -7,39 +7,37 @@ import {CreateWork,UsersWork} from '../API/api'
 import StateContext from '../Context/stateContext';
 import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
+import {  toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 // import { actionTypes } from '../Context/stateReducer'
 
 
 const WorkCreate = () => {
 
-    
+    toast.configure()
     const {dispatch,state}= useContext(StateContext)
     const history = useHistory()
     const loading = state.workcreate.loading
     // const data = state.workcreate.data
     const errorMessage = state.workcreate.error
     const userId = state.user.id;
-    const username= state.user.username
     const [form,setForm]= useState({topic:"",person:"",type_of_work:"",order_number:"",pages:0,number_of_words:0,expected_amount:0,cancelled:false,completed:false,amount_received:0,paid:false,});
 
-    
+    useEffect(()=>{},[loading])
     const [Cancelled,setCancelled] = useState(false)
     const [Completed,setCompleted] = useState(false)
     const [Paid,setPaid] = useState(false)
     
-    
-    useEffect(()=>{
-            
-         
-    },[])
 
-    function handleCreate(e) {
+   async function handleCreate(e) {
         e.preventDefault();
         console.log(form);
         CreateWork(userId, form)(dispatch);
         UsersWork(userId)(dispatch)
         console.log(state)
-        return history.push(`/users/${username}`)
+        const{message} = await state.workcreate?.data
+        toast(message)
+        history.goBack()
         
     }
 
