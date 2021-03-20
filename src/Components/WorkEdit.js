@@ -16,7 +16,7 @@ const WorkEdit = (props) => {
     
     const {dispatch,state}= useContext(StateContext)
     const history = useHistory()
-    const loading = state.workupdate.loading
+    const loading = state.work.loading
     // const data = state.workupdate.data
     const error = state.workupdate.error
     const workId=props.match.params.id
