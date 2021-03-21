@@ -14,8 +14,9 @@ const UserWorkList = () => {
     // const [query,setQuery]=useState("")
     
     const work= state.work 
-    const loading = state.work.loading 
-    useEffect(()=>{},[loading]) 
+    const loading = state.work.loading
+    const Loading = state.workupdate.loading
+    useEffect(()=>{},[loading,Loading]) 
     // const workderror=work?.error
     // const searchChange=async (query)=>{
         // let filtered = work.filter((sinlework)=>{

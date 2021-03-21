@@ -8,7 +8,8 @@ const WorkShow = (props) => {
     const { state } = useContext(StateContext)
     const history = useHistory()
     const loading = state.work.loading
-    useEffect(()=>{},[loading])
+    const Loading= state.workupdate.loading
+    useEffect(()=>{},[loading,Loading])
     const workId=props.match.params.id
     // eslint-disable-next-line
     let workItem = state.work.data.find(element=>{return element.id==workId})
