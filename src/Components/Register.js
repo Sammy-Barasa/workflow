@@ -17,7 +17,7 @@ const Register = () => {
     
     
     useEffect(() => {
-        console.log(state)
+        // console.log(state)
         if (data?.status === 201) {
             // console.log(state)
             setForm({})
@@ -34,7 +34,7 @@ const Register = () => {
         delete form.confirmpassword
         RegisterUser(form)(dispatch);
         setForm({});
-        console.log(state)
+        // console.log(state)
     }
 
     const onchange = (e) => {

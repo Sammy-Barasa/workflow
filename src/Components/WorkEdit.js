@@ -4,25 +4,27 @@ import { Button, Form } from 'semantic-ui-react'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import Checkbox from '@material-ui/core/Checkbox';
-import {UpdateWork,UsersWork, DeleteWork} from '../API/api'
+import {UpdateWork,UsersWork} from '../API/api'
 import StateContext from '../Context/stateContext';
 import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
-import Modal from 'react-modal';
-// import { actionTypes } from '../Context/stateReducer'
+import {  toast } from 'react-toastify';
+import DeleteModal from './DeleteModal'
+import 'react-toastify/dist/ReactToastify.css';
 
-Modal.setAppElement('#root')
+toast.configure()
 const WorkEdit = (props) => {
 
     
     const {dispatch,state}= useContext(StateContext)
     const history = useHistory()
-    const loading = state.work.loading
-    // const data = state.workupdate.data
+    const Loading = state.work.loading
+    const loading =state.workupdate.loading
     const error = state.workupdate.error
     const workId=props.match.params.id
     const userId = state.user.id
-    // const username = state.user.username    
+    // const username= state.user.username
+       
     const [form,setForm]= useState(state.work.data.find(element=>{
             // eslint-disable-next-line
             return element.id==workId}));
@@ -31,29 +33,16 @@ const WorkEdit = (props) => {
     const [Cancelled,setCancelled] = useState(form.cancelled)
     const [Completed,setCompleted] = useState(form.completed)
     const [Paid,setPaid] = useState(form.paid)
-    // const [modalOpen,setModalOpen] = useState(false)
-
-    useEffect(()=>{},[loading])
     
-    function handleDelete(e){
-        e.preventDefault()
-        DeleteWork(workId)(dispatch)
-        UsersWork(userId)(dispatch)
-        // setModalOpen(false)
-        history.goBack()
-    }
 
-    // function deleteButton(e){
-    //     e.preventDefault()
-    //     setModalOpen(true)
-    // }
-
-  async function handleEdit(e) {
+    useEffect(()=>{},[Loading])
+    
+    async function handleEdit(e) {
         e.preventDefault()
-        console.log(form)
+        // console.log(form)
         UpdateWork(workId,form)(dispatch);
         UsersWork(userId)(dispatch)
-        console.log(state)
+        // console.log(state)
         history.goBack()
     }
 
@@ -66,17 +55,7 @@ const WorkEdit = (props) => {
     return (
         <div className="work-edit">
             <h2>Work Edit</h2>
-                {/* <Modal
-                isOpen={modalOpen}
-                contentLabel={`Delete work: ${form.topic} ?`}
-                >
-                    <h5>{`Order no: ${form.order_number}`}</h5>
-                    <p>Once deleted it can not be recovered</p>
-                    <Button negative onClick={handleDelete}>Delete order</Button>
-                </Modal> */}
-
-            
-            <Form success warning onSubmit={handleEdit}> 
+            <Form success warning> 
                 
                     {error?FormError(error):""}
                     <Form.Field>
@@ -159,10 +138,16 @@ const WorkEdit = (props) => {
                         label="Paid" 
                         />
                     </Form.Field>
-                    <Button negative onClick={handleDelete}>Delete order</Button> <Button   primary role='submit' loading={loading}>Update order</Button>
+                    <Form.Group widths='equal'>
+                        <Form.Field>
+                            <Button primary fluid loading={loading} onClick={handleEdit}>Update order</Button>
+                        </Form.Field>
+                        <Form.Field>
+                            <DeleteModal workItem={form} workId={workId} userId={userId} dispatch={dispatch}/>
+                        </Form.Field> 
+                    </Form.Group> 
                 </Form>
-                <div>
-                </div>
+            
         </div>
     )
 }

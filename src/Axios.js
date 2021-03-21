@@ -18,7 +18,7 @@ const axiosFetch = ()=>{
     if(csrftoken){
         headers["X-CSRFToken"] = `${csrftoken}`
     }
-    console.log(headers)
+    // console.log(headers)
     const axiosInstance = axios.create({
         // "https://work-record-manager.herokuapp.com"
         // http://127.0.0.1:8000

@@ -108,14 +108,14 @@ export const UpdateWork = (workID,workData) =>(dispatch)=> {
     })
     axiosFetch().put(`works/${workID}/`,workData)
     .then((response)=>{
-        console.log(response.data)
+        // console.log(response.data)
         // console.log(response.status)
         dispatch({
         type:actionTypes.UPDATE_WORK_SUCCESS,
         payload:response
     })
     }).catch((error)=>{
-        console.log(error)
+        // console.log(error)
         dispatch({
         type:actionTypes.UPDATE_WORK_ERROR,
         payload:error

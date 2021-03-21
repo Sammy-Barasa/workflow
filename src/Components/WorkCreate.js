@@ -7,14 +7,14 @@ import {CreateWork,UsersWork} from '../API/api'
 import StateContext from '../Context/stateContext';
 import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
-import {  toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+// import {  toast } from 'react-toastify';
+//   import 'react-toastify/dist/ReactToastify.css';
 // import { actionTypes } from '../Context/stateReducer'
 
 
 const WorkCreate = () => {
 
-    toast.configure()
+    // toast.configure()
     const {dispatch,state}= useContext(StateContext)
     const history = useHistory()
     const loading = state.workcreate.loading
@@ -31,12 +31,10 @@ const WorkCreate = () => {
 
    async function handleCreate(e) {
         e.preventDefault();
-        console.log(form);
+        // console.log(form);
         CreateWork(userId, form)(dispatch);
         UsersWork(userId)(dispatch)
-        console.log(state)
-        const{message} = await state.workcreate?.data
-        toast(message)
+        // console.log(state)
         history.goBack()
         
     }
