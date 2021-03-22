@@ -18,7 +18,7 @@ const WorkShow = (props) => {
     }
     
     return (
-        <div>
+        <div className="show">
             <div className="show-header">
                 <h2>Work detail</h2><Icon name='ellipsis vertical' size="large" onClick={handleIconClick} />
             </div>

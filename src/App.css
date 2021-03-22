@@ -35,13 +35,20 @@
 .App-body{
   margin: 2px;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   
 }
 
 .worklist-container{
-  border: solid;
+  /* border: solid;
   border-width: 1px;
-  border-color: #dbe4fa;
+  border-color: #dbe4fa; */
+  border-bottom:solid #dbe4fa ;
+  border-top:solid #dbe4fa;
+  border-width: 1px;
   border-radius: 5px;
  
 }
@@ -53,7 +60,7 @@ background-color: #f8f8f8;
 .container {
   display:flex;
   flex-direction: column;
-  padding: 5px;
+  padding: 1px;
   margin: 5px;
   border: solid;
   border-width: 1px;
@@ -66,6 +73,7 @@ background-color: #f8f8f8;
   display:flex;
   justify-content: space-around;
   flex-wrap: nowrap;
+  margin-top: 10px;
   margin-bottom: 10px;
   border-bottom:solid #d0d9ee;
 }
@@ -129,9 +137,48 @@ background-color: #f8f8f8;
   flex-direction: column;
   justify-content: center;
   align-items:center;
-  position: relative;
-  margin: 20%;
-  padding: 20%;
+  padding: 10px;
+  border: solid;
+  border-width: 1px;
+  border-color: #dde0e0;
+  border-radius: 5px;
+  box-shadow:0 6px 12px 0 rgba(0, 0, 0, 0.2);
+  width: 50vh;
+  height:fit-content;
+  margin-top: 10%;
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  padding: 5px;
+  margin-top: 10%;
+  border: solid;
+  border-width: 1px;
+  border-color: #dde0e0;
+  border-radius: 5px;
+  box-shadow:0 6px 12px 0 rgba(0, 0, 0, 0.2);
+  width: 50vh;
+  height:fit-content;
+
+}
+
+.work-edit{
+  width: 50vh;
+}
+
+.show{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.show-header{
+  margin-bottom: 20px;
+}
+.work-create{
+  width: 50vh;
 }
 /* 
 @keyframes App-logo-spin {

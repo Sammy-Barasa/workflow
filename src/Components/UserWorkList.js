@@ -40,7 +40,7 @@ const UserWorkList = () => {
                             work?.data.length?
                                 <div className='worklist-container'>
                                 
-                                    <List relaxed> 
+                                    <List divided relaxed> 
                                         {                                                                                                                                                                               
                                             work.data.map((workItem,index)=>{
                                                 return <SingleWorkItem workItem={workItem} index={index}/>

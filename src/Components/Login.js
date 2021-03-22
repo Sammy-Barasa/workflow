@@ -64,13 +64,13 @@ const Login = () => {
                     {errorMessage?FormError(errorMessage):""}
                     <Form.Field>
                         <label>Email</label>
-                        <input type="Email" name='email' placeholder='Enter your email' value={form.email||""} onChange={onchange}/>
+                        <input type="Email" fluid name='email' placeholder='Enter your email' value={form.email||""} onChange={onchange}/>
                     </Form.Field>
                     <Form.Field>
                         <label>Password</label>
                         <input type='Password' name='password' placeholder='Enter your password' value={form.password||""} onChange={onchange}/>
                     </Form.Field>
-                    <Button disabled={loginFormInvalid} loading={loading} fluid primary type='submit'>Login</Button>
+                    <Button disabled={loginFormInvalid} fluid loading={loading} primary type='submit'>Login</Button>
                 </Form>
                 <div>
                     <p>Dont have an account? <Link to="/register">Register here</Link></p>
