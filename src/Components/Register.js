@@ -20,8 +20,8 @@ const Register = () => {
         // console.log(state)
         if (data?.status === 201) {
             // console.log(state)
-            setForm({})
             setRedirectTrue(true)
+            setForm({})
         }else{
         // console.log(state)
         setForm({})
@@ -55,7 +55,7 @@ const Register = () => {
                     {errorMessage?FormError(errorMessage):""}
                     <Form.Field>
                         <label>Email</label>
-                        <input type="Email" name='email' required placeholder='Enter your email' value={form.email||""} onChange={onchange}/>
+                        <input type="Email" name='email' autofocus required placeholder='Enter your email' value={form.email||""} onChange={onchange}/>
                     </Form.Field>
                     <Form.Field>
                         <label>Username</label>

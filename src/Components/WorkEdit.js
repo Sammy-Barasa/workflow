@@ -139,12 +139,13 @@ const WorkEdit = (props) => {
                         />
                     </Form.Field>
                     <Form.Group widths='equal'>
-                        <Form.Field>
-                            <Button primary fluid loading={loading} onClick={handleEdit}>Update order</Button>
-                        </Form.Field>
+                        
                         <Form.Field>
                             <DeleteModal workItem={form} workId={workId} userId={userId} dispatch={dispatch}/>
                         </Form.Field> 
+                        <Form.Field>
+                            <Button primary loading={loading} onClick={handleEdit}>Update order</Button>
+                        </Form.Field>
                     </Form.Group> 
                 </Form>
             

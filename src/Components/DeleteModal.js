@@ -22,7 +22,7 @@ const DeleteModal = ({workItem, workId,userId,dispatch}) => {
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             open={open}
-            trigger={<Button negative fluid><Icon name='trash alternate' />Delete order</Button>}
+            trigger={<Button negative ><Icon name='trash alternate' />Delete order</Button>}
             >
             <Modal.Header>{`Delete work order ${workItem.order_number}`}</Modal.Header>
             <Modal.Content image>

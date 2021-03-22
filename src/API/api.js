@@ -130,7 +130,7 @@ export const DeleteWork = (workID) =>(dispatch)=> {
     // })
     axiosFetch().delete(`works/${workID}/`)
     .then((response)=>{
-        console.log(response.data)
+                      console.log(response.data)
         // console.log(response.status)
     //     dispatch({
     //     type:actionTypes.UPDATE_WORK_SUCCESS,

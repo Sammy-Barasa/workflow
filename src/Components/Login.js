@@ -29,8 +29,8 @@ const Login = () => {
             // console.log(state)
             const username= data.data.username
             setUserName(username)
-            setForm({})
             setRedirectTrue(true)
+            setForm({})
             
         }else{
         // console.log(state)
