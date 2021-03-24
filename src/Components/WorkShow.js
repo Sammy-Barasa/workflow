@@ -71,7 +71,7 @@ const WorkShow = (props) => {
                                                         <List.Description as='h4'>{`Date assigned:   `}</List.Description>
                                                         <List.Description as='h5'>{workItem.date}</List.Description>
                                                         <List.Description as='h4'>{`Type of work: `}</List.Description>
-                                                        <List.Description >{` ${workItem.type_of_work}`}</List.Description>
+                                                        <List.Description >{` ${workItem.category_of_work.work_type}`}</List.Description>
                                                         <List.Description as='h4'>Expected Amount</List.Description>
                                                     <List.Description as='p'>{`Ksh. ${workItem.expected_amount}`}</List.Description>
                                                     </List.Content> 
@@ -79,7 +79,7 @@ const WorkShow = (props) => {
                                                 <div className="list-body-bottom">
                                                     <List.Content className="person-detail">
                                                         <List.Description as='h5'>{`Assigned by:`}</List.Description>
-                                                        <List.Description as='h5'><Icon name='user circle outline' size="large" >{`${workItem.person}`}</Icon></List.Description> 
+                                                        <List.Description as='h5'><Icon name='user circle outline' size="large" >{`${workItem.assigned_by.name}`}</Icon></List.Description> 
                                                     </List.Content> 
                                                 </div>
 
@@ -92,6 +92,8 @@ const WorkShow = (props) => {
                                                     <List.Description >{`${workItem.order_number}`}</List.Description>
                                                     <List.Description as='h4'>Amount received</List.Description>
                                                     <List.Description as='p'>{`Ksh. ${workItem.amount_received}`}</List.Description>
+                                                    <List.Description as='h4'>Last modified</List.Description>
+                                                    <List.Description as='p'>{` ${workItem.last_modified}`}</List.Description>
                                                    </List.Content>
                                                 </div>
                                                 

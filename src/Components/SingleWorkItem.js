@@ -53,13 +53,14 @@ const SingleWorkItem = ({workItem,index}) => {
                                                     <List.Content>
                                                         <List.Description as='h4'>{`Date assigned:   `}</List.Description>
                                                         <List.Description as='h5'>{workItem.date}</List.Description>
-                                                        <List.Description as='p'>{`Type of work: ${workItem.type_of_work}`}</List.Description>
+                                                        <List.Description as='p'>{`Type of work: ${workItem.category_of_work.work_type}`}</List.Description>
+                                                        <List.Description as='p'>{`Last modified: ${workItem.last_modified}`}</List.Description>
                                                     </List.Content> 
                                                 </div>
                                                 <div className="list-center">
                                                     <List.Content>
                                                         <List.Description as='p'>{`Assigned by:`}</List.Description>
-                                                        <List.Description>{` ${workItem.person}`}</List.Description> 
+                                                        <List.Description>{` ${workItem.assigned_by.name}`}</List.Description> 
                                                     </List.Content> 
                                                 </div>
 

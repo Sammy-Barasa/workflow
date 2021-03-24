@@ -54,6 +54,7 @@ const Login = () => {
         UsersWork(state.user.id)(dispatch)
         GetUsersPersons(state.user.id)(dispatch)
         GetWorkOptions()(dispatch)
+        
         return <Redirect to={`/users/${userName}`}/>
     }
 

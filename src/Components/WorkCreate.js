@@ -1,5 +1,5 @@
 import React, { useState,useContext,useEffect } from 'react'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form,  Dropdown} from 'semantic-ui-react'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import Checkbox from '@material-ui/core/Checkbox';
@@ -21,7 +21,7 @@ const WorkCreate = () => {
     // const data = state.workcreate.data
     const errorMessage = state.workcreate.error
     const userId = state.user.id;
-    const [form,setForm]= useState({topic:"",person:"",type_of_work:"",order_number:"",pages:0,number_of_words:0,expected_amount:0,cancelled:false,completed:false,amount_received:0,paid:false,});
+    const [form,setForm]= useState({topic:"",assigned_by:null,category_of_work:null,order_number:"",pages:0,number_of_words:0,expected_amount:0,cancelled:false,completed:false,amount_received:0,paid:false,});
 
     useEffect(()=>{},[loading])
     const [Cancelled,setCancelled] = useState(false)
@@ -29,7 +29,20 @@ const WorkCreate = () => {
     const [Paid,setPaid] = useState(false)
     
 
-   async function handleCreate(e) {
+    const persons = state.persons.data
+    const personOptions = persons.map((item)=>({
+    key: item.id,
+    text: item.name,
+    value: item.id,
+    image: { avatar: true, src: '../public/contactplaceholder.jpg' },
+  }))
+    const workcat = state.workOptions.data
+    const workOptions = workcat.map((opt)=>({
+        key: opt.id,
+        text: opt.work_type,
+        value: opt.id,
+    }))
+       async function handleCreate(e) {
         e.preventDefault();
         // console.log(form);
         CreateWork(userId, form)(dispatch);
@@ -68,11 +81,43 @@ const WorkCreate = () => {
                     </Form.Field>
                     <Form.Field>
                         <label>Person</label>
-                        <input type='text' name='person' placeholder='Person who assigned the order' value={form.person} onChange={onchange}/>
+                        {/* <input type='text' name='person' placeholder='Person who assigned the order' value={form.person} onChange={onchange}/> */}
+                        <Dropdown
+                            placeholder='Select Person who assigned the order'
+                            fluid
+                            selection
+                            options={personOptions}
+                            onChange={(event,data)=>{
+                                event.preventDefault()
+                            setForm((form)=>{
+                                return{
+                                ...form,
+                                assigned_by:data.value
+                                }
+                            })
+                            
+                            }}
+                        />
                     </Form.Field>
                     <Form.Field>
                         <label>Type of work</label>
-                        <input type='text' name='type_of_work' placeholder='Type of work e.g writing ...' value={form.type_of_work} onChange={onchange}/>
+                        {/* <input type='text' name='type_of_work' placeholder='Type of work e.g writing ...' value={form.type_of_work} onChange={onchange}/> */}
+                        <Dropdown
+                            placeholder='Select Type of work e.g writing ...'
+                            fluid
+                            selection
+                            options={workOptions}
+                            onChange={(event,data)=>{
+                                 event.preventDefault()
+                            setForm((form)=>{
+                                return{
+                                ...form,
+                                category_of_work:data.value
+                                }
+                            })
+                             
+                            }}
+                        />
                     </Form.Field>
                     <Form.Field>
                         <label>Order number</label>

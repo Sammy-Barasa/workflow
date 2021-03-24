@@ -4,11 +4,12 @@ import { RegisterUser } from '../API/api'
 import StateContext from '../Context/stateContext';
 // import FormSuccess  from "./FormSuccess"
 import  FormError  from "./FormError"
-import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import '../App.css'
 
 const Register = () => {
     const [form,setForm]= useState({});
+    const history = useHistory()
     const [redirectTrue,setRedirectTrue]= useState(false)
     const {dispatch,state}= useContext(StateContext)
     const loading = state.auth.register.loading
@@ -44,7 +45,7 @@ const Register = () => {
     form?.password!==form?.confirmpassword||!form?.email?.length || !form.password || !form.password.length;
     if(redirectTrue){
 
-        return <Redirect to={"/login"}/>
+        return history.push("/login")
     }
 
     return (

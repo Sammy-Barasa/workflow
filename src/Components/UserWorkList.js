@@ -12,7 +12,7 @@ const UserWorkList = () => {
     const { state } = useContext(StateContext)
     // const [workdata,setWorkdata]=useState([])
     // const [query,setQuery]=useState("")
-    
+    // console.log(state)
     const work= state.work 
     const loading = state.work.loading
     const Loading = state.workupdate.loading

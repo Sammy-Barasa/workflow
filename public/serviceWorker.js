@@ -1,11 +1,12 @@
-const CACHE_NAME= "v16"
+const CACHE_NAME= "v17"
 const urlsToCache=[
     '/',
     'index.html',
     'logo1_192.png',
     'logo1_512.png',
     'logo1.png',
-    'logo2.png'
+    'logo2.png',
+    'contactplaceholder.jpg'
 ]
 
 const self=this
