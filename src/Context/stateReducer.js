@@ -9,6 +9,9 @@ export const actionTypes = {
   WORK_LOADING:"WORK_LOADING",
   WORK_SUCCESS:"WORK_SUCCESS",
   WORK_ERROR:"WORK_ERROR",
+  GET_PERSONS_LOADING:"GET_PERSONS_LOADING",
+  GET_PERSONS_SUCCESS:"GET_PERSONS_SUCCESS",
+  GET_PERSONS_ERROR:"GET_PERSONS_ERROR",
   CREATE_WORK_LOADING:"CREATE_WORK_LOADING",
   CREATE_WORK_SUCCESS:"CREATE_WORK_SUCCESS",
   CREATE_WORK_ERROR:"CREATE_WORK_ERROR",
@@ -23,6 +26,9 @@ export const actionTypes = {
   UPDATE_PERSON_LOADING:"UPDATE_PERSON_LOADING",
   UPDATE_PERSON_SUCCESS:"UPDATE_PERSON_SUCCESS",
   UPDATE_PERSON_ERROR:"UPDATE_PERSON_ERROR",
+  GET_OPTIONS_LOADING:"GET_OPTIONS_LOADING",
+  GET_OPTIONS_SUCCESS:"GET_OPTIONS_SUCCESS",
+  GET_OPTIONS_ERROR:"GET_OPTIONS_ERROR",
 
 };
 
@@ -133,7 +139,8 @@ const stateReducer = (state,action) =>{
                     error:action.payload
                   },
         };
-        case actionTypes.CREATE_WORK_LOADING:
+
+      case actionTypes.CREATE_WORK_LOADING:
         return {
             ...state,
             workcreate: {
@@ -141,6 +148,8 @@ const stateReducer = (state,action) =>{
                     loading:true,
                   },
         };
+
+            
       case actionTypes.CREATE_WORK_SUCCESS:
         return {
             ...state,
@@ -160,7 +169,8 @@ const stateReducer = (state,action) =>{
                     error:action.payload
                   },
         };
-        case actionTypes.CREATE_WORK_COMPLETE:
+
+      case actionTypes.CREATE_WORK_COMPLETE:
         return {
             ...state,
             workcreate: {
@@ -170,6 +180,7 @@ const stateReducer = (state,action) =>{
                     error:null,
                   },
         };
+
       case actionTypes.UPDATE_WORK_LOADING:
         return {
             ...state,
@@ -208,6 +219,67 @@ const stateReducer = (state,action) =>{
                     error:null,
                   },
         };
+
+      case actionTypes.GET_PERSONS_LOADING:
+        return {
+            ...state,
+            persons: {
+                    ...state.persons,
+                    loading:true,
+                  },
+        };
+
+      case actionTypes.GET_PERSONS_SUCCESS:
+        return {
+            ...state,
+            persons: {
+                    ...state.persons,
+                    loading:false,
+                    data:action.payload
+                  },
+        };
+
+      case actionTypes.GET_PERSONS_ERROR:
+        return {
+            ...state,
+            persons: {
+                    ...state.persons,
+                    loading:false,
+                    error:action.payload
+                  },
+        };
+
+      case actionTypes.GET_OPTIONS_SUCCESS:
+        return {
+            ...state,
+            workOptions: {
+                    ...state.workOptions,
+                    loading:false,
+                    data:action.payload
+                  },
+        };
+
+      case actionTypes.GET_OPTIONS_LOADING:
+        return {
+            ...state,
+            workOptions: {
+                    ...state.workOptions,
+                    loading:true,
+                  },
+        };
+
+      case actionTypes.GET_OPTIONS_ERROR:
+        return {
+            ...state,
+            workOptions: {
+                    ...state.workOptions,
+                    loading:false,
+                    error:action.payload
+                  },
+        };
+
+ 
+
       default:
         return state;
     }

@@ -1,7 +1,6 @@
 import React, { useState,useContext,useEffect } from 'react'
 import { Button, Form , Header} from 'semantic-ui-react'
-import {LoginUser} from '../API/api'
-import { UsersWork } from '../API/api'
+import { LoginUser,UsersWork,GetUsersPersons,GetWorkOptions } from '../API/api'
 import StateContext from '../Context/stateContext';
 import { useHistory } from "react-router-dom"
 // import FormSuccess  from "./FormSuccess"
@@ -53,6 +52,8 @@ const Login = () => {
     !form?.email?.length || !form.password || !form.password.length;
     if(redirectTrue){
         UsersWork(state.user.id)(dispatch)
+        GetUsersPersons(state.user.id)(dispatch)
+        GetWorkOptions()(dispatch)
         return <Redirect to={`/users/${userName}`}/>
     }
 

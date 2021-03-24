@@ -5,12 +5,13 @@ import UserWorkList from './UserWorkList'
 import WorkShow from './WorkShow'
 import WorkCreate from './WorkCreate'
 import WorkEdit from './WorkEdit'
-import EmployerCreate from './EmployerCreate'
+import PersonCreate from './PersonCreate'
 import Navigation from './Navigation'
 import '../App.css'
 import Login from './Login'
 import Register from './Register'
 import { ProtectedRoute } from "./ProtectedRoute"
+import { PublicRoute } from "./PublicRoute"
 import { Icon } from 'semantic-ui-react'
 import Auth from '../Utils/Auth'
 import PageNotFound from './PageNotFound'
@@ -42,9 +43,9 @@ function Home() {
             </div>
             <div className="App-body">
               <Switch>
-                <Route exact path='/'>
+                <PublicRoute exact path='/'>
                   <Navigation/>
-                </Route>
+                </PublicRoute>
                 
                 <ProtectedRoute exact path="/users/:username" component={UserWorkList}/>
                   
@@ -55,11 +56,11 @@ function Home() {
                 
                 <ProtectedRoute exact path="/works/update/:id" component={WorkEdit}/>
                 
-                <ProtectedRoute exact path="/employer/create" component={EmployerCreate}/>
+                <ProtectedRoute exact path="/employer/create" component={PersonCreate}/>
                   
-                <Route exact path='/login'>
+                <PublicRoute exact path='/login'>
                   <Login/>
-                </Route>
+                </PublicRoute>
                 <Route exact path='/register'>
                   <Register/>
                 </Route>

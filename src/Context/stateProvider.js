@@ -34,6 +34,16 @@ const StateProvider = (props) =>{
           data:null,
           error:null
         },
+    persons:{
+          loading:false,
+          data:null,
+          error:null
+        },
+    workOptions:{
+          loading:false,
+          data:null,
+          error:null
+        },
   };
 
   const [state, dispatch] = useReducer(stateReducer, initialState);

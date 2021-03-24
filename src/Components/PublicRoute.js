@@ -1,18 +1,24 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import { Route, Redirect } from "react-router-dom";
+import StateContext from '../Context/stateContext';
 import Auth from "../Utils/Auth"
 
-export function PublicRoute(props) {
-    return (
-        <Route
-            exact
-            path={props.path}
-            render={(props) => {
-                return Auth.isAuthenticated()=== true?props.children
-                    : <Redirect to={{
-                        pathname: "/login",
-                        state: { from: props.location }
-                    }}/>;
-            } } />
-    );
-}
+
+
+
+export const  PublicRoute=({component:Component,...rest})=>{
+
+    const {state} = useContext(StateContext)
+
+       return <Route
+            {...rest}
+            component={(props) => (
+                 Auth.isAuthenticated()?
+                    (<Redirect to={{
+                        pathname: `/users/${state.user.username}`,
+                    }}/>):(
+                    <Component {...props}/>)
+                    )
+            }/>
+    
+        }

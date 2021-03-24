@@ -11,7 +11,7 @@ export const RegisterUser = (userData) =>(dispatch)=> {
     })
     axiosFetch().post('auth/register',userData)
     .then((response)=>{
-        console.log(response.data)
+        console.log(response)
         // console.log(response.status)
         dispatch({
         type:actionTypes.REGISTER_SUCCESS,
@@ -82,7 +82,7 @@ export const CreateWork = (userid,workData) =>(dispatch)=> {
         type:actionTypes.CREATE_WORK_LOADING
     })
     workData.user=userid
-    axiosFetch().post(`users/${userid}/`,workData)
+    axiosFetch().post(`users/${userid}/create`,workData)
     .then((response)=>{
         // console.log(response.data)
         // console.log(response.status)
@@ -145,13 +145,32 @@ export const DeleteWork = (workID) =>(dispatch)=> {
     // })  
     })
 }
+export const GetUsersPersons = (userID)=>(dispatch)=>{
+    dispatch({
+        type:actionTypes.GET_PERSONS_LOADING
+    })
+    axiosFetch().get(`users/${userID}/person`)
+    .then((response)=>{
+        // console.log(response.data)
+        // console.log(response.status)
+        dispatch({
+        type:actionTypes.GET_PERSONS_SUCCESS,
+        payload:response.data
+    })}).catch((error)=>{
+        // console.log(error)
+        dispatch({
+        type:actionTypes.GET_PERSONS_ERROR,
+        payload:error
+    })
+    })
+}
 
-export const CreatePerson = (personData) =>(dispatch)=> {
+export const CreatePerson = (userID,personData) =>(dispatch)=> {
     
     dispatch({
         type:actionTypes.CREATE_PERSON_LOADING
     })
-    axiosFetch().post('/persons/',personData)
+    axiosFetch().post(`users/${userID}/persons/`,personData)
     .then((response)=>{
         // console.log(response.data)
         // console.log(response.status)
@@ -169,12 +188,12 @@ export const CreatePerson = (personData) =>(dispatch)=> {
     })
 }
 
-export const UpdatePerson = (personID,personData) =>(dispatch)=> {
+export const UpdatePerson = (userID,personID,personData) =>(dispatch)=> {
     
     dispatch({
         type:actionTypes.UPDATE_PERSON_LOADING
     })
-    axiosFetch().put(`persons/${personID}/`,personData)
+    axiosFetch().put(`users/${userID}/persons/${personID}/`,personData)
     .then((response)=>{
         // console.log(response.data)
         // console.log(response.status)
@@ -190,4 +209,41 @@ export const UpdatePerson = (personID,personData) =>(dispatch)=> {
         
     })  
     })
+}
+
+
+export const DeletePerson = (userID,personID) =>(dispatch)=> {
+    
+    axiosFetch().delete(`users/${userID}/person/${personID}/`)
+    .then((response)=>{
+                      console.log(response.data)
+        
+    }).catch((error)=>{
+        console.log(error)
+      
+    })
+}
+
+
+export const GetWorkOptions = ()=>{
+    return (dispatch) => {
+        dispatch({
+            type: actionTypes.GET_OPTIONS_LOADING
+        })
+        axiosFetch().get("works/options")
+            .then((response) => {
+                // console.log(response.data)
+                // console.log(response.status)
+                dispatch({
+                    type: actionTypes.GET_OPTIONS_SUCCESS,
+                    payload: response.data
+                })
+            }).catch((error) => {
+                // console.log(error)
+                dispatch({
+                    type: actionTypes.GET_OPTIONS_ERROR,
+                    payload: error
+                })
+            })
+    }
 }
