@@ -60,7 +60,7 @@ export const UsersWork = (userID)=>(dispatch)=>{
     dispatch({
         type:actionTypes.WORK_LOADING
     })
-    axiosFetch().get(`users/${userID}`)
+    axiosFetch().get(`users/${userID}/`)
     .then((response)=>{
         // console.log(response.data)
         // console.log(response.status)
@@ -82,7 +82,7 @@ export const CreateWork = (userid,workData) =>(dispatch)=> {
         type:actionTypes.CREATE_WORK_LOADING
     })
     workData.user=userid
-    axiosFetch().post(`users/${userid}/create`,workData)
+    axiosFetch().post(`users/${userid}/create/`,workData)
     .then((response)=>{
         // console.log(response.data)
         // console.log(response.status)
@@ -149,7 +149,7 @@ export const GetUsersPersons = (userID)=>(dispatch)=>{
     dispatch({
         type:actionTypes.GET_PERSONS_LOADING
     })
-    axiosFetch().get(`users/${userID}/person`)
+    axiosFetch().get(`users/${userID}/person/`)
     .then((response)=>{
         // console.log(response.data)
         // console.log(response.status)

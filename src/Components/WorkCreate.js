@@ -80,7 +80,7 @@ const WorkCreate = () => {
                         <input type="text" name='topic' placeholder='Topic order falls in' value={form.topic} onChange={onchange}/>
                     </Form.Field>
                     <Form.Field>
-                        <label>Person</label>
+                        <label>Assigned by</label>
                         {/* <input type='text' name='person' placeholder='Person who assigned the order' value={form.person} onChange={onchange}/> */}
                         <Dropdown
                             placeholder='Select Person who assigned the order'

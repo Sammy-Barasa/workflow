@@ -8,7 +8,7 @@ const DeleteModal = ({workItem, workId,userId,dispatch}) => {
     const history = useHistory()
     
 
-    function handleDelete(e){
+   async function handleDelete(e){
         e.preventDefault()
         DeleteWork(workId)(dispatch)
         UsersWork(userId)(dispatch)

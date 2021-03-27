@@ -1,6 +1,6 @@
 import React,{useState, useContext,useEffect} from 'react'
  
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form,Icon } from 'semantic-ui-react'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import Checkbox from '@material-ui/core/Checkbox';
@@ -63,12 +63,12 @@ const WorkEdit = (props) => {
                         <input type="text" name='topic' placeholder='Topic order falls in' value={form.topic} onChange={onchange} disabled />
                     </Form.Field>
                     <Form.Field>
-                        <label>Person</label>
-                        <input type='text' name='person' disabled placeholder='Person who assigned the order' value={form.person} onChange={onchange}/>
+                        <label>Assigned by</label>
+                        <input type='text' name='assigned_by' disabled placeholder='Person who assigned the order' value={form.assigned_by.name} onChange={onchange}/>
                     </Form.Field>
                     <Form.Field>
                         <label>Type of work</label>
-                        <input type='text' name='type_of_work' placeholder='Type of work e.g writing ...' value={form.type_of_work} onChange={onchange}/>
+                        <input type='text' disabled name='category_of_work' placeholder='Type of work e.g writing ...' value={form.category_of_work.work_type} onChange={onchange}/>
                     </Form.Field>
                     <Form.Field>
                         <label>Order number</label>
@@ -138,14 +138,14 @@ const WorkEdit = (props) => {
                         label="Paid" 
                         />
                     </Form.Field>
-                    <Form.Group widths='equal'>
+                    <Form.Group widths='equal' unstackable inline>
                         
-                        <Form.Field>
+                        {/* <Form.Field> */}
                             <DeleteModal workItem={form} workId={workId} userId={userId} dispatch={dispatch}/>
-                        </Form.Field> 
-                        <Form.Field>
-                            <Button primary loading={loading} onClick={handleEdit}>Update order</Button>
-                        </Form.Field>
+                        {/* </Form.Field>  */}
+                        {/* <Form.Field> */}
+                            <Button color="green"  loading={loading} onClick={handleEdit}><Icon name='refresh' />Update order</Button>
+                        {/* </Form.Field> */}
                     </Form.Group> 
                 </Form>
             
