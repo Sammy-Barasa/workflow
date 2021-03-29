@@ -6,7 +6,7 @@ import '../App.css'
 const SingleWorkItem = ({workItem,index}) => {
     const history=useHistory()
     const date = new Date(workItem.date)
-    const dateTodisplay = date.toLocaleDateString(undefined,{
+    const dateTodisplay = date.toLocaleDateString('en-US',{
         day:'numeric',
         month:'short',
         year:'numeric'
@@ -59,7 +59,8 @@ const SingleWorkItem = ({workItem,index}) => {
                                                     <List.Content>
                                                         <List.Description as='h4'>{`Date assigned:   `}</List.Description>
                                                         <List.Description as='h5'>{dateTodisplay}</List.Description>
-                                                        <List.Description as='p'>{`Type of work: ${workItem.category_of_work.work_type}`}</List.Description>
+                                                        <List.Description as='h5'>{`Type of work:`}</List.Description>
+                                                        <List.Description as='p'>{`${workItem.category_of_work.work_type}`}</List.Description>
                                                         {/* <List.Description as='p'>{`Last modified: ${workItem.last_modified}`}</List.Description> */}
                                                     </List.Content> 
                                                 </div>
@@ -75,7 +76,7 @@ const SingleWorkItem = ({workItem,index}) => {
                                                     <List.Description as='h4'>Work description: </List.Description>
                                                     <List.Description >{`${workItem.number_of_words} number of words, `}</List.Description>
                                                     <List.Description >{`${workItem.pages} pages`}</List.Description>
-                                                    <List.Description as='p'>{workItem.paid?`Amount received: ${workItem.amount_received}`:`Expected Amount: ${workItem.expected_amount}`}</List.Description>
+                                                    <List.Description as='h5'>{workItem.paid?`Amount received:       ${workItem.amount_received}`:`Expected Amount:        ${workItem.expected_amount}`}</List.Description>
                                                    </List.Content>
                                                 </div>
                                                 

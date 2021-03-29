@@ -25,11 +25,7 @@ const WorkShow = (props) => {
     })
 
     const time = new Date(workItem.last_modified)
-    const timeTodisplay = time.toLocaleTimeString(undefined,{
-        hour:'numeric',
-        minute:'2-digit',
-        second:'2-digit',
-    })
+    const timeTodisplay = time.toLocaleTimeString()
     return (
         <div className="show">
             <div className="show-header">
