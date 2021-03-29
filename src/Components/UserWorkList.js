@@ -12,7 +12,7 @@ const UserWorkList = () => {
     const { state } = useContext(StateContext)
     // const [workdata,setWorkdata]=useState([])
     // const [query,setQuery]=useState("")
-    console.log(state)
+    // console.log(state)
     const work= state.work.data.data
     const stats=state.work.data.stats
     // const scope= state.work.data.scope

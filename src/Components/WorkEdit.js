@@ -25,7 +25,7 @@ const WorkEdit = (props) => {
     const userId = state.user.id
     // const username= state.user.username
        
-    const [form,setForm]= useState(state.work.data.find(element=>{
+    const [form,setForm]= useState(state.work.data.data.find(element=>{
             // eslint-disable-next-line
             return element.id==workId}));
 

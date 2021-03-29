@@ -19,7 +19,7 @@ const UserStatistic = ({stats,persons}) => {
                                     </Statistic>
                                     <Statistic>
                                         <Statistic.Value>
-                                            <Icon name='user circle outline' >{<CountUp end={persons.length}/>}</Icon>
+                                            <Icon name='user circle outline' >{<CountUp end={persons?.length}/>}</Icon>
                                         </Statistic.Value>
                                         <Statistic.Label>
                                             work assigner totals

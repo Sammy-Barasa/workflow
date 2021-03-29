@@ -12,7 +12,7 @@ const WorkShow = (props) => {
     useEffect(()=>{},[loading,Loading])
     const workId=props.match.params.id
     // eslint-disable-next-line
-    let workItem = state.work.data.find(element=>{return element.id==workId})
+    let workItem = state.work.data.data.find(element=>{return element.id==workId})
     const handleIconClick =()=>{
         history.push(`/works/update/${workId}`)
     }
