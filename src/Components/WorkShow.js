@@ -16,7 +16,20 @@ const WorkShow = (props) => {
     const handleIconClick =()=>{
         history.push(`/works/update/${workId}`)
     }
-    
+
+    const date = new Date(workItem.date)
+    const dateTodisplay = date.toLocaleDateString(undefined,{
+        day:'numeric',
+        month:'short',
+        year:'numeric'
+    })
+
+    const time = new Date(workItem.last_modified)
+    const timeTodisplay = time.toLocaleTimeString(undefined,{
+        hour:'numeric',
+        minute:'2-digit',
+        second:'2-digit',
+    })
     return (
         <div className="show">
             <div className="show-header">
@@ -73,7 +86,9 @@ const WorkShow = (props) => {
                                                         <List.Description as='h4'>{`Type of work: `}</List.Description>
                                                         <List.Description >{` ${workItem.category_of_work.work_type}`}</List.Description>
                                                         <List.Description as='h4'>Expected Amount</List.Description>
-                                                    <List.Description as='p'>{`Ksh. ${workItem.expected_amount}`}</List.Description>
+                                                        <List.Description as='p'>{`Ksh. ${workItem.expected_amount}`}</List.Description>
+                                                        <List.Description as='h4'>Last modified date:</List.Description>
+                                                        <List.Description as='p'>{`${dateTodisplay}`}</List.Description>
                                                     </List.Content> 
                                                 </div>
                                                 <div className="list-body-bottom">
@@ -92,8 +107,8 @@ const WorkShow = (props) => {
                                                     <List.Description >{`${workItem.order_number}`}</List.Description>
                                                     <List.Description as='h4'>Amount received</List.Description>
                                                     <List.Description as='p'>{`Ksh. ${workItem.amount_received}`}</List.Description>
-                                                    <List.Description as='h4'>Last modified</List.Description>
-                                                    <List.Description as='p'>{` ${workItem.last_modified}`}</List.Description>
+                                                    <List.Description as='h4'>at:</List.Description>
+                                                    <List.Description as='p'>{`${timeTodisplay}`}</List.Description>
                                                    </List.Content>
                                                 </div>
                                                 

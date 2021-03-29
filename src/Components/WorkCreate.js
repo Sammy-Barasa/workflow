@@ -29,7 +29,7 @@ const WorkCreate = () => {
     const [Paid,setPaid] = useState(false)
     
 
-    const persons = state.persons.data
+    const persons = state.persons.data.data
     const personOptions = persons.map((item)=>({
     key: item.id,
     text: item.name,

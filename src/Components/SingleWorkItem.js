@@ -5,9 +5,15 @@ import '../App.css'
 
 const SingleWorkItem = ({workItem,index}) => {
     const history=useHistory()
+    const date = new Date(workItem.date)
+    const dateTodisplay = date.toLocaleDateString(undefined,{
+        day:'numeric',
+        month:'short',
+        year:'numeric'
+    })
     return (
         <List.Item key={index}>
-                                    <div className="container" onClick={(e)=>{ e.preventDefault()
+                                <div className="container" onClick={(e)=>{ e.preventDefault()
                                     history.push(`/works/${workItem.id}/show`)}}>
                                         <div className="row-header">
                                             <div className="list-header-left">
@@ -52,9 +58,9 @@ const SingleWorkItem = ({workItem,index}) => {
                                                 <div className="list-body-left">
                                                     <List.Content>
                                                         <List.Description as='h4'>{`Date assigned:   `}</List.Description>
-                                                        <List.Description as='h5'>{workItem.date}</List.Description>
+                                                        <List.Description as='h5'>{dateTodisplay}</List.Description>
                                                         <List.Description as='p'>{`Type of work: ${workItem.category_of_work.work_type}`}</List.Description>
-                                                        <List.Description as='p'>{`Last modified: ${workItem.last_modified}`}</List.Description>
+                                                        {/* <List.Description as='p'>{`Last modified: ${workItem.last_modified}`}</List.Description> */}
                                                     </List.Content> 
                                                 </div>
                                                 <div className="list-center">
