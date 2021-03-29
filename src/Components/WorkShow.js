@@ -18,12 +18,18 @@ const WorkShow = (props) => {
     }
 
     const date = new Date(workItem.date)
-    const dateTodisplay = date.toLocaleDateString(undefined,{
+    const dateTodisplay = date.toLocaleDateString('en-US',{
         day:'numeric',
         month:'short',
         year:'numeric'
     })
 
+    const datemodef = new Date(workItem.last_modified)
+    const datemodefTodisplay = datemodef.toLocaleDateString('en-US',{
+        day:'numeric',
+        month:'short',
+        year:'numeric'
+    })
     const time = new Date(workItem.last_modified)
     const timeTodisplay = time.toLocaleTimeString()
     return (
@@ -78,13 +84,13 @@ const WorkShow = (props) => {
                                                 <div className="list-body-left">
                                                     <List.Content>
                                                         <List.Description as='h4'>{`Date assigned:   `}</List.Description>
-                                                        <List.Description as='h5'>{workItem.date}</List.Description>
+                                                        <List.Description as='h5'>{dateTodisplay}</List.Description>
                                                         <List.Description as='h4'>{`Type of work: `}</List.Description>
                                                         <List.Description >{` ${workItem.category_of_work.work_type}`}</List.Description>
                                                         <List.Description as='h4'>Expected Amount</List.Description>
                                                         <List.Description as='p'>{`Ksh. ${workItem.expected_amount}`}</List.Description>
                                                         <List.Description as='h4'>Last modified date:</List.Description>
-                                                        <List.Description as='p'>{`${dateTodisplay}`}</List.Description>
+                                                        <List.Description as='p'>{`${datemodefTodisplay}`}</List.Description>
                                                     </List.Content> 
                                                 </div>
                                                 <div className="list-body-bottom">
