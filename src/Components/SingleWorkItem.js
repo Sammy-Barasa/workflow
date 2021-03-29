@@ -76,7 +76,7 @@ const SingleWorkItem = ({workItem,index}) => {
                                                     <List.Description as='h4'>Work description: </List.Description>
                                                     <List.Description >{`${workItem.number_of_words} number of words, `}</List.Description>
                                                     <List.Description >{`${workItem.pages} pages`}</List.Description>
-                                                    <List.Description as='h5'>{workItem.paid?`Amount received:    Ksh ${workItem.amount_received}`:`Expected Amount:       Ksh ${workItem.expected_amount}`}</List.Description>
+                                                    <List.Description as='h5'>{workItem.paid?`Amount received:        Ksh ${workItem.amount_received}`:`Expected Amount:          Ksh ${workItem.expected_amount}`}</List.Description>
                                                    </List.Content>
                                                 </div>
                                                 
