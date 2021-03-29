@@ -22,7 +22,7 @@ const axiosFetch = ()=>{
     const axiosInstance = axios.create({
         // "https://work-record-manager.herokuapp.com"
         // http://127.0.0.1:8000
-        baseURL:"http://127.0.0.1:8000",
+        baseURL:"https://work-record-manager.herokuapp.com",
         // credentials: "same-origin",
         headers:headers,
     })
