@@ -131,7 +131,7 @@ const stateReducer = (state,action) =>{
                       'data':action.payload.data,
                       'scope':action.payload.scope,
                       'stats':action.payload.stats,
-                    }
+                    },
                   },
         };
       case actionTypes.WORK_ERROR:
@@ -242,7 +242,7 @@ const stateReducer = (state,action) =>{
                     data:{...state.persons.data,
                       'data':action.payload.data,
                       'scope':action.payload.scope,
-                    }
+                    },
                   },
         };
 
