@@ -4,14 +4,14 @@ import { Icon,Statistic } from 'semantic-ui-react'
 import CountUp from 'react-countup'
 import '../App.css'
 
-const UserStatistic = ({work}) => {
+const UserStatistic = ({stats,persons}) => {
     return (
         <div className="user-statistics">
                             <div>
                                 <Statistic.Group widths='two'>
                                     <Statistic>
                                         <Statistic.Value>
-                                            {<CountUp end={work.data.length}/>}
+                                            {<CountUp end={stats.total}/>}
                                         </Statistic.Value>
                                         <Statistic.Label>
                                             work totals
@@ -19,7 +19,7 @@ const UserStatistic = ({work}) => {
                                     </Statistic>
                                     <Statistic>
                                         <Statistic.Value>
-                                            <Icon name='user circle outline' >{<CountUp end={work.data.length}/>}</Icon>
+                                            <Icon name='user circle outline' >{<CountUp end={persons.length}/>}</Icon>
                                         </Statistic.Value>
                                         <Statistic.Label>
                                             work assigner totals
@@ -34,7 +34,7 @@ const UserStatistic = ({work}) => {
                                 <Statistic.Group widths='two'>
                                     <Statistic color="green">
                                         <Statistic.Value>
-                                            {<CountUp end={work.data.length}/>}
+                                            {<CountUp end={stats.paid_total}/>}
                                         </Statistic.Value>
                                         <Statistic.Label>
                                             work paid totals
@@ -42,7 +42,7 @@ const UserStatistic = ({work}) => {
                                     </Statistic>
                                     <Statistic color="red">
                                         <Statistic.Value>
-                                            {<CountUp end={work.data.length}/>}
+                                            {<CountUp end={stats.not_paid_total}/>}
                                         </Statistic.Value>
                                         <Statistic.Label>
                                             work not paid totals

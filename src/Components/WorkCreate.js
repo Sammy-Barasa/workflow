@@ -1,5 +1,5 @@
 import React, { useState,useContext,useEffect } from 'react'
-import { Button, Form,  Dropdown} from 'semantic-ui-react'
+import { Button, Form,  Dropdown, Icon} from 'semantic-ui-react'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import Checkbox from '@material-ui/core/Checkbox';
@@ -208,7 +208,7 @@ const WorkCreate = () => {
                         />
                         
                     </Form.Field>
-                    <Button  loading={loading} fluid primary type='submit'>Add work order</Button>
+                    <Button  loading={loading} fluid primary type='submit'><Icon name="plus" size="small"/>Add work order</Button>
                 </Form>
                 <div>
                 </div>

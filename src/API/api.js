@@ -170,16 +170,16 @@ export const CreatePerson = (userID,personData) =>(dispatch)=> {
     dispatch({
         type:actionTypes.CREATE_PERSON_LOADING
     })
-    axiosFetch().post(`users/${userID}/persons/`,personData)
+    axiosFetch().post(`users/${userID}/personcreate/`,personData)
     .then((response)=>{
-        // console.log(response.data)
+        console.log(response.data)
         // console.log(response.status)
         dispatch({
         type:actionTypes.CREATE_PERSON_SUCCESS,
         payload:response.data
     })
     }).catch((error)=>{
-        // console.log(error)
+        console.log(error)
         dispatch({
         type:actionTypes.CREATE_PERSON_ERROR,
         payload:error
@@ -193,7 +193,7 @@ export const UpdatePerson = (userID,personID,personData) =>(dispatch)=> {
     dispatch({
         type:actionTypes.UPDATE_PERSON_LOADING
     })
-    axiosFetch().put(`users/${userID}/persons/${personID}/`,personData)
+    axiosFetch().put(`users/${userID}/person/${personID}/`,personData)
     .then((response)=>{
         // console.log(response.data)
         // console.log(response.status)

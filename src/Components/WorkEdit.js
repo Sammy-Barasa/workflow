@@ -144,7 +144,7 @@ const WorkEdit = (props) => {
                             <DeleteModal workItem={form} workId={workId} userId={userId} dispatch={dispatch}/>
                         {/* </Form.Field>  */}
                         {/* <Form.Field> */}
-                            <Button color="green"  loading={loading} onClick={handleEdit}><Icon name='refresh' />Update order</Button>
+                            <Button color="green" loading={loading} onClick={handleEdit}><Icon name='refresh' />Update order</Button>
                         {/* </Form.Field> */}
                     </Form.Group> 
                 </Form>

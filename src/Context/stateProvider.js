@@ -21,7 +21,11 @@ const StateProvider = (props) =>{
           },
     work:{
           loading:false,
-          data:[],
+          data:{
+            'data':[],
+            'scope':null,
+            'stats':null,
+        },
           error:null
         },
     workcreate:{
@@ -36,7 +40,10 @@ const StateProvider = (props) =>{
         },
     persons:{
           loading:false,
-          data:null,
+          data:{
+            'data':null,
+            'scope':null,
+        },
           error:null
         },
     workOptions:{
