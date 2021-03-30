@@ -188,8 +188,8 @@ background-color: #f8f8f8;
 .account-statistic{
   display: flex;
   flex-direction: column;
-  padding: 3px;
-  margin: 5px;
+  padding: 1px;
+  margin-bottom: 10px;
   border: solid;
   border-width: 1px;
   border-color: #dde0e0;
@@ -199,8 +199,8 @@ background-color: #f8f8f8;
 .account-assigners{
   display: flex;
   flex-direction: column;
-  margin: 5px;
-  padding: 3px;
+  margin: 1px;
+  padding: 1px;
   margin-top: 10px;
   border: solid;
   border-width: 1px;
