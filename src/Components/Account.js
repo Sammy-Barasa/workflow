@@ -15,7 +15,7 @@ const Account = () => {
         <div className="account">
             <h3>My Account</h3>
             <div className="account-statistic">
-                <h3>My Summary</h3>
+                <h3>Work Summary</h3>
                     <div className='worklist-container'>
                             {
                                 work?.length?<UserStatistic stats={stats} persons={persons}/>:"loading ..."
@@ -23,7 +23,8 @@ const Account = () => {
                         
                     </div>
             </div>
-            <div className="account assigners">
+            <div className="account-assigners">
+                <h3>My assigners</h3>
                 <AccountPersonList/>
             </div>
         </div>

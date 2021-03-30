@@ -188,6 +188,25 @@ background-color: #f8f8f8;
 .account-statistic{
   display: flex;
   flex-direction: column;
+  padding: 3px;
+  margin: 5px;
+  border: solid;
+  border-width: 1px;
+  border-color: #dde0e0;
+  border-radius: 5px;
+  box-shadow:0 6px 12px 0 rgba(0, 0, 0, 0.2);
+}
+.account-assigners{
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  padding: 3px;
+  margin-top: 10px;
+  border: solid;
+  border-width: 1px;
+  border-color: #dde0e0;
+  border-radius: 5px;
+  box-shadow:0 6px 12px 0 rgba(0, 0, 0, 0.2);
 }
 /* 
 @keyframes App-logo-spin {
