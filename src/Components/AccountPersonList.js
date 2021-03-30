@@ -32,7 +32,9 @@ const AccountPersonList = () => {
             className={classes.root}
         >
             {scope.hasNoList?"":persons.map((person)=>{
-                return <ListItem
+                return (<div>
+                    <Divider variant="inset" component="li" /> 
+                    <ListItem
                             alignItems="flex-start"
                         >
                         <ListItemAvatar>
@@ -63,8 +65,10 @@ const AccountPersonList = () => {
                                 </React.Fragment>
                             }
                         /> 
-                        <Divider variant="inset" component="li" />           
+                                  
                 </ListItem>
+                <Divider variant="inset" component="li" /> 
+                </div>)
             })}
         </List>
     )
