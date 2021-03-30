@@ -10,10 +10,21 @@ const Account = () => {
     const stats=state.work.data.stats
     const persons=state.persons.data.data
     const work= state.work.data.data
+    const user= state.user
+    const username =user.username
+    const initialLetter=username.slice(0,1).toUpperCase()
+    const capitalizedName=username.charAt(0).toUpperCase()+username.slice(1)
     
     return (
         <div className="account">
-            <h3>My Account</h3>
+            <div className="account-header">
+                <div className="account-image"> 
+                    <h1>{initialLetter}</h1>
+                </div>
+                <div className="account-details">
+                    <h2>{capitalizedName}</h2>
+                </div>
+            </div>
             <div className="account-statistic">
                 <h3>Work Summary</h3>
                     <div className='worklist-container'>

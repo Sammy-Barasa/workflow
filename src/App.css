@@ -208,6 +208,40 @@ background-color: #f8f8f8;
   border-radius: 5px;
   box-shadow:0 6px 12px 0 rgba(0, 0, 0, 0.2);
 }
+
+.account-header{
+  display: flex;
+  margin-bottom: 10px;
+  padding: 3px;
+  padding-bottom: 10px;
+  border-bottom: solid #9699a1;
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+.account-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #341d68;
+  border-radius: 100%;
+  height: 70px;
+  width: 70px;
+  
+}
+.account-image h1{
+  color: #dde0e0;
+  
+}
+.account-details{
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  padding: 5px;
+}
+.account-details{
+  font-family: 'Arial Narrow';
+}
 /* 
 @keyframes App-logo-spin {
   from {
