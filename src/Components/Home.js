@@ -17,12 +17,14 @@ import { Icon } from 'semantic-ui-react'
 import Auth from '../Utils/Auth'
 import PageNotFound from './PageNotFound'
 import HeaderListOption from "./HeaderListOptions"
+import {useHistory} from 'react-router-dom'
 
 
 
 function Home() {
     
     const { state } = useContext(StateContext)
+    const history = useHistory()
     const user = state.user
     const mediaQuery = window.matchMedia('(max-width: 500px)')
     // console.log(state)
@@ -44,7 +46,13 @@ function Home() {
                     }}/>:""}
               </div> 
               <div className="app-logout">
-                {mediaQuery?<Icon name="ellipsis vertical" onClick={(e)=>{
+                {user?<Icon name="ellipsis vertical" size='large' onClick={(e)=>{
+                  e.preventDefault()
+                  history.push(`users/${user.username}/account`)
+                }}/>:""}
+              </div>
+              <div className="app-logout">
+                {mediaQuery?<Icon name="ellipsis vertical" size='large' onClick={(e)=>{
                 e.preventDefault()
                 return(<HeaderListOption/>)
                 }}/>:""}
