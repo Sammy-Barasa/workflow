@@ -43,10 +43,10 @@ function Home() {
                       Auth.signOut()
                     }}/>:""}
               </div> 
-              <div>
+              <div className="app-logout">
                 {mediaQuery?<Icon name="ellipsis vertical" onClick={(e)=>{
                 e.preventDefault()
-                return <HeaderListOption/>
+                return(<HeaderListOption/>)
                 }}/>:""}
               </div>
             </div>
