@@ -2,7 +2,6 @@ import React, { useContext,useEffect } from 'react'
 // import { Button } from 'semantic-ui-react'
 import StateContext from '../Context/stateContext'
 import { List } from 'semantic-ui-react'
-import UserStatistic from "./UserStatistic"
 import SingleWorkItem from "./SingleWorkItem"
 import FloatingActionButton from "./FloatingActionButton"
 import '../App.css'
@@ -14,9 +13,7 @@ const UserWorkList = () => {
     // const [query,setQuery]=useState("")
     // console.log(state)
     const work= state.work.data.data
-    const stats=state.work.data.stats
     // const scope= state.work.data.scope
-    const persons=state.persons.data.data
     const loading = state.work.loading
     const Loading = state.workupdate.loading
     useEffect(()=>{},[loading,Loading]) 
@@ -30,14 +27,7 @@ const UserWorkList = () => {
     // }
     return (
                 <div >
-                    <h3>My Summary</h3>
-                    <div className='worklist-container'>
-                        {/* {workerror?<div>{workerror.statusText}</div>:""} */}
-                            {
-                                work?.length?<UserStatistic stats={stats} persons={persons}/>:"loading ..."
-                            }    
-                        
-                    </div>
+                    
                     <h3>My List of Works</h3>
                         {   
                             work?.length?

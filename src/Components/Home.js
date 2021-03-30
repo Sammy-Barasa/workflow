@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import StateContext from "../Context/stateContext"
 import { Route, Switch } from 'react-router-dom';
 import UserWorkList from './UserWorkList'
+import Account from './Account'
 import WorkShow from './WorkShow'
 import WorkCreate from './WorkCreate'
 import WorkEdit from './WorkEdit'
@@ -15,6 +16,8 @@ import { PublicRoute } from "./PublicRoute"
 import { Icon } from 'semantic-ui-react'
 import Auth from '../Utils/Auth'
 import PageNotFound from './PageNotFound'
+import MoreVertRoundedIcon from '@material-ui/icons/MoreVertRounded';
+import HeaderListOption from "./HeaderListOptions"
 
 
 
@@ -22,6 +25,7 @@ function Home() {
     
     const { state } = useContext(StateContext)
     const user = state.user
+    const mediaQuery = window.matchMedia('(max-width: 500px)')
     // console.log(state)
     
     
@@ -40,6 +44,10 @@ function Home() {
                       Auth.signOut()
                     }}/>:""}
               </div> 
+              {mediaQuery?<MoreVertRoundedIcon onClick={(e)=>{
+                e.preventDefault()
+                return <HeaderListOption/>
+                }}/>:""}
             </div>
             <div className="App-body">
               <Switch>
@@ -48,7 +56,9 @@ function Home() {
                 </PublicRoute>
                 
                 <ProtectedRoute exact path="/users/:username" component={UserWorkList}/>
-                  
+
+                <ProtectedRoute exact path="/users/:username/account" component={Account}/>
+
                 <ProtectedRoute exact path="/works/:id/show" component={WorkShow}/>
                  
                 <ProtectedRoute exact path="/works/create" component={WorkCreate}/>
