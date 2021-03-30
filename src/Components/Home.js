@@ -16,7 +16,6 @@ import { PublicRoute } from "./PublicRoute"
 import { Icon } from 'semantic-ui-react'
 import Auth from '../Utils/Auth'
 import PageNotFound from './PageNotFound'
-import MoreVertRoundedIcon from '@material-ui/icons/MoreVertRounded';
 import HeaderListOption from "./HeaderListOptions"
 
 
@@ -44,10 +43,12 @@ function Home() {
                       Auth.signOut()
                     }}/>:""}
               </div> 
-              {mediaQuery?<MoreVertRoundedIcon onClick={(e)=>{
+              <div>
+                {mediaQuery?<Icon name="ellipsis vertical" onClick={(e)=>{
                 e.preventDefault()
                 return <HeaderListOption/>
                 }}/>:""}
+              </div>
             </div>
             <div className="App-body">
               <Switch>
