@@ -48,7 +48,7 @@ function Home() {
               <div className="app-logout">
                 {user?<Icon name="ellipsis vertical" size='large' onClick={(e)=>{
                   e.preventDefault()
-                  history.push(`users/${user.username}/account`)
+                  history.push(`/users/${user.username}/account`)
                 }}/>:""}
               </div>
               <div className="app-logout">
