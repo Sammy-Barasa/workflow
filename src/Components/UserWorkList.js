@@ -1,21 +1,25 @@
 import React, { useContext,useEffect } from 'react'
 // import { Button } from 'semantic-ui-react'
 import StateContext from '../Context/stateContext'
-import { List } from 'semantic-ui-react'
+import { List,Icon } from 'semantic-ui-react'
 import SingleWorkItem from "./SingleWorkItem"
 import FloatingActionButton from "./FloatingActionButton"
+import ListSkeleton from "../Utils/ListSkeleton"
+import EmptyList from "../Utils/EmptyList"
+import {useHistory} from 'react-router-dom'
 import '../App.css'
+
 
 
 const UserWorkList = () => {
     const { state } = useContext(StateContext)
-    // const [workdata,setWorkdata]=useState([])
-    // const [query,setQuery]=useState("")
     // console.log(state)
+    const username = state.user.username
     const work= state.work.data.data
-    // const scope= state.work.data.scope
+    const scope= state.work.data.scope
     const loading = state.work.loading
     const Loading = state.workupdate.loading
+    const history = useHistory()
     useEffect(()=>{},[loading,Loading]) 
     // const workderror=work?.error
     // const searchChange=async (query)=>{
@@ -29,6 +33,10 @@ const UserWorkList = () => {
                 <div >
                     
                     <h3>My List of Works</h3>
+                    <Icon name="search" onClick={(e)=>{
+                        e.preventDefault()
+                        history.push(`/users/${username}/search`)
+                    }}/>
                         {   
                             work?.length?
                                 <div className='worklist-container'>
@@ -41,7 +49,7 @@ const UserWorkList = () => {
                                             )
                                         }
                                     </List> 
-                                </div>:"loading...."
+                                </div>:scope?.hasNoList?<EmptyList list='work'/>:<ListSkeleton/>
                         } 
                             <FloatingActionButton/>
                 </div>

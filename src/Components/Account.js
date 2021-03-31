@@ -2,6 +2,7 @@ import React,{useContext} from 'react'
 import UserStatistic from "./UserStatistic"
 import StateContext from '../Context/stateContext'
 import AccountPersonList from './AccountPersonList'
+import AccountSupport from './AccountSupport'
 import '../App.css'
 
 const Account = () => {
@@ -37,6 +38,10 @@ const Account = () => {
             <div className="account-assigners">
                 <h3>My assigners</h3>
                 <AccountPersonList/>
+            </div>
+            <div className="account-support">
+                <h3>Account support</h3>
+                <AccountSupport/>
             </div>
         </div>
     )

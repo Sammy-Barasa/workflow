@@ -196,7 +196,7 @@ background-color: #f8f8f8;
   border-radius: 5px;
   box-shadow:0 6px 12px 0 rgba(0, 0, 0, 0.2);
 }
-.account-assigners{
+.account-assigners, .account-support{
   display: flex;
   flex-direction: column;
   margin: 1px;
@@ -211,12 +211,13 @@ background-color: #f8f8f8;
 
 .account-header{
   display: flex;
+  margin:2px;
   margin-bottom: 10px;
   padding: 3px;
   padding-bottom: 10px;
-  border-bottom: solid #9699a1;
-  border-width: 1px;
-  border-radius: 5px;
+  border-bottom: solid #464747;
+  border-width: 2px;
+  border-radius: 1px;
 }
 
 .account-image{
@@ -241,6 +242,22 @@ background-color: #f8f8f8;
 }
 .account-details{
   font-family: 'Arial Narrow';
+}
+.skeleton,.search-page{
+  display:flex;
+  flex-direction: column;
+}
+
+.empty-list{
+  display:flex;
+  flex-direction: column;
+  padding: 1px;
+  margin: 5px;
+  border: solid;
+  border-width: 1px;
+  border-color: #dfe5f5;
+  border-radius: 5px;
+  background-color: #f8f8f8;
 }
 /* 
 @keyframes App-logo-spin {

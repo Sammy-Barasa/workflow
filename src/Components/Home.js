@@ -8,6 +8,7 @@ import WorkCreate from './WorkCreate'
 import WorkEdit from './WorkEdit'
 import PersonCreate from './PersonCreate'
 import Navigation from './Navigation'
+import Search from './Search'
 import '../App.css'
 import Login from './Login'
 import Register from './Register'
@@ -67,6 +68,8 @@ function Home() {
                 <ProtectedRoute exact path="/users/:username" component={UserWorkList}/>
 
                 <ProtectedRoute exact path="/users/:username/account" component={Account}/>
+
+                <ProtectedRoute exact path="/users/:username/search" component={Search}/>
 
                 <ProtectedRoute exact path="/works/:id/show" component={WorkShow}/>
                  

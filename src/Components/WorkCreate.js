@@ -34,7 +34,7 @@ const WorkCreate = () => {
     key: item.id,
     text: item.name,
     value: item.id,
-    image: { avatar: true, src: '../public/contactplaceholder.jpg' },
+    image: { avatar: true, src: '.../public/contactplaceholder.jpg' },
   }))
     const workcat = state.workOptions.data
     const workOptions = workcat.map((opt)=>({
