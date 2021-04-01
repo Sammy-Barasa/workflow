@@ -49,8 +49,8 @@
   border-bottom:solid #dbe4fa ;
   border-top:solid #dbe4fa;
   border-width: 1px;
-  border-radius: 5px;
- 
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .user-statistics{
 padding: 7px;
@@ -259,6 +259,46 @@ background-color: #f8f8f8;
   border-radius: 5px;
   background-color: #f8f8f8;
 }
+
+.sort{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 5px;
+  padding: 5px;
+
+}
+
+#search{
+  display: block;
+  background-color: #fffefe;
+  border-radius: 10px;
+  border:solid  #f1efef;
+  
+}
+#search:focus{
+  box-shadow:0 6px 12px 0 rgba(0, 0, 0, 0.2);
+  transform: scale(1.025);
+}
+.sort-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-worklist-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
+}
+/* #cancel-sort{
+  display: block;
+  background-color: #a7a1a1;
+  border-radius: 2px;
+  border:solid   #a7a1a1; 
+} */
 /* 
 @keyframes App-logo-spin {
   from {

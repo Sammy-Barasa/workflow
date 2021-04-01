@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom"
 // import FormSuccess  from "./FormSuccess"
 import  FormError  from "./FormError"
 import Auth from '../Utils/Auth'
-import { Redirect,Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import '../App.css'
 
 const Login = () => {
@@ -54,8 +54,7 @@ const Login = () => {
         UsersWork(state.user.id)(dispatch)
         GetUsersPersons(state.user.id)(dispatch)
         GetWorkOptions()(dispatch)
-        
-        return <Redirect to={`/users/${userName}`}/>
+        history.push(`/users/${userName}`)
     }
 
     return (

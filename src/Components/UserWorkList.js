@@ -31,12 +31,14 @@ const UserWorkList = () => {
     // }
     return (
                 <div >
-                    
-                    <h3>My List of Works</h3>
-                    <Icon name="search" onClick={(e)=>{
+                    <div className='user-worklist-header'>
+                        <h3>My List of Works</h3>
+                    <Icon name="search" size="large" onClick={(e)=>{
                         e.preventDefault()
                         history.push(`/users/${username}/search`)
                     }}/>
+                    </div>
+                    
                         {   
                             work?.length?
                                 <div className='worklist-container'>
