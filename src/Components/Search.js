@@ -69,7 +69,8 @@ const Search = () => {
                 { persons.map((person)=>{
                     return (
                     <IconButton className='sort-button' name={person.name} color="default" aria-label="back button" component="span" onClick={sortByPerson}>
-                        <ClearIcon/>
+                        
+                        <AccountCircleIcon/>
                         {person.name }
                     </IconButton>
                     )
@@ -82,7 +83,7 @@ const Search = () => {
                     setListToDisplay(work)
                     setSortOnProgress(false)
                 }}>
-                        <AccountCircleIcon/>
+                        <ClearIcon/>
                 </IconButton>
                 :""}
             </div>}
