@@ -7,6 +7,7 @@ import {useHistory} from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import ClearIcon from '@material-ui/icons/Clear';
 import '../App.css'
 
 const Search = () => {
@@ -68,18 +69,22 @@ const Search = () => {
                 { persons.map((person)=>{
                     return (
                     <IconButton className='sort-button' name={person.name} color="default" aria-label="back button" component="span" onClick={sortByPerson}>
-                        <AccountCircleIcon/>
+                        <ClearIcon/>
                         {person.name }
                     </IconButton>
                     )
                     
                 })}
 
-                {sortOnProgress?<Icon id="cancel-sort"name="cancel" size="big" color='red' onClick={(e)=>{
+                {sortOnProgress?
+                <IconButton className='sort-button'   color="secondary" aria-label="back button" component="span" onClick={(e)=>{
                     e.preventDefault()
                     setListToDisplay(work)
                     setSortOnProgress(false)
-                }}></Icon>:""}
+                }}>
+                        <AccountCircleIcon/>
+                </IconButton>
+                :""}
             </div>}
             <div>
                 <h4>{result} results</h4>  
