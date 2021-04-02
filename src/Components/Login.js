@@ -2,14 +2,14 @@ import React, { useState,useContext,useEffect } from 'react'
 import { Button, Form , Header} from 'semantic-ui-react'
 import { LoginUser,UsersWork,GetUsersPersons,GetWorkOptions } from '../API/api'
 import StateContext from '../Context/stateContext';
-import { useHistory } from "react-router-dom"
+import { useHistory,Redirect } from "react-router-dom"
 // import FormSuccess  from "./FormSuccess"
 import  FormError  from "./FormError"
 import Auth from '../Utils/Auth'
 import { Link } from 'react-router-dom'
 import '../App.css'
 
-const Login = () => {
+const Login = (props) => {
     const [form,setForm]= useState({});
     const [redirectTrue,setRedirectTrue]= useState(false)
     const [userName,setUserName]=useState(null)
@@ -18,6 +18,7 @@ const Login = () => {
     const loading = state.auth.login.loading
     const data = state.auth.login.data
     const errorMessage = state.auth.login.error
+    const fromRoute = props.location?.state.from
     
     
     useEffect(() => {
@@ -56,7 +57,9 @@ const Login = () => {
         GetWorkOptions()(dispatch)
         history.push(`/users/${userName}`)
     }
-
+    if(fromRoute){
+        return <Redirect to={fromRoute.pathname}/>
+    }
     return (
         <div className='login-form'>
             <Header as="h2">Login to your account</Header>

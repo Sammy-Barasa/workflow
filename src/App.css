@@ -293,54 +293,7 @@ background-color: #f8f8f8;
   margin: 5px;
   padding: 5px;
 }
-.search-page{
-  display: flex;
-  flex-direction: column;
- 
-}
-.search-container{
-  display:flex;
-  flex-direction: row;
-  margin-bottom: 5px;
-  padding: 2px;
-}
-.search-input{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.search-input-back-button{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 5px;
-}
-
-.results{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 5px;
-  padding: 2px;
-}
-
-.result{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px;
-  margin-left: 20px;
-  padding-top: 2px;
-  padding: 5px;
-}
-.sort-options{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2px;
-  padding: 2px;
-}
 /* #cancel-sort{
   display: block;
   background-color: #a7a1a1;

@@ -12,7 +12,7 @@ import  FormError  from "./FormError"
 // import { actionTypes } from '../Context/stateReducer'
 
 
-const WorkCreate = () => {
+const WorkCreate = (props) => {
 
     // toast.configure()
     const {dispatch,state}= useContext(StateContext)

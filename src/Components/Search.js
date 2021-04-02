@@ -10,7 +10,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import ClearIcon from '@material-ui/icons/Clear';
 import '../App.css'
 
-const Search = () => {
+const Search = (props) => {
 
     const history = useHistory()
     const { state } = useContext(StateContext)
@@ -38,9 +38,9 @@ const Search = () => {
 
     const sortByPerson = async (event)=>{
                 event.preventDefault()
-                const name=event.target.name
+                const value=event.target.value
                 let filtered = work.filter((item)=>{
-                    return item.assigned_by.name===name
+                    return item.assigned_by.name===value
                 })
                 setListToDisplay(filtered)
                 setResult(filtered.length)
@@ -48,19 +48,20 @@ const Search = () => {
             }
 
     return (
-        <div className="search-page">
+        <div className ="search-page">
             <div className="search-container">
                 <div className="search-input-back-button">
                     
-                <IconButton color="default" aria-label="back button" component="span" onClick={(e)=>{
+                
+                </div>
+                <div className="search-input">
+                    <IconButton color="default" aria-label="back button" component="span" onClick={(e)=>{
                     e.preventDefault()
                     history.goBack()}}>
                     <ArrowBackIosIcon />
                 </IconButton>
-                </div>
-                <div className="search-input">
                     <Input type="search" id="search" name="search" placeholder="Search here ... by topic or order number ..." 
-                    value={query} onChange={onchange} autoFocus fullWidth={true} style={{width:500}}/>
+                    value={query} onChange={onchange} autoFocus fullWidth={true} />
                 </div>
             </div>
             <div className="results">
@@ -73,7 +74,7 @@ const Search = () => {
                     
                         { persons.map((person)=>{
                             return (
-                            <IconButton className='sort-button' name={person.name} color="default" aria-label="back button" component="span" onClick={sortByPerson}>
+                            <IconButton className='sort-button' value={person.name} color="default" aria-label="back button" component="span" onClick={sortByPerson}>
                                 
                                 <AccountCircleIcon/>
                                 {person.name }
@@ -98,18 +99,17 @@ const Search = () => {
             <div className="results">
                 <h4>{result} results</h4>  
             </div>
-            <div className="result">
-                <div className='worklist-container'>    
-                    <List divided relaxed> 
-                        {                                                                                                                                                                               
-                            listToDisplay.map((workItem,index)=>{
-                                return <SingleWorkItem workItem={workItem} index={index}/>
-                            }
-                            )
+            <div className='worklist-container'>    
+                <List divided relaxed> 
+                    {                                                                                                                                                                               
+                        listToDisplay.map((workItem,index)=>{
+                            return <SingleWorkItem workItem={workItem} index={index}/>
                         }
-                    </List> 
-                </div>
+                        )
+                    }
+                </List> 
             </div>
+            
         </div>
     )
 }

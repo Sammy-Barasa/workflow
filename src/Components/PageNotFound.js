@@ -1,7 +1,7 @@
 import React from 'react'
 import Navigation from "./Navigation"
 
-const PageNotFound = () => {
+const PageNotFound = (props) => {
     return (
         <div>
             <h1>Page Not found !!!</h1>

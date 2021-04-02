@@ -5,7 +5,7 @@ import {CreatePerson,GetUsersPersons} from '../API/api'
 import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
 
-const PersonCreate = () => {
+const PersonCreate = (props) => {
 
     const {dispatch,state}= useContext(StateContext)
     const history = useHistory()

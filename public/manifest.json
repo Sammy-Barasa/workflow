@@ -4,33 +4,40 @@
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "48x48",
+      "sizes": "64x64",
       "type": "image/x-icon"
     },
     {
-      "src": "logo1_192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "maskable_icon_x192.png",
+      "src": "maskable_icon.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose":"any maskable"
     },
     {
-      "src": "logo1_512.png",
+      "src": "maskable_icon (1).png",
       "type": "image/png",
       "sizes": "512x512"
-    },
-    {
-      "src": "logo1.png",
-      "type": "image/png",
-      "sizes": "225x225"
     }
   ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#789ff8",
-  "background_color": "#789ff8"
+  "background_color": "#789ff8",
+  "shortcuts": [
+    {
+      "name": "Add new work order",
+      "short_name": "New order ",
+      "description": "Create a new work order",
+      "url": "/works/create",
+      "icons": [{ "src": "/add-file.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Add new employer",
+      "short_name": "New assigner",
+      "description": "Add a new person who assigns you work",
+      "url": "/employer/create",
+      "icons": [{ "src": "/add-frind.png", "sizes": "192x192" }]
+    }
+  ],
+  "description":"Keeping your work records"
 }

@@ -7,7 +7,7 @@ import  FormError  from "./FormError"
 import { useHistory } from 'react-router-dom'
 import '../App.css'
 
-const Register = () => {
+const Register = (props) => {
     const [form,setForm]= useState({});
     const history = useHistory()
     const [redirectTrue,setRedirectTrue]= useState(false)

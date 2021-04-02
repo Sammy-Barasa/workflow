@@ -5,7 +5,7 @@ import AccountPersonList from './AccountPersonList'
 import AccountSupport from './AccountSupport'
 import '../App.css'
 
-const Account = () => {
+const Account = (props) => {
 
     const { state } = useContext(StateContext)
     const stats=state.work.data.stats

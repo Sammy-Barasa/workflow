@@ -13,7 +13,7 @@ import '../App.css'
 
 
 
-const UserWorkList = () => {
+const UserWorkList = (props) => {
     const { state } = useContext(StateContext)
     // console.log(state)
     const username = state.user.username

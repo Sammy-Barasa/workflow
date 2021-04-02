@@ -1,12 +1,11 @@
-const CACHE_NAME= "v46"
+const CACHE_NAME= "v48"
 const urlsToCache=[
     '/',
     'index.html',
-    'logo1_192.png',
-    'logo1_512.png',
-    'logo1.png',
-    'logo2.png',
-    'contactplaceholder.jpg'
+    'maskable_icon_x192.png.png',
+    'maskable_icon (1).png',
+    'contactplaceholder.jpg',
+    'favicon.ico'
 ]
 
 const self=this
