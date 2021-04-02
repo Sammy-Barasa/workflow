@@ -59,7 +59,7 @@ const Search = () => {
                 </div>
                 <div className="search-input">
                     <Input type="search" id="search" name="search" placeholder="Search here ... by topic or order number ..." 
-                    value={query} onChange={onchange} autoFocus fullWidth={true}/>
+                    value={query} onChange={onchange} autoFocus fullWidth={true} style={{width:100}}/>
                 </div>
             </div>
             <div className="results">
@@ -95,7 +95,8 @@ const Search = () => {
             <div className="results">
                 <h4>{result} results</h4>  
             </div>
-            <div className='worklist-container'>    
+            <div className="result">
+                <div className='worklist-container'>    
                 <List divided relaxed> 
                     {                                                                                                                                                                               
                         listToDisplay.map((workItem,index)=>{
@@ -104,6 +105,7 @@ const Search = () => {
                         )
                     }
                 </List> 
+            </div>
             </div>
         </div>
     )

@@ -302,6 +302,8 @@ background-color: #f8f8f8;
 .search-container{
   display:flex;
   flex-direction: row;
+  margin: 5px;
+  padding: 2px;
 }
 .search-input{
   display: flex;
