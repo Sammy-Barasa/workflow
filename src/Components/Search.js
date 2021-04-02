@@ -50,12 +50,9 @@ const Search = (props) => {
     return (
         <div className ="search-page">
             <div className="search-container">
-                <div className="search-input-back-button">
-                    
                 
-                </div>
                 <div className="search-input">
-                    <IconButton color="default" aria-label="back button" component="span" onClick={(e)=>{
+                <IconButton color="default" aria-label="back button" component="span" onClick={(e)=>{
                     e.preventDefault()
                     history.goBack()}}>
                     <ArrowBackIosIcon />
@@ -65,7 +62,7 @@ const Search = (props) => {
                 </div>
             </div>
             <div className="results">
-                <Icon name="filter" size="large">Sort:</Icon>
+                <Icon name="filter" size="large">Sort_by:</Icon>
             </div>
             <div className="sort-options">
                 {

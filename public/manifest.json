@@ -26,14 +26,14 @@
   "shortcuts": [
     {
       "name": "Add new work order",
-      "short_name": "New order ",
+      "short_name": "New Order",
       "description": "Create a new work order",
       "url": "/works/create",
       "icons": [{ "src": "/add-file.png", "sizes": "192x192" }]
     },
     {
       "name": "Add new employer",
-      "short_name": "New assigner",
+      "short_name": "New Person assigner",
       "description": "Add a new person who assigns you work",
       "url": "/employer/create",
       "icons": [{ "src": "/add-frind.png", "sizes": "192x192" }]

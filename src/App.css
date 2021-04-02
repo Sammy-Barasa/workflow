@@ -273,6 +273,8 @@ background-color: #f8f8f8;
   /* display: block; */
   /* background-color: #fffefe; */
   border-radius: 3px;
+  padding:5px;
+  margin:20px;
   /* border:solid  #f1efef; */
   
 }
@@ -294,6 +296,20 @@ background-color: #f8f8f8;
   padding: 5px;
 }
 
+.results{
+  display:flex;
+  justify-content: flex-start;
+  padding:10px;
+  margin:10px;
+}
+
+.search-page{
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  padding:20px;
+  margin:10px;
+}
 /* #cancel-sort{
   display: block;
   background-color: #a7a1a1;
