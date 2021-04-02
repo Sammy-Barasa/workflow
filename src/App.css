@@ -293,16 +293,15 @@ background-color: #f8f8f8;
   margin: 5px;
   padding: 5px;
 }
-/* .search-page{
+.search-page{
   display: flex;
   flex-direction: column;
-  margin: 10px;
-  padding: 2px;
-} */
+ 
+}
 .search-container{
   display:flex;
   flex-direction: row;
-  margin: 5px;
+  margin-bottom: 5px;
   padding: 2px;
 }
 .search-input{
@@ -330,8 +329,17 @@ background-color: #f8f8f8;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding-top: 2px;
   padding: 5px;
+}
+.sort-options{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  padding: 2px;
 }
 /* #cancel-sort{
   display: block;

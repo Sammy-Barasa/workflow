@@ -48,7 +48,7 @@ const Search = () => {
             }
 
     return (
-        <div>
+        <div className="search-page">
             <div className="search-container">
                 <div className="search-input-back-button">
                     
@@ -60,13 +60,13 @@ const Search = () => {
                 </div>
                 <div className="search-input">
                     <Input type="search" id="search" name="search" placeholder="Search here ... by topic or order number ..." 
-                    value={query} onChange={onchange} autoFocus fullWidth={true} style={{width:"100%"}}/>
+                    value={query} onChange={onchange} autoFocus fullWidth={true} style={{width:500}}/>
                 </div>
             </div>
             <div className="results">
                 <Icon name="filter" size="large">Sort:</Icon>
             </div>
-            <div className="result">
+            <div className="sort-options">
                 {
                     scope.hasNolist?<h4>Add persons first</h4>:
                     <div className="sort">
