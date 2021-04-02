@@ -91,7 +91,6 @@ background-color: #f8f8f8;
   flex-direction: row;
   justify-content: flex-end;
   flex-wrap: nowrap;
-
 }
 /* .statistic-group{
   display: flex;
@@ -286,6 +285,7 @@ background-color: #f8f8f8;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap:wrap;
 }
 
 .user-worklist-header{
@@ -294,6 +294,7 @@ background-color: #f8f8f8;
   align-items: center;
   margin: 5px;
   padding: 5px;
+  position: sticky;
 }
 
 .results{

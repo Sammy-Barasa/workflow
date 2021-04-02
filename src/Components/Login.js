@@ -25,9 +25,9 @@ const Login = (props) => {
         // console.log(state)
         if (data?.status === 200) {
             window.localStorage.setItem("token", data.data.tokens.access);
+            const username= data.data.username
             Auth.authenticate()
             // console.log(state)
-            const username= data.data.username
             setUserName(username)
             setRedirectTrue(true)
             setForm({})
