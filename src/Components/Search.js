@@ -47,7 +47,7 @@ const Search = () => {
             }
 
     return (
-        <div className="search-page">
+        <div className="App-body">
             <div className="search-container">
                 <div className="search-input-back-button">
                     
@@ -59,7 +59,7 @@ const Search = () => {
                 </div>
                 <div className="search-input">
                     <Input type="search" id="search" name="search" placeholder="Search here ... by topic or order number ..." 
-                    value={query} onChange={onchange} autoFocus fullWidth={true} style={{width:100}}/>
+                    value={query} onChange={onchange} autoFocus fullWidth={true} style={{width:"100%"}}/>
                 </div>
             </div>
             <div className="results">
