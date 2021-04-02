@@ -22,6 +22,7 @@ const Search = () => {
     const persons = state.persons.data.data
     const scope = state.persons.data.scope
 
+
     const onchange=async (e)=>{
         e.preventDefault()
         setQuery(e.target.value)
@@ -47,7 +48,7 @@ const Search = () => {
             }
 
     return (
-        <div className="App-body">
+        <div>
             <div className="search-container">
                 <div className="search-input-back-button">
                     
@@ -66,30 +67,32 @@ const Search = () => {
                 <Icon name="filter" size="large">Sort:</Icon>
             </div>
             <div className="result">
-                {scope.hasNolist?<h4>Add persons first</h4>:
-                <div className="sort">
-                
-                { persons.map((person)=>{
-                    return (
-                    <IconButton className='sort-button' name={person.name} color="default" aria-label="back button" component="span" onClick={sortByPerson}>
-                        
-                        <AccountCircleIcon/>
-                        {person.name }
-                    </IconButton>
-                    )
+                {
+                    scope.hasNolist?<h4>Add persons first</h4>:
+                    <div className="sort">
                     
-                })}
+                        { persons.map((person)=>{
+                            return (
+                            <IconButton className='sort-button' name={person.name} color="default" aria-label="back button" component="span" onClick={sortByPerson}>
+                                
+                                <AccountCircleIcon/>
+                                {person.name }
+                            </IconButton>
+                            )
+                            
+                        })}
 
-                {sortOnProgress?
-                <IconButton className='sort-button'   color="secondary" aria-label="back button" component="span" onClick={(e)=>{
-                    e.preventDefault()
-                    setListToDisplay(work)
-                    setSortOnProgress(false)
-                }}>
-                        <ClearIcon/>
-                </IconButton>
-                :""}
-            </div>}
+                        {sortOnProgress?
+                        <IconButton className='sort-button'   color="secondary" aria-label="back button" component="span" onClick={(e)=>{
+                            e.preventDefault()
+                            setListToDisplay(work)
+                            setSortOnProgress(false)
+                        }}>
+                                <ClearIcon/>
+                        </IconButton>
+                        :""}
+                    </div>
+                }
             </div>  
             
             <div className="results">
@@ -97,15 +100,15 @@ const Search = () => {
             </div>
             <div className="result">
                 <div className='worklist-container'>    
-                <List divided relaxed> 
-                    {                                                                                                                                                                               
-                        listToDisplay.map((workItem,index)=>{
-                            return <SingleWorkItem workItem={workItem} index={index}/>
+                    <List divided relaxed> 
+                        {                                                                                                                                                                               
+                            listToDisplay.map((workItem,index)=>{
+                                return <SingleWorkItem workItem={workItem} index={index}/>
+                            }
+                            )
                         }
-                        )
-                    }
-                </List> 
-            </div>
+                    </List> 
+                </div>
             </div>
         </div>
     )
