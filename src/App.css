@@ -296,8 +296,8 @@ background-color: #f8f8f8;
 .search-page{
   display: flex;
   flex-direction: column;
-  margin: 5px;
-  padding: 5px;
+  margin: 10px;
+  padding: 2px;
 }
 .search-container{
   display:flex;
