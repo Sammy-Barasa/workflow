@@ -62,10 +62,13 @@ const Search = () => {
                     value={query} onChange={onchange} autoFocus fullWidth={true}/>
                 </div>
             </div>
-            
-                
-            {scope.hasNolist?<h4>Add persons first</h4>:<div className="sort">
+            <div>
                 <Icon name="filter" size="large">Sort:</Icon>
+            </div>
+            <div>
+                {scope.hasNolist?<h4>Add persons first</h4>:
+                <div className="sort">
+                
                 { persons.map((person)=>{
                     return (
                     <IconButton className='sort-button' name={person.name} color="default" aria-label="back button" component="span" onClick={sortByPerson}>
@@ -87,6 +90,8 @@ const Search = () => {
                 </IconButton>
                 :""}
             </div>}
+            </div>  
+            
             <div>
                 <h4>{result} results</h4>  
             </div>
