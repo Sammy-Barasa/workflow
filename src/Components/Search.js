@@ -62,10 +62,10 @@ const Search = () => {
                     value={query} onChange={onchange} autoFocus fullWidth={true}/>
                 </div>
             </div>
-            <div>
+            <div className="results">
                 <Icon name="filter" size="large">Sort:</Icon>
             </div>
-            <div>
+            <div className="result">
                 {scope.hasNolist?<h4>Add persons first</h4>:
                 <div className="sort">
                 
@@ -92,7 +92,7 @@ const Search = () => {
             </div>}
             </div>  
             
-            <div>
+            <div className="results">
                 <h4>{result} results</h4>  
             </div>
             <div className='worklist-container'>    
