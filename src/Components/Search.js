@@ -2,10 +2,9 @@ import React,{useState,useContext} from 'react'
 import { List,Icon } from 'semantic-ui-react'
 import StateContext from '../Context/stateContext'
 import SingleWorkItem from "./SingleWorkItem"
-import Input from '@material-ui/core/Input'
 import {useHistory} from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton'
-import Button from '@material-ui/core/Button'
+// import Button from '@material-ui/core/Button'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import ClearIcon from '@material-ui/icons/Clear';
@@ -37,12 +36,11 @@ const Search = (props) => {
                         
                     }
 
-                    const sortByPerson =async (e)=>{
+                    const sortByPerson =(e)=>{
                                 e.preventDefault()
-                                let value=e.target.id
-                                console.log(value)
+                                let value=e.target.name||e.target.id
                                 let filtered = work.filter((item)=>{
-                                    return item.assigned_by.name===value
+                                    return (item.assigned_by.name.toLowerCase()===value.toLowerCase())
                                 })
                                 setListToDisplay(filtered)
                                 setResult(filtered.length)
@@ -50,7 +48,7 @@ const Search = (props) => {
                             }
 
                     return (
-                        <div className="search-container">
+                    <div className="search-container">
                         <div className ="search-page">
                             <div className="search-container">
                                 
@@ -60,8 +58,8 @@ const Search = (props) => {
                                     history.goBack()}}>
                                     <ArrowBackIosIcon />
                                 </IconButton>
-                                    <Input type="search" id="search" name="search" placeholder="Search here ... by topic or order number ..." 
-                                    value={query} onChange={onchange} autoFocus fullWidth={true} />
+                                    <input type="search" id="search" name="search" placeholder="Search here ... by topic or order number ..." 
+                                    value={query} onChange={onchange} autoFocus fullWidth={true}></input>
                                 </div>
                             </div>
                             <div className="result">
@@ -83,11 +81,11 @@ const Search = (props) => {
                                     <div className="sort">
                                         { persons.map((person)=>{
                                             return (
-                                            <Button variant="outlined" id={person.name} color="default"  onClick={sortByPerson}>
+                                            <button className="sort-button" id={person.name} name={person.name}   onClick={sortByPerson}>
                                                 
                                                 <AccountCircleIcon/>
                                                 {person.name}
-                                            </Button>
+                                            </button>
                                             )
                                             
                                         })}
@@ -109,7 +107,7 @@ const Search = (props) => {
                                 </List> 
                             </div>       
                         </div>
-                        </div>
+                    </div>
                     )
                 }
 
