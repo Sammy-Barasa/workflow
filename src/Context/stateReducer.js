@@ -256,6 +256,49 @@ const stateReducer = (state,action) =>{
                   },
         };
 
+      case actionTypes.UPDATE_PERSON_LOADING:
+        return {
+            ...state,
+            workupdate: {
+                    ...state.personupdate,
+                    loading:true,
+                    data:null,
+                    error:null,
+                  },
+        };
+
+      case actionTypes.UPDATE_PERSON_SUCCESS:
+        return {
+            ...state,
+            workupdate: {
+                    ...state.personupdate,
+                    loading:false,
+                    data:action.payload,
+                    error:null,
+                  },
+        };
+
+      case actionTypes.UPDATE_PERSON_ERROR:
+        return {
+            ...state,
+            workupdate: {
+                    ...state.personupdate,
+                    loading:false,
+                    data:null,
+                    error:action.payload,
+                  },
+        };
+
+      case actionTypes.UPDATE_PERSON__COMPLETE:
+        return {
+            ...state,
+            workupdate: {
+                    ...state.personupdate,
+                    loading:false,
+                    data:null,
+                    error:null,
+                  },
+        };
       case actionTypes.GET_OPTIONS_SUCCESS:
         return {
             ...state,

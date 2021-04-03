@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
 import {  toast } from 'react-toastify';
 import DeleteModal from './DeleteModal'
+import { actionTypes } from '../Context/stateReducer'
 import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure()
@@ -21,6 +22,7 @@ const WorkEdit = (props) => {
     const Loading = state.work.loading
     const loading =state.workupdate.loading
     const error = state.workupdate.error
+    const data = state.workupdate.data
     const workId=props.match.params.id
     const userId = state.user.id
     // const username= state.user.username
@@ -35,15 +37,22 @@ const WorkEdit = (props) => {
     const [Paid,setPaid] = useState(form.paid)
     
 
-    useEffect(()=>{},[Loading])
+    useEffect(()=>{
+        if(data?.status===200){
+            UsersWork(userId)(dispatch)
+            dispatch({
+                type:actionTypes.UPDATE_WORK_COMPLETE,
+            })
+            history.goBack()
+        }
+
+    },[Loading, data?.status, dispatch, history, userId])
     
     async function handleEdit(e) {
         e.preventDefault()
         // console.log(form)
         UpdateWork(workId,form)(dispatch);
-        UsersWork(userId)(dispatch)
-        // console.log(state)
-        history.goBack()
+        
     }
 
     

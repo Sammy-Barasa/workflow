@@ -7,6 +7,7 @@ import {CreateWork,UsersWork} from '../API/api'
 import StateContext from '../Context/stateContext';
 import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
+import { actionTypes } from '../Context/stateReducer'
 // import {  toast } from 'react-toastify';
 //   import 'react-toastify/dist/ReactToastify.css';
 // import { actionTypes } from '../Context/stateReducer'
@@ -18,12 +19,22 @@ const WorkCreate = (props) => {
     const {dispatch,state}= useContext(StateContext)
     const history = useHistory()
     const loading = state.workcreate.loading
-    // const data = state.workcreate.data
+    const data = state.workcreate.data
     const errorMessage = state.workcreate.error
     const userId = state.user.id;
     const [form,setForm]= useState({topic:"",assigned_by:null,category_of_work:null,order_number:"",pages:0,number_of_words:0,expected_amount:0,cancelled:false,completed:false,amount_received:0,paid:false,});
 
-    useEffect(()=>{},[loading])
+
+    useEffect(()=>{
+        if(data?.status===200){
+            UsersWork(userId)(dispatch)
+            dispatch({
+                type:actionTypes.CREATE_WORK_COMPLETE,
+            })
+            history.goBack()
+        }
+
+    },[loading, data?.status, dispatch, history, userId])
     const [Cancelled,setCancelled] = useState(false)
     const [Completed,setCompleted] = useState(false)
     const [Paid,setPaid] = useState(false)
@@ -45,11 +56,7 @@ const WorkCreate = (props) => {
        async function handleCreate(e) {
         e.preventDefault();
         // console.log(form);
-        CreateWork(userId, form)(dispatch);
-        UsersWork(userId)(dispatch)
-        // console.log(state)
-        history.goBack()
-        
+        CreateWork(userId, form)(dispatch);    
     }
 
     

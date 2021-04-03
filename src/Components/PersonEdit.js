@@ -1,9 +1,10 @@
-import React, {useContext,useState}from 'react'
+import React, {useContext,useState,useEffect}from 'react'
 import StateContext from '../Context/stateContext';
 import { Button, Form, Icon } from 'semantic-ui-react'
 import {UpdatePerson,GetUsersPersons} from '../API/api'
 import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
+import { actionTypes } from '../Context/stateReducer'
 
 const PersonEdit = (props) => {
 
@@ -21,12 +22,18 @@ const PersonEdit = (props) => {
         e.preventDefault();
         // console.log(form);
         UpdatePerson(userId,personId,form)(dispatch);
-        GetUsersPersons(userId)(dispatch)
+        
         // console.log(state)
         history.goBack()
         
     }
-
+    useEffect(()=>{
+        GetUsersPersons(userId)(dispatch)
+            dispatch({
+                type:actionTypes.UPDATE_WORK_COMPLETE,
+            })
+            history.goBack()
+    },[dispatch, history, loading, userId])
     function onchange(e) {
         setForm((form) => {
             return {

@@ -108,7 +108,7 @@ export const UpdateWork = (workID,workData) =>(dispatch)=> {
     })
     axiosFetch().put(`works/${workID}/`,workData)
     .then((response)=>{
-        // console.log(response.data)
+        console.log(response)
         // console.log(response.status)
         dispatch({
         type:actionTypes.UPDATE_WORK_SUCCESS,
