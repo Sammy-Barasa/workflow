@@ -40,8 +40,8 @@ const DeleteModal = ({workItem, workId,userId,dispatch}) => {
                 <Icon name="file alternate" size="massive" color="white"/>
                 <Modal.Description>
                     <Header>{workItem.topic}</Header>
-                    <p>{`Type of work: ${workItem.type_of_work}`}</p>
-                    <p>{`Assigned by:  ${workItem.person}`}</p>
+                    <p>{`Type of work: ${workItem.work_type}`}</p>
+                    <p>{`Assigned by:  ${workItem.assigned_by.name}`}</p>
                     <p>{`Date assigned: ${workItem.date}`}</p>
                     <p>{`Expected amount: ${workItem.expected_amount}`}</p>
                     <p>{`Amount received: ${workItem.amount_received}`}</p>
