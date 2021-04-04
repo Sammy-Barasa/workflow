@@ -38,18 +38,31 @@ const UserWorkList = (props) => {
                     </div>
                     
                         {   
-                            work?.length?
-                                <div className='worklist-container'>
+                            // work?.length?
+                            //     <div className='worklist-container'>
                                 
-                                    <List divided relaxed> 
-                                        {                                                                                                                                                                               
-                                            work.map((workItem,index)=>{
-                                                return <SingleWorkItem workItem={workItem} index={index}/>
-                                            }
-                                            )
+                            //         <List divided relaxed> 
+                            //             {                                                                                                                                                                               
+                            //                 work.map((workItem,index)=>{
+                            //                     return <SingleWorkItem workItem={workItem} index={index}/>
+                            //                 }
+                            //                 )
+                            //             }
+                            //         </List> 
+                            //     </div>:scope?.hasNoList?<EmptyList list='work'/>:<ListSkeleton/>
+
+                            loading?<ListSkeleton/>:scope?.hasNoList?<EmptyList list='work'/>:
+                            
+                            <div className='worklist-container'>
+                                <List divided relaxed> 
+                                    {                                                                                                                                                                               
+                                        work.map((workItem,index)=>{
+                                            return <SingleWorkItem workItem={workItem} index={index}/>
                                         }
-                                    </List> 
-                                </div>:scope?.hasNoList?<EmptyList list='work'/>:<ListSkeleton/>
+                                        )
+                                    }
+                                </List> 
+                            </div>
                         } 
                             <FloatingActionButton/>
                 </div>

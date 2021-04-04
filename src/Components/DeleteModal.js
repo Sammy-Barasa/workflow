@@ -6,14 +6,20 @@ import { useHistory } from "react-router-dom"
 const DeleteModal = ({workItem, workId,userId,dispatch}) => {
     const [open, setOpen] = useState(false)
     const history = useHistory()
-    
+    // useEffect(()=>{
+    //     if(data?.status===200){
+    //         UsersWork(userId)(dispatch)
+            
+    //         history.go(-2)
+    //     }
+
+    // },[dispatch, history, userId])
 
    async function handleDelete(e){
         e.preventDefault()
         DeleteWork(workId)(dispatch)
-        UsersWork(userId)(dispatch)
         // setModalOpen(false)
-       
+        UsersWork(userId)(dispatch)
         history.go(-2)
     }
 

@@ -1,15 +1,18 @@
 import React,{useContext,useEffect} from 'react'
+import SinglelistSkeleton from '../Utils/SinglelistSkeleton'
+// import ListSkeleton from "../Utils/ListSkeleton"
 import { List,Icon } from 'semantic-ui-react'
 import StateContext from '../Context/stateContext'
 import { useHistory } from "react-router-dom"
+
 
 const WorkShow = (props) => {
 
     const { state } = useContext(StateContext)
     const history = useHistory()
     const loading = state.work.loading
-    const Loading= state.workupdate.loading
-    useEffect(()=>{},[loading,Loading])
+    // const Loading= state.workupdate.loading
+    useEffect(()=>{},[loading])
     const workId=props.match.params.id
     // eslint-disable-next-line
     let workItem = state.work.data.data.find(element=>{return element.id==workId})
@@ -33,13 +36,16 @@ const WorkShow = (props) => {
     const time = new Date(workItem.last_modified)
     const timeTodisplay = time.toLocaleTimeString()
     return (
-        <div className="show">
+        <div>
+        
+            <div className="show">
             <div className="show-header">
                 <h2>Work detail</h2><Icon name='ellipsis vertical' size="large" onClick={handleIconClick} />
             </div>
             
             <div className="worklist-container">
-                
+                {
+                    loading?<SinglelistSkeleton/>:
                     <div className="container">
                                         <div className="row-header">
                                             <div className="list-header-left">
@@ -116,13 +122,13 @@ const WorkShow = (props) => {
                                                 
                                         </div>
                                     </div>
-                                
+                                }
                             
                         </div>
                         
             </div>
-        
-
+    
+</div>
     )
 }
 

@@ -26,7 +26,7 @@ const WorkCreate = (props) => {
 
 
     useEffect(()=>{
-        if(data?.status===200){
+        if(data?.status===201){
             UsersWork(userId)(dispatch)
             dispatch({
                 type:actionTypes.CREATE_WORK_COMPLETE,

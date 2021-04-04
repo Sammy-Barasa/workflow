@@ -39,6 +39,9 @@ const FloatingActionButton = () => {
                 alwaysShowTitle={true}
                 
             >
+
+
+
                 <Action
                     text="New work order"
                     onClick={handleNewWorkRecordClick}
@@ -50,6 +53,7 @@ const FloatingActionButton = () => {
                     onClick={handleNewEmployerClick}
                 >
                     <Icon name="add user" size="large" color="white"/>
+                    {/* <img src="../public/add-file.png" alt=""></img> */}
                 </Action>
             </Fab>
     )
