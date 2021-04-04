@@ -59,6 +59,10 @@ padding: 7px;
 background-color: #f8f8f8;
 }
 
+.list-container:hover{
+   background-color: #dad7dd;
+  color: #ffffff;
+}
 .container {
   display:flex;
   flex-direction: column;
@@ -70,9 +74,7 @@ background-color: #f8f8f8;
   border-radius: 5px;
   background-color: #f8f8f8;
 }
-.container:hover{
-  background-color: #6d6385;
-}
+
 .row-header {
   display:flex;
   justify-content: space-around;

@@ -12,7 +12,7 @@ const SingleWorkItem = ({workItem,index}) => {
         year:'numeric'
     })
     return (
-        <List.Item key={index}>
+        <List.Item key={index} className='list-container'>
                                 <div className="container" onClick={(e)=>{ e.preventDefault()
                                     history.push(`/works/${workItem.id}/show`)}}>
                                         <div className="row-header">
