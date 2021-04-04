@@ -224,6 +224,28 @@ const stateReducer = (state,action) =>{
                   },
         };
 
+      case actionTypes.DELETE_WORK_SUCCESS:
+        return {
+            ...state,
+            workdelete: {
+                    ...state.workdelete,
+                    loading:false,
+                    data:action.payload,
+                    error:null
+                  },
+        };
+
+      case actionTypes.DELETE_WORK_COMPLETE:
+        return {
+            ...state,
+            workdelete: {
+                    ...state.workdelete,
+                    loading:false,
+                    data:null,
+                    error:null
+                  },
+        };
+
       case actionTypes.GET_PERSONS_LOADING:
         return {
             ...state,

@@ -1,26 +1,31 @@
-import React,{useState} from 'react'
+import React,{useState,useContext,useEffect} from 'react'
 import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 import {UsersWork, DeleteWork} from '../API/api'
 import { useHistory } from "react-router-dom"
+import StateContext from '../Context/stateContext'
+import { actionTypes } from '../Context/stateReducer'
 
 const DeleteModal = ({workItem, workId,userId,dispatch}) => {
+
+    const {state}= useContext(StateContext)
+    const data = state.workdelete.data
     const [open, setOpen] = useState(false)
     const history = useHistory()
-    // useEffect(()=>{
-    //     if(data?.status===200){
-    //         UsersWork(userId)(dispatch)
-            
-    //         history.go(-2)
-    //     }
+    useEffect(()=>{
+        if(data?.status===200){
+            UsersWork(userId)(dispatch)
+            dispatch({
+                type:actionTypes.DELETE_WORK_COMPLETE,
+            })
+            history.go(-2)
+        }
 
-    // },[dispatch, history, userId])
+    },[data?.status, dispatch, history, userId])
 
    async function handleDelete(e){
         e.preventDefault()
         DeleteWork(workId)(dispatch)
         // setModalOpen(false)
-        UsersWork(userId)(dispatch)
-        history.go(-2)
     }
 
     return (

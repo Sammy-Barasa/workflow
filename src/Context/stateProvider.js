@@ -38,6 +38,11 @@ const StateProvider = (props) =>{
           data:null,
           error:null
         },
+    workdelete:{
+          loading:false,
+          data:null,
+          error:null
+        },
     persons:{
           loading:false,
           data:{
