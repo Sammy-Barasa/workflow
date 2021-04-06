@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography'
 import EmailIcon from '@material-ui/icons/Email'
 import Divider from '@material-ui/core/Divider'
 import { makeStyles } from '@material-ui/core/styles'
+import EmptyList from "../Utils/EmptyList"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +32,7 @@ const AccountPersonList = () => {
         <List
             className={classes.root}
         >
-            {scope.hasNoList?"":persons.map((person)=>{
+            {scope.hasNoList?<EmptyList list='assigners'path='/employer/create'width='50px' height='200px'/>:persons.map((person)=>{
                 return (<div>
                     <Divider variant="inset" component="li" /> 
                     <ListItem

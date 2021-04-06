@@ -11,7 +11,7 @@ const UserStatistic = ({stats,persons}) => {
                                 <Statistic.Group widths='two'>
                                     <Statistic>
                                         <Statistic.Value>
-                                            {<CountUp end={stats.total}/>}
+                                            {<CountUp end={stats.total||0}/>}
                                         </Statistic.Value>
                                         <Statistic.Label>
                                             work totals
@@ -19,7 +19,7 @@ const UserStatistic = ({stats,persons}) => {
                                     </Statistic>
                                     <Statistic>
                                         <Statistic.Value>
-                                            <Icon name='user circle outline' >{<CountUp end={persons?.length}/>}</Icon>
+                                            <Icon name='user circle outline' >{<CountUp end={persons?.length||0}/>}</Icon>
                                         </Statistic.Value>
                                         <Statistic.Label>
                                             work assigner totals
@@ -34,7 +34,7 @@ const UserStatistic = ({stats,persons}) => {
                                 <Statistic.Group widths='two'>
                                     <Statistic color="green">
                                         <Statistic.Value>
-                                            {<CountUp end={stats.paid_total}/>}
+                                            {<CountUp end={stats.paid_total||0}/>}
                                         </Statistic.Value>
                                         <Statistic.Label>
                                             work paid totals
@@ -42,7 +42,7 @@ const UserStatistic = ({stats,persons}) => {
                                     </Statistic>
                                     <Statistic color="red">
                                         <Statistic.Value>
-                                            {<CountUp end={stats.not_paid_total}/>}
+                                            {<CountUp end={stats.not_paid_total||0}/>}
                                         </Statistic.Value>
                                         <Statistic.Label>
                                             work not paid totals

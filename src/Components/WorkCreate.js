@@ -7,6 +7,7 @@ import {CreateWork,UsersWork} from '../API/api'
 import StateContext from '../Context/stateContext';
 import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
+//import EmptyList from "../Utils/EmptyList"
 import { actionTypes } from '../Context/stateReducer'
 // import {  toast } from 'react-toastify';
 //   import 'react-toastify/dist/ReactToastify.css';
@@ -22,6 +23,7 @@ const WorkCreate = (props) => {
     const data = state.workcreate.data
     const errorMessage = state.workcreate.error
     const userId = state.user.id;
+    // const scope= state.persons.data.scope
     const [form,setForm]= useState({topic:"",assigned_by:null,category_of_work:null,order_number:"",pages:0,number_of_words:0,expected_amount:0,cancelled:false,completed:false,amount_received:0,paid:false,});
 
 

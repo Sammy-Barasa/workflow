@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import ClearIcon from '@material-ui/icons/Clear';
+import EmptyList from "../Utils/EmptyList"
 import '../App.css'
 
 const Search = (props) => {
@@ -15,6 +16,7 @@ const Search = (props) => {
                     const history = useHistory()
                     const { state } = useContext(StateContext)
                     const work= state.work.data.data
+                    const workScope = state.work.data.scope
                     const [listToDisplay,setListToDisplay]=useState(work)
                     const [query,setQuery]=useState("")
                     const [result,setResult]=useState(0)
@@ -99,7 +101,7 @@ const Search = (props) => {
                             <div className='worklist-container'>    
                                 <List divided relaxed> 
                                     {                                                                                                                                                                               
-                                        listToDisplay.map((workItem,index)=>{
+                                        workScope?.hasNolist?<EmptyList list='work'path='/works/create' width='100px' height='600px'/>:listToDisplay.map((workItem,index)=>{
                                             return <SingleWorkItem workItem={workItem} index={index}/>
                                         }
                                         )

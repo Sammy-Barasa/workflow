@@ -10,7 +10,7 @@ const Account = (props) => {
     const { state } = useContext(StateContext)
     const stats=state.work.data.stats
     const persons=state.persons.data.data
-    const work= state.work.data.data
+    // const work= state.work.data.data
     const user= state.user
     const username =user.username
     const initialLetter=username.slice(0,1).toUpperCase()
@@ -30,7 +30,7 @@ const Account = (props) => {
                 <h3>Work Summary</h3>
                     <div className='worklist-container'>
                             {
-                                work?.length?<UserStatistic stats={stats} persons={persons}/>:"loading ..."
+                                <UserStatistic stats={stats} persons={persons}/>
                             }    
                         
                     </div>

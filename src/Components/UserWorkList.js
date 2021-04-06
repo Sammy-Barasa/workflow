@@ -43,7 +43,7 @@ const UserWorkList = (props) => {
                     
                         {   
 
-                            loading?<ListSkeleton/>:scope?.hasNoList?<EmptyList list='work'/>:
+                            loading?<ListSkeleton/>:scope?.hasNoList?<EmptyList list='work'path='/works/create' width='100px' height='600px'/>:
                             
                             <div className='worklist-container'>
                                 <List divided relaxed> 
@@ -56,7 +56,7 @@ const UserWorkList = (props) => {
                                 </List> 
                             </div>
                         } 
-                            <FloatingActionButton/>
+                        <FloatingActionButton/>
                 </div>
             )
         }

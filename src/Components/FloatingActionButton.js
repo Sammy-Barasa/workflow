@@ -2,11 +2,15 @@ import React from 'react'
 import { Fab, Action } from 'react-tiny-fab';
 import { useHistory } from "react-router-dom"
 import { Icon } from 'semantic-ui-react'
+// import StateContext from '../Context/stateContext'
 import 'react-tiny-fab/dist/styles.css';
 
 const FloatingActionButton = () => {
 
+
+    //   const { state } = useContext(StateContext)
       const history=useHistory()
+    //   const scope= state.work.data.scope
 
       function handleNewWorkRecordClick(e) {
         e.preventDefault(
