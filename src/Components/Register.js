@@ -4,12 +4,12 @@ import { RegisterUser } from '../API/api'
 import StateContext from '../Context/stateContext';
 // import FormSuccess  from "./FormSuccess"
 import  FormError  from "./FormError"
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
 import '../App.css'
 
 const Register = (props) => {
     const [form,setForm]= useState({});
-    const history = useHistory()
+    // const history = useHistory()
     const [redirectTrue,setRedirectTrue]= useState(false)
     const {dispatch,state}= useContext(StateContext)
     const loading = state.auth.register.loading
@@ -18,37 +18,15 @@ const Register = (props) => {
     
     
     useEffect(() => {
-        // console.log(state)
+        
         if (data?.status === 201) {
-            // console.log(state)
             setRedirectTrue(true)
-            setForm({})
-        }else{
-        // console.log(state)
-        setForm({})
         }
         
-    }, [data,state])
+    }, [data?.status])
 
     function handleRegister(e) {
         e.preventDefault()
-        if('serviceWorker' in navigator){
-            navigator.serviceWorker.ready.then(function(reg) {
-            reg.pushManager.subscribe({
-                userVisibleOnly: true
-            }).then(function(sub) {
-                console.log('SubObj: ', sub);
-                console.log('Endpoint URL: ', sub.endpoint);
-            }).catch(function(e) {
-                if (Notification.permission === 'denied') {
-                console.warn('Permission for notifications was denied');
-                } else {
-                console.error('Unable to subscribe to push', e);
-                }
-            });
-            })
-        }
-
         delete form.confirmpassword
         RegisterUser(form)(dispatch);
         setForm({});
@@ -62,7 +40,7 @@ const Register = (props) => {
     form?.password!==form?.confirmpassword||!form?.email?.length || !form.password || !form.password.length;
     if(redirectTrue){
 
-        return history.push("/login")
+        alert("Check your email for verification")
     }
 
     return (
