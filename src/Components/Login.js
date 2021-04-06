@@ -12,7 +12,7 @@ import '../App.css'
 const Login = (props) => {
     const [form,setForm]= useState({});
     const [redirectTrue,setRedirectTrue]= useState(false)
-    const [userName,setUserName]=useState(null)
+    // const [userName,setUserName]=useState(null)
     const {dispatch,state}= useContext(StateContext)
     const history = useHistory()
     const loading = state.auth.login.loading
@@ -22,28 +22,17 @@ const Login = (props) => {
     
     
     useEffect(() => {
-        // console.log(state)
         if (data?.status === 200) {
-            window.localStorage.setItem("token", data.data.tokens.access);
-            const username= data.data.username
-            Auth.authenticate()
-            // console.log(state)
-            setUserName(username)
             setRedirectTrue(true)
-            setForm({})
-            
-        }else{
-        // console.log(state)
-        setForm({})
         }
         
-    }, [data, history, state])
+    }, [data?.status])
 
     function handleLogin(e) {
         e.preventDefault()
         LoginUser(form)(dispatch);
         setForm({});
-        // console.log(state)
+        
     }
 
     const onchange = (e) => {
@@ -51,11 +40,15 @@ const Login = (props) => {
     }; 
     const loginFormInvalid =
     !form?.email?.length || !form.password || !form.password.length;
+
+    
     if(redirectTrue){
+        window.localStorage.setItem("token", data?.data.tokens.access);
+        Auth.authenticate()
         UsersWork(state.user.id)(dispatch)
         GetUsersPersons(state.user.id)(dispatch)
         GetWorkOptions()(dispatch)
-        history.push(`/users/${userName}`)
+        history.push(`/users/${state.user.username}`)
     }
     if(fromRoute){
         return <Redirect to={fromRoute.pathname}/>

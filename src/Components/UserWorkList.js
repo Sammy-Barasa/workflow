@@ -16,13 +16,17 @@ import '../App.css'
 const UserWorkList = (props) => {
     const { state } = useContext(StateContext)
     // console.log(state)
+    const loading = state.work.loading
+
+
+    useEffect(()=>{
+    },[loading]) 
     const username = state.user.username
     const work= state.work.data.data
     const scope= state.work.data.scope
-    const loading = state.work.loading
-    const Loading = state.workupdate.loading
+    
     const history = useHistory()
-    useEffect(()=>{},[loading,Loading]) 
+    
     
     return (
                 <div >
@@ -38,18 +42,6 @@ const UserWorkList = (props) => {
                     </div>
                     
                         {   
-                            // work?.length?
-                            //     <div className='worklist-container'>
-                                
-                            //         <List divided relaxed> 
-                            //             {                                                                                                                                                                               
-                            //                 work.map((workItem,index)=>{
-                            //                     return <SingleWorkItem workItem={workItem} index={index}/>
-                            //                 }
-                            //                 )
-                            //             }
-                            //         </List> 
-                            //     </div>:scope?.hasNoList?<EmptyList list='work'/>:<ListSkeleton/>
 
                             loading?<ListSkeleton/>:scope?.hasNoList?<EmptyList list='work'/>:
                             

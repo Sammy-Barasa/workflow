@@ -257,6 +257,7 @@ background-color: #f8f8f8;
 .empty-list{
   display:flex;
   flex-direction: column;
+  justify-content: center;
   padding: 1px;
   margin: 5px;
   border: solid;

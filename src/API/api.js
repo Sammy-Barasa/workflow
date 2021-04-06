@@ -230,7 +230,7 @@ export const GetWorkOptions = ()=>{
         dispatch({
             type: actionTypes.GET_OPTIONS_LOADING
         })
-        axiosFetch().get("works/options")
+        axiosFetch().get("works/options/")
             .then((response) => {
                 // console.log(response.data)
                 // console.log(response.status)
