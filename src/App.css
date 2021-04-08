@@ -42,7 +42,11 @@
   width: 100%;
   
 }
-
+.header-right{
+  display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+}
 .worklist-container{
   /* border: solid;
   border-width: 1px;

@@ -3,23 +3,19 @@ import SinglelistSkeleton from '../Utils/SinglelistSkeleton'
 // import ListSkeleton from "../Utils/ListSkeleton"
 import { List,Icon } from 'semantic-ui-react'
 import StateContext from '../Context/stateContext'
-import { useHistory } from "react-router-dom"
+import MenuWorkEdit from './MenuWorkEdit'
 
 
 const WorkShow = (props) => {
 
     const { state } = useContext(StateContext)
-    const history = useHistory()
     const loading = state.work.loading
     // const Loading= state.workupdate.loading
     useEffect(()=>{},[loading])
     const workId=props.match.params.id
     // eslint-disable-next-line
     let workItem = state.work.data.data.find(element=>{return element.id==workId})
-    const handleIconClick =()=>{
-        history.push(`/works/update/${workId}`)
-    }
-
+    
     const date = new Date(workItem.date)
     const dateTodisplay = date.toLocaleDateString('en-US',{
         day:'numeric',
@@ -40,7 +36,7 @@ const WorkShow = (props) => {
         
             <div className="show">
             <div className="show-header">
-                <h2>Work detail</h2><Icon name='ellipsis vertical' size="large" onClick={handleIconClick} />
+                <h2>Work detail</h2><MenuWorkEdit workId={workId}/>
             </div>
             
             <div className="worklist-container">
