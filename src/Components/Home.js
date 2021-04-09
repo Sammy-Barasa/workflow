@@ -43,7 +43,7 @@ function Home() {
                 </h2>
               </div>
               <div className="app-logout">
-                {user===null?"":mediaQuery?<MenuAppOptions/>:<HeaderRight user={user}/>}
+                {user===null?"":mediaQuery.matches?<div><MenuAppOptions/></div>:<HeaderRight user={user}/>}
               </div>
             </div>
             <div className="App-body">

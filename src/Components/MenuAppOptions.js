@@ -7,9 +7,11 @@ import Typography from '@material-ui/core/Typography'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import RefreshIcon from '@material-ui/icons/Refresh';
 import Auth from '../Utils/Auth'
 import StateContext from '../Context/stateContext'
 import { useHistory } from "react-router-dom"
+import "../App.css"
 
 const MenuAppOptions = () => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -26,7 +28,7 @@ const MenuAppOptions = () => {
         setAnchorEl(null);
     };
     return (
-        <div>
+        <div className="menu-option">
             <IconButton
                 aria-label="more"
                 aria-controls="long-menu"
@@ -39,16 +41,38 @@ const MenuAppOptions = () => {
             <Menu
                 id="long-menu"
                 anchorEl={anchorEl}
+                anchorOrigin={{
+                    vertical:'bottom',
+                    horizontal:'center',
+                  }}
+                transformOrigin={{
+                    vertical:'top',
+                    horizontal:'right',
+
+                }}
                 keepMounted
                 open={open}
                 onClose={handleClose}
+                
                 PaperProps={{
                 style: {
-                    maxHeight: 150,
+                    height:'fit-content',
                     width: '21ch',
+                    // left:'100%',
+                    // transform:'translateX(-77%) translateY(32%)',
+                    
                 },
                 }}
             >
+                <MenuItem onClick={(e)=>{
+                      e.preventDefault()
+                      setAnchorEl(null)
+                    }}>
+                    <ListItemIcon>
+                        <RefreshIcon fontSize="large"/>
+                    </ListItemIcon>
+                    <Typography variant="inherit">Refresh</Typography>
+                </MenuItem>
                 <MenuItem onClick={(e)=>{
                       e.preventDefault()
                       setAnchorEl(null)
@@ -69,6 +93,7 @@ const MenuAppOptions = () => {
                     </ListItemIcon>
                     <Typography variant="inherit">Logout</Typography>
                 </MenuItem>
+
             </Menu>
         </div>
     )

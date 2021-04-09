@@ -33,7 +33,7 @@
     },
     {
       "name": "Add new employer",
-      "short_name": "New Person assigner",
+      "short_name": "New Assigner",
       "description": "Add a new person who assigns you work",
       "url": "/employer/create",
       "icons": [{ "src": "/add-frind.png", "sizes": "192x192" }]

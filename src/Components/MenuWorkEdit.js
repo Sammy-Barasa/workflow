@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import { Icon } from 'semantic-ui-react'
 import { useHistory } from "react-router-dom"
+import "../App.css"
 
 const MenuWorkEdit = ({workId}) => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -21,7 +22,7 @@ const MenuWorkEdit = ({workId}) => {
         setAnchorEl(null);
     };
     return (
-        <div>
+        <div className="menu-option">
             <IconButton
                 aria-label="more"
                 aria-controls="long-menu"
@@ -33,6 +34,15 @@ const MenuWorkEdit = ({workId}) => {
             <Menu
                 id="long-menu"
                 anchorEl={anchorEl}
+                anchorOrigin={{
+                    vertical:'bottom',
+                    horizontal:'center',
+                  }}
+                transformOrigin={{
+                    vertical:'top',
+                    horizontal:'right',
+
+                }} 
                 keepMounted
                 open={open}
                 onClose={handleClose}
