@@ -4,11 +4,17 @@ import './index.css';
 import 'semantic-ui-css/semantic.min.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from 'react-router-dom';
+import StateProvider from "./Context/stateProvider"
 // import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <StateProvider>
+       <Router>
+         <App />
+       </Router>
+    </StateProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -8,7 +8,9 @@ import ListSkeleton from "../Utils/ListSkeleton"
 import EmptyList from "../Utils/EmptyList"
 import {useHistory} from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton'
-import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from '@material-ui/icons/Search'
+import MenuAppOptions from './MenuAppOptions'
+import HeaderRight from './HeaderRight'
 import '../App.css'
 
 
@@ -24,12 +26,23 @@ const UserWorkList = (props) => {
     const username = state.user.username
     const work= state.work.data.data
     const scope= state.work.data.scope
-    
+    const user = state.user
+    const mediaQuery = window.matchMedia('(max-width: 500px)')
     const history = useHistory()
     
     
     return (
-                <div >
+                <div className='App-body'>
+                    <div className="App-header">
+                        <div className='app-title'>
+                            <h2>
+                            WorkRecordsManager
+                            </h2>
+                        </div>
+                        <div className="app-logout">
+                            {user===null?"":mediaQuery.matches?<div><MenuAppOptions/></div>:<HeaderRight user={user}/>}
+                        </div>
+                    </div>
                     <div className='user-worklist-header'>
                         <h3>My List of Works</h3>
                     

@@ -3,7 +3,7 @@ import { Link }from 'react-router-dom'
 
 const Navigation = (props) => {
     return (
-        <div>
+        <div className='App-body'>
             <ul>
                 <li>
                     <Link to='/register'>Register</Link>

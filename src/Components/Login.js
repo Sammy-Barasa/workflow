@@ -54,25 +54,27 @@ const Login = (props) => {
         return <Redirect to={fromRoute.pathname}/>
     }
     return (
-        <div className='login-form'>
-            <Header as="h2">Login to your account</Header>
-                <Form success warning onSubmit={handleLogin}> 
-                
-                    {errorMessage?FormError(errorMessage):""}
-                    <Form.Field>
-                        <label>Email</label>
-                        <input type="Email" fluid name='email' placeholder='Enter your email' value={form.email||""} onChange={onchange}/>
-                    </Form.Field>
-                    <Form.Field>
-                        <label>Password</label>
-                        <input type='Password' name='password' placeholder='Enter your password' value={form.password||""} onChange={onchange}/>
-                    </Form.Field>
-                    <Button disabled={loginFormInvalid} fluid loading={loading} primary type='submit'>Login</Button>
-                </Form>
-                <div>
-                    <p>Dont have an account? <Link to="/register">Register here</Link></p>
-                </div>
-                
+        <div className='App-body'>
+            <div className='login-form'>
+                    <Header as="h2">Login to your account</Header>
+                    <Form success warning onSubmit={handleLogin}> 
+                    
+                        {errorMessage?FormError(errorMessage):""}
+                        <Form.Field>
+                            <label>Email</label>
+                            <input type="Email" fluid name='email' placeholder='Enter your email' value={form.email||""} onChange={onchange}/>
+                        </Form.Field>
+                        <Form.Field>
+                            <label>Password</label>
+                            <input type='Password' name='password' placeholder='Enter your password' value={form.password||""} onChange={onchange}/>
+                        </Form.Field>
+                        <Button disabled={loginFormInvalid} fluid loading={loading} primary type='submit'>Login</Button>
+                    </Form>
+                    <div>
+                        <p>Dont have an account? <Link to="/register">Register here</Link></p>
+                    </div>
+                    
+            </div>
         </div>
                  
     )

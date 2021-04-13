@@ -30,7 +30,7 @@ const HeaderRight = ({user}) => {
                     }}>
                       <PowerSettingsNewIcon fontSize="large"/>
                       Log Out
-                      </Button>
+                </Button>
               
               
         </div>

@@ -62,6 +62,7 @@ const WorkEdit = (props) => {
         
     };  
     return (
+        <div className='App-body'>
         <div className="work-edit">
             <h2>Work Edit</h2>
             <Form success warning> 
@@ -157,7 +158,7 @@ const WorkEdit = (props) => {
                         {/* </Form.Field> */}
                     </Form.Group> 
                 </Form>
-            
+            </div>
         </div>
     )
 }

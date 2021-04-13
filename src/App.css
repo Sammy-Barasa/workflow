@@ -40,7 +40,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: auto;
   
 }
 .header-right{
@@ -82,7 +82,17 @@ background-color: #f8f8f8;
   border-radius: 5px;
   background-color: #f8f8f8;
 }
-
+.work-show-container{
+  display:flex;
+  flex-direction: column;
+  padding: 1px;
+  margin: 5px;
+  border: solid;
+  border-width: 1px;
+  border-color: #dfe5f5;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+}
 .row-header {
   display:flex;
   justify-content: space-around;
@@ -192,12 +202,13 @@ background-color: #f8f8f8;
   margin-bottom: 20px;
 }
 .work-create{
-  width: 50vh;
+  width: auto;
 }
 
 .account{
   display: flex;
   flex-direction: column;
+  width: auto;
 }
 .account-statistic{
   display: flex;

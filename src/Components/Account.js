@@ -17,6 +17,7 @@ const Account = (props) => {
     const capitalizedName=username.charAt(0).toUpperCase()+username.slice(1)
     
     return (
+        <div className='App-body'>
         <div className="account">
             <div className="account-header">
                 <div className="account-image"> 
@@ -43,6 +44,7 @@ const Account = (props) => {
                 <h3>Account support</h3>
                 <AccountSupport/>
             </div>
+        </div>
         </div>
     )
 }

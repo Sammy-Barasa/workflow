@@ -79,6 +79,7 @@ const WorkCreate = (props) => {
     // !form?.email?.length || !form.password || !form.password.length;
    
     return (
+        <div className='App-body'>
         <div className="work-create">
             <h2>Create Work Record</h2>
             <Form success warning onSubmit={handleCreate}> 
@@ -221,6 +222,7 @@ const WorkCreate = (props) => {
                 </Form>
                 <div>
                 </div>
+        </div>
         </div>
     )
 }

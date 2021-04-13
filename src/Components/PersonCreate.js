@@ -34,26 +34,28 @@ const PersonCreate = (props) => {
     }
 
     return (
-        <div className="person-create">
-            <h2>Add person to your records</h2>
-            <Form success warning onSubmit={handleCreate}> 
-                
-                    {errorMessage?FormError(errorMessage):""}
-                    <Form.Field>
-                        <label>Name</label>
-                        <input type="text" name='name' placeholder='Name of the person' value={form.name} onChange={onchange}/>
-                    </Form.Field>
-                    <Form.Field>
-                        <label>Email</label>
-                        <input type='email' name='email' placeholder='Email of the person' value={form.email} onChange={onchange}/>
-                    </Form.Field>
-                    <Form.Field>
-                        <label>Phone number</label>
-                        <input type='number' name='phone' placeholder='Phone number of the person' value={form.phone} onChange={onchange}/>
-                    </Form.Field>
-                    <Button  loading={loading} fluid primary type='submit'><Icon name="plus" size="small"/>Add person</Button>
-            </Form>
+        <div className='App-body'>
+            <div className="person-create">
+                <h2>Add person to your records</h2>
+                <Form success warning onSubmit={handleCreate}> 
+                    
+                        {errorMessage?FormError(errorMessage):""}
+                        <Form.Field>
+                            <label>Name</label>
+                            <input type="text" name='name' placeholder='Name of the person' value={form.name} onChange={onchange}/>
+                        </Form.Field>
+                        <Form.Field>
+                            <label>Email</label>
+                            <input type='email' name='email' placeholder='Email of the person' value={form.email} onChange={onchange}/>
+                        </Form.Field>
+                        <Form.Field>
+                            <label>Phone number</label>
+                            <input type='number' name='phone' placeholder='Phone number of the person' value={form.phone} onChange={onchange}/>
+                        </Form.Field>
+                        <Button  loading={loading} fluid primary type='submit'><Icon name="plus" size="small"/>Add person</Button>
+                </Form>
         </div>
+    </div>
     )
 }
 

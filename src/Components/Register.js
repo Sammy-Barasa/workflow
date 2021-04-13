@@ -44,6 +44,7 @@ const Register = (props) => {
     }
 
     return (
+        <div className='App-body'>
         <div className='register-form'>
             <Header as="h2">Create an account</Header>
                 <Form success warning onSubmit={handleRegister}> 
@@ -68,7 +69,7 @@ const Register = (props) => {
                     <Button disabled={registerFormInvalid} loading={loading} fluid primary type='submit'>Register</Button>
                 </Form>
         </div>
-                 
+       </div>          
     )
 }
 

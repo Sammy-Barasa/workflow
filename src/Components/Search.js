@@ -50,6 +50,7 @@ const Search = (props) => {
                             }
 
                     return (
+                    <div className='App-body'>
                     <div className="search-container">
                         <div className ="search-page">
                             <div className="search-container">
@@ -109,6 +110,7 @@ const Search = (props) => {
                                 </List> 
                             </div>       
                         </div>
+                    </div>
                     </div>
                     )
                 }

@@ -11,6 +11,8 @@ import EmailIcon from '@material-ui/icons/Email'
 import Divider from '@material-ui/core/Divider'
 import { makeStyles } from '@material-ui/core/styles'
 import EmptyList from "../Utils/EmptyList"
+import {useHistory} from 'react-router-dom'
+import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,6 +30,7 @@ const AccountPersonList = () => {
     const { state } = useContext(StateContext)
     const persons=state.persons.data.data
     const scope=state.persons.data.scope
+    const history =useHistory()
     return (
         <List
             className={classes.root}
@@ -63,6 +66,14 @@ const AccountPersonList = () => {
                                     >
                                         {person.email}
                                     </Typography>
+                                    
+            
+                                    <Button onClick={(e)=>{
+                                        e.preventDefault()
+                                        history.push(`/users/${state.user.username}/account/persons/${person.id}`)
+                                        }}>
+                                        View more
+                                    </Button>
                                 </React.Fragment>
                             }
                         /> 

@@ -45,7 +45,8 @@ const PersonEdit = (props) => {
 
 
     return (
-        <div>
+        <div className='App-body'>
+            <div>
             <h2>Add person to your records</h2>
             <Form success warning onSubmit={handleEdit}> 
                 
@@ -65,6 +66,7 @@ const PersonEdit = (props) => {
                     <Button  loading={loading} fluid primary type='submit'><Icon name="plus" size="small"/>Add person</Button>
             </Form>
         </div>
+    </div>
     )
 }
 
