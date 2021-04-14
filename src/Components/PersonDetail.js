@@ -1,17 +1,22 @@
 import React,{ useContext,useState } from 'react'
-
 import StateContext from '../Context/stateContext'
+import { Bar } from 'react-chartjs-2'
+import '../App.css'
 
 const PersonDetail = (props) => {
     
     const { state } = useContext(StateContext)
     const personId=props.match.params.id
     const works = state.work.data.data
+    const persons=state.persons.data.data
     let date =new Date()
     const [year,setYear] = useState(date.getFullYear())
     const [month,setMonth] = useState(date.getMonth()-1)
     
     
+    // eslint-disable-next-line eqeqeq
+    const person = persons.filter(person=>person.id==personId)
+    const initialLetter=person[0].name.slice(0,1).toUpperCase()
 
     // eslint-disable-next-line eqeqeq
     let workItems = works.filter(work=>{return work.assigned_by.id==personId})
@@ -45,40 +50,87 @@ const PersonDetail = (props) => {
     let sumOfexpectedAmount = expectedAmountChosenMonth.reduce((a,b)=> a+b,0)
     
     let sumOfreceivedAmount = receivedAmountChosenMonth.reduce((a,b)=> a+b,0)
+    const month_name = (yr,mnth)=>{
+       let month_list =['January','February','March','April','May','June','July',
+                        'August','September','October','November','December']
+                        return month_list[new Date(yr,mnth).getMonth()]
+    }
+
+    const chosenMonth = month_name(year,month)
+   
+ 
+    
     return (
         <div className='App-body'>
-            <div>
-                <h4>Personal info</h4>
+            <div className='person-info'>
+                <div className="account-image"> 
+                    <h1>{initialLetter}</h1>
+                </div>
+                <p>{person[0].name}</p>
+                <p>{person[0].email}</p>
             </div>
-            
-            <div>
-                <hr></hr>
-                <h4>Personal stats</h4>
+            <hr></hr>
+            <div className='person-stats'>
                 
-                <p>{`percentage:  ${workPercentage}% of works received`}</p>
+                <h4>Statistic from {`${person[0].name}`} </h4>
+                
                 <p>{`Works total:  ${workTotals}`}</p>
                 <p>{`Works paid:  ${worksPaid}`}</p>
                 <p>{`Works not paid:  ${worksNotPaid}`}</p>
-                <hr></hr>
-                <h4>Monthly stats</h4>
-                <p>{new Date(year,month+1,0).toDateString()}</p>
                 
+                <h2>{`${workPercentage}% of works received`}</h2>
+            </div>
+            <hr></hr>
+            <div className='monthly-graph'>
+                <h4>visualize stats</h4>
+                <div id='bar-graph'>
+                    <Bar
+                        data={{
+                            labels:['Expect amount','Received amount'],
+                            datasets:[
+                                {
+                                    backgroundColor: ['rgba(0, 0, 255, 0.5)','rgba(0, 255, 0, 0.5)'],
+                                    data:[sumOfexpectedAmount,sumOfreceivedAmount],
+                                }
+                            ]
+                        }}
+                        width={800}
+                        height={300}
+                        legend={ {display: false} }
+                        options={{
+                                maintainAspectRatio: false,
+                                title:{display: true, 
+                                        text: `${chosenMonth}`,
+                                        fontSize:20},
+                            }}
+                    /> 
+                </div>
+                           
+            </div>
+            <hr></hr>
+            <div className='person-monthly'>
+                <h2>Monthly statistics</h2>
+                <div className='monthly-header'>
+                    
+                
+               
                 <input type="date" name="month" onChange={(e)=>{
                                 e.preventDefault()
                                 console.log(new Date(e.target.value))
                                 setMonth(new Date(e.target.value).getMonth())
                                 setYear(new Date(e.target.value).getFullYear())
                             }}></input>
-                            {/* <button onClick={filterByDate}>filter by date</button> */}
-                <p>{`Total works in month: ${workItemsChosenMonth.length}`}</p>
-                <p>{`Total works in month paid: ${workItemsChosenMonthPaid}`}</p>
-                <p>{`Total works in month not paid: ${workItemsChosenMonthNotPaid}`}</p>
-                <p>{`Expected amount in Month: ${sumOfexpectedAmount}`}</p>
-                <p>{`Amount received in Month: ${sumOfreceivedAmount}`}</p>
+                </div>
+                
+                            
+                <p>{new Date(year,month).toDateString()} - {new Date(year,month+1,0).toDateString()}</p>
+                <p>{`Total works in ${chosenMonth}: ${workItemsChosenMonth.length}`}</p>
+                <p>{`Total works paid in ${chosenMonth}: ${workItemsChosenMonthPaid}`}</p>
+                <p>{`Total works not paid ${chosenMonth}: ${workItemsChosenMonthNotPaid}`}</p>
+                <p>{`Expected amount in ${chosenMonth}: ${sumOfexpectedAmount}`}</p>
+                <p>{`Amount received in ${chosenMonth}: ${sumOfreceivedAmount}`}</p>
             </div>
-            <div>
-                <h4>visualize stats</h4>
-            </div>
+            
         </div>
     )
 }
