@@ -10,7 +10,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import RefreshIcon from '@material-ui/icons/Refresh';
 import Auth from '../Utils/Auth'
 import StateContext from '../Context/stateContext'
-import { useHistory, Redirect } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import {InfoFunc} from '../Utils/InfoFunc'
 import "../App.css"
 
@@ -89,7 +89,9 @@ const MenuAppOptions = () => {
                       e.preventDefault()
                       setAnchorEl(null)
                       Auth.signOut()
-                      return <Redirect to='/login'/>
+                      localStorage.removeItem("token")
+                      history.replace('/login')
+                      
                     }}>
                     <ListItemIcon>
                         <PowerSettingsNewIcon fontSize="large"/>

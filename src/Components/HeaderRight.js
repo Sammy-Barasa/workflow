@@ -1,6 +1,6 @@
 import React from 'react'
 import Auth from '../Utils/Auth'
-import {useHistory,Redirect} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import Button from '@material-ui/core/Button'
 import RefreshIcon from '@material-ui/icons/Refresh'
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew'
@@ -10,6 +10,8 @@ import '../App.css'
 
 const HeaderRight = ({user,dispatch}) => {
     const history = useHistory()
+     
+
     return (
         <div className="header-right">
                 <Button onClick={(e)=>{
@@ -29,7 +31,8 @@ const HeaderRight = ({user,dispatch}) => {
                     <Button onClick={(e)=>{
                       e.preventDefault()
                       Auth.signOut()
-                      return <Redirect to='/login'/>
+                      localStorage.removeItem("token")
+                      history.replace('/login')
                     }}>
                       <PowerSettingsNewIcon fontSize="large"/>
                       Log Out

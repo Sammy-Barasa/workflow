@@ -5,11 +5,12 @@ import Auth from "../Utils/Auth"
 export const  ProtectedRoute=({component:Component,...rest})=>{
 
     const location = useLocation()
+    const token=localStorage.getItem("token")
 
     return(<Route
             {...rest}
             render={(props) => (
-                 Auth.isAuthenticated()===true?(
+                 token&&Auth.isAuthenticated()===true?(
                     <Component {...props}/>)
                     : (<Redirect push to={{
                         pathname: "/login",

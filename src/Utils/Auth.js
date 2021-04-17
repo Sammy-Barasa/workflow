@@ -9,15 +9,15 @@ const Auth = {
         authenticated:false,
     
 authenticate(){
-    if(localStorage.getItem("token")){
+    
         this.authenticated=true  
-    }
+    
 },
 signOut(){
     
-    if(!localStorage.getItem("token")){
-     this.authenticated= false
-    }
+    
+    this.authenticated= false
+    
 },
 
 isAuthenticated(){
