@@ -166,7 +166,7 @@ background-color: #f8f8f8;
   border-color: #dde0e0;
   border-radius: 5px;
   box-shadow:0 6px 12px 0 rgba(0, 0, 0, 0.2);
-  width: 50vh;
+  width: 400px;
   height:fit-content;
   margin-top: 10%;
 }
@@ -183,13 +183,21 @@ background-color: #f8f8f8;
   border-color: #dde0e0;
   border-radius: 5px;
   box-shadow:0 6px 12px 0 rgba(0, 0, 0, 0.2);
-  width: 50vh;
+  width: 400px;
   height:fit-content;
 
 }
 
 .work-edit{
-  width: 50vh;
+  width: 400px;
+}
+
+.update-action-butons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+
 }
 
 .show{

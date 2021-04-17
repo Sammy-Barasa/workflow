@@ -120,8 +120,10 @@ const WorkEdit = (props) => {
                         color="primary"
                         checked={Completed} 
                         onChange={(event)=>{
+                            event.preventDefault()
                             setCompleted(event.target.checked)
                             form.completed=event.target.checked
+                            form["date_paid"] = new Date().toUTCString()
                         }}
                         
                         />}
@@ -149,13 +151,10 @@ const WorkEdit = (props) => {
                         />
                     </Form.Field>
                     <Form.Group widths='equal' unstackable inline>
-                        
-                        {/* <Form.Field> */}
+                        <div className="update-action-butons">
                             <DeleteModal workItem={form} workId={workId} userId={userId} dispatch={dispatch}/>
-                        {/* </Form.Field>  */}
-                        {/* <Form.Field> */}
                             <Button color="green" loading={loading} onClick={handleEdit}><Icon name='refresh' />Update order</Button>
-                        {/* </Form.Field> */}
+                        </div>
                     </Form.Group> 
                 </Form>
             </div>
