@@ -1,13 +1,16 @@
 import React, { useState,useContext,useEffect } from 'react'
 import { Button, Form , Header} from 'semantic-ui-react'
-import { LoginUser,UsersWork,GetUsersPersons,GetWorkOptions } from '../API/api'
+import { LoginUser } from '../API/api'
 import StateContext from '../Context/stateContext';
 import { useHistory,Redirect } from "react-router-dom"
 // import FormSuccess  from "./FormSuccess"
 import  FormError  from "./FormError"
 import Auth from '../Utils/Auth'
 import { Link } from 'react-router-dom'
+import {InfoFunc} from '../Utils/InfoFunc'
 import '../App.css'
+
+
 
 const Login = (props) => {
     const [form,setForm]= useState({});
@@ -45,9 +48,7 @@ const Login = (props) => {
     if(redirectTrue){
         window.localStorage.setItem("token", data?.data.tokens.access);
         Auth.authenticate()
-        UsersWork(state.user.id)(dispatch)
-        GetUsersPersons(state.user.id)(dispatch)
-        GetWorkOptions()(dispatch)
+        InfoFunc( state.user.id,dispatch)
         history.push(`/users/${state.user.username}`)
     }
     if(fromRoute){

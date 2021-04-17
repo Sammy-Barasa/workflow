@@ -152,8 +152,12 @@ const WorkEdit = (props) => {
                     </Form.Field>
                     <Form.Group widths='equal' unstackable inline>
                         <div className="update-action-butons">
-                            <DeleteModal workItem={form} workId={workId} userId={userId} dispatch={dispatch}/>
-                            <Button color="green" loading={loading} onClick={handleEdit}><Icon name='refresh' />Update order</Button>
+                            <div>
+                                <DeleteModal workItem={form} workId={workId} userId={userId} dispatch={dispatch}/>
+                            </div>
+                            <div>
+                                <Button color="green" loading={loading} onClick={handleEdit}><Icon name='refresh' />Update order</Button>
+                            </div>
                         </div>
                     </Form.Group> 
                 </Form>

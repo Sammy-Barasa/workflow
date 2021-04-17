@@ -10,12 +10,13 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import RefreshIcon from '@material-ui/icons/Refresh';
 import Auth from '../Utils/Auth'
 import StateContext from '../Context/stateContext'
-import { useHistory } from "react-router-dom"
+import { useHistory, Redirect } from "react-router-dom"
+import {InfoFunc} from '../Utils/InfoFunc'
 import "../App.css"
 
 const MenuAppOptions = () => {
     const [anchorEl, setAnchorEl] = useState(null);
-    const { state } = useContext(StateContext)
+    const { state,dispatch } = useContext(StateContext)
     const history = useHistory()
     const username = state.user.username
     const open = Boolean(anchorEl);
@@ -67,6 +68,7 @@ const MenuAppOptions = () => {
                 <MenuItem onClick={(e)=>{
                       e.preventDefault()
                       setAnchorEl(null)
+                      InfoFunc( state.user.id,dispatch)
                     }}>
                     <ListItemIcon>
                         <RefreshIcon fontSize="large"/>
@@ -87,6 +89,7 @@ const MenuAppOptions = () => {
                       e.preventDefault()
                       setAnchorEl(null)
                       Auth.signOut()
+                      return <Redirect to='/login'/>
                     }}>
                     <ListItemIcon>
                         <PowerSettingsNewIcon fontSize="large"/>

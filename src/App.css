@@ -34,8 +34,8 @@
   align-items: center;
 }
 .App-body{
-  margin: 2px;
-  padding: 10px;
+  margin: 5px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -68,8 +68,8 @@ background-color: #f8f8f8;
 }
 
 .list-container:hover{
-   background-color: #dad7dd;
-  color: #ffffff;
+   color: #40344d;
+  background-color: #f6f5ff;
 }
 .container {
   display:flex;
@@ -149,11 +149,7 @@ background-color: #f8f8f8;
   justify-content: center;
   
 }
-.show-header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
 
 .register-form{
   display: flex;
@@ -194,6 +190,7 @@ background-color: #f8f8f8;
 
 .update-action-butons{
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
@@ -204,10 +201,19 @@ background-color: #f8f8f8;
   display: flex;
   flex-direction: column;
   margin-top: 20px;
-  
+  width: 380px;
+  margin: 10px;
+  padding: 10px;
 }
+
 .show-header{
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+   margin-bottom: 10px;
+}
+.show-header h2{
+  margin-left: 10px;
 }
 .work-create{
   width: 400px;
@@ -257,7 +263,7 @@ background-color: #f8f8f8;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #554086;
+  background-color: #66558f;
   border-radius: 100%;
   height: 70px;
   width: 70px;
@@ -331,9 +337,9 @@ background-color: #f8f8f8;
 
 .user-worklist-header{
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 5px;
   padding: 5px;
   position: sticky;
 }
@@ -384,7 +390,7 @@ background-color: #f8f8f8;
 
 .sort-button:hover{
   background-color: #554086;
-  color: #ffffff;
+  color: #f6f5ff;
 }
 
 .person-info{
@@ -409,8 +415,8 @@ background-color: #f8f8f8;
   border: rgba(78, 77, 143, 0.2);
   width: 400px;
   height: 250px;
-  background: rgb(216,174,238);
-  background: linear-gradient(149deg, rgba(216,174,238,0.3) 0%, rgba(117,103,249,0.5) 100%);
+  background: rgb(190, 163, 204);
+  background: linear-gradient(149deg, rgba(95, 104, 238, 0.5) 100%,  rgba(166, 150, 175, 0.3) 0%);
   
 }
 

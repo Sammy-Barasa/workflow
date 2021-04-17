@@ -36,7 +36,11 @@ const WorkShow = (props) => {
         
             <div className="show">
                 <div className="show-header">
-                    <h2>Work detail</h2><MenuWorkEdit workId={workId}/>
+                    <h2>Work detail</h2>
+                    <div>
+                        <MenuWorkEdit workId={workId}/>
+                    </div>
+                    
                 </div>
                 
                 {/* <div className="worklist-container"> */}

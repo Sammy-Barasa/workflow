@@ -16,7 +16,7 @@ import '../App.css'
 
 
 const UserWorkList = (props) => {
-    const { state } = useContext(StateContext)
+    const { state,dispatch } = useContext(StateContext)
     // console.log(state)
     const loading = state.work.loading
 
@@ -40,18 +40,18 @@ const UserWorkList = (props) => {
                             </h2>
                         </div>
                         <div className="app-logout">
-                            {user===null?"":mediaQuery.matches?<div><MenuAppOptions/></div>:<HeaderRight user={user}/>}
+                            {user===null?"":mediaQuery.matches?<div><MenuAppOptions/></div>:<HeaderRight user={user} dispatch={dispatch}/>}
                         </div>
                     </div>
                     <div className='user-worklist-header'>
                         <h3>My List of Works</h3>
-                    
-                    <IconButton color="default" aria-label="go to search page" component="span" onClick={(e)=>{
-                        e.preventDefault()
-                        history.push(`/users/${username}/search`)}}>
-                        <SearchIcon />
-                    </IconButton>
-
+                    <div>
+                        <IconButton color="default" aria-label="go to search page" component="span" onClick={(e)=>{
+                            e.preventDefault()
+                            history.push(`/users/${username}/search`)}}>
+                            <SearchIcon />
+                        </IconButton>
+                    </div>
                     </div>
                     
                         {   
