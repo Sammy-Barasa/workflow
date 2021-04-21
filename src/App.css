@@ -340,8 +340,22 @@ background-color: #f8f8f8;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 5px;
-  position: sticky;
+  width: 350px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+ 
+}
+.title-list-of-works{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 3px;
+}
+                        
+.list-search-icon{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .results{
@@ -392,7 +406,12 @@ background-color: #f8f8f8;
   background-color: #554086;
   color: #f6f5ff;
 }
-
+.person-menu{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
 .person-info{
   display: flex;
   flex-direction: column;
@@ -453,6 +472,9 @@ background-color: #f8f8f8;
   height: 400px;
   width: 400px;
 }
+
+
+
 /* 
 @keyframes App-logo-spin {
   from {

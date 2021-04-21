@@ -8,6 +8,7 @@ import WorkShow from './Components/WorkShow'
 import WorkCreate from './Components/WorkCreate'
 import WorkEdit from './Components/WorkEdit'
 import PersonCreate from './Components/PersonCreate'
+import PersonEdit from './Components/PersonEdit'
 import PersonDetail from './Components/PersonDetail'
 import Navigation from './Components/Navigation'
 import Search from './Components/Search'
@@ -40,6 +41,8 @@ function App() {
                 <ProtectedRoute exact path="/users/:username/account" component={Account}/>
 
                 <ProtectedRoute exact path="/users/:username/account/persons/:id" component={PersonDetail}/>
+
+                <ProtectedRoute exact path="/users/:username/account/persons/:id/edit" component={PersonEdit}/>
 
                 <ProtectedRoute exact path="/users/:username/search" component={Search}/>
 

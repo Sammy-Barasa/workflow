@@ -1,4 +1,4 @@
-const CACHE_NAME= "v70"
+const CACHE_NAME= "v76"
 const urlsToCache=[
     '/',
     'index.html',
@@ -7,6 +7,7 @@ const urlsToCache=[
     'contactplaceholder.jpg',
     'favicon.ico'
 ]
+let token = 'x'
 
 const self=this
 
@@ -65,3 +66,35 @@ self.addEventListener('fetch',(event)=>{
         )  
 })
 
+self.addEventListener('message',(event) =>{
+    if(event.data && event.data.type==="TOK"){
+        token = event.data.message
+        console.log(token)
+    }
+})
+
+self.addEventListener('periodicsync', event => {
+  if (event.tag === 'refresh-token') {
+    event.waitUntil(RefreshToken(token));
+  }
+});
+
+
+
+
+const RefreshToken = (accessToken)=>{
+    console.log(token)
+    return () => {
+        
+        fetch("https://work-record-manager.herokuapp.com/auth/token/refresh/",{method:"POST",body:{"refresh":accessToken}})
+            .then((response) => {
+                // console.log(response.data)
+                // console.log(response.status)
+
+                localStorage.setItem('token',response.data)
+            }).catch((error) => {
+                console.log(error)
+                
+            })
+    }
+}

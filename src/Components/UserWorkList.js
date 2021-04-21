@@ -20,6 +20,15 @@ const UserWorkList = (props) => {
     // console.log(state)
     const loading = state.work.loading
 
+    useEffect(()=>{
+        registerPeriodicTokenRefresh()
+        
+        navigator.serviceWorker.controller.postMessage({
+        type:"TOK",
+        message:localStorage.getItem('token')
+    })
+  
+    },[])
 
     useEffect(()=>{
     },[loading]) 
@@ -29,7 +38,35 @@ const UserWorkList = (props) => {
     const user = state.user
     const mediaQuery = window.matchMedia('(max-width: 500px)')
     const history = useHistory()
+    // reference registration
     
+    async function registerPeriodicTokenRefresh() {
+        const registration = await navigator.serviceWorker.ready;
+        // Request permission
+        const status = await navigator.permissions.query({
+        name: 'periodic-background-sync',
+        });
+        if (status.state === 'granted') {
+            try {
+                console.log('trying ...')
+                await registration.periodicSync.register('refresh-token', {
+                minInterval: 2 * 1000,
+                // 24 * 60 * 60 * 1000,
+                });
+            } catch {
+                console.log('Periodic Sync could not be registered!');
+            }
+        }
+    }
+    
+    if('serviceworker' in navigator){
+        navigator.serviceWorker.onmessage = (event)=>{
+        if(event.data && event.data.type==='TOK'){
+            localStorage.setItem('token',event.data.message)
+        }
+    }
+    }
+
     
     return (
                 <div className='App-body'>
@@ -44,14 +81,17 @@ const UserWorkList = (props) => {
                         </div>
                     </div>
                     <div className='user-worklist-header'>
-                        <h3>My List of Works</h3>
-                    <div>
-                        <IconButton color="default" aria-label="go to search page" component="span" onClick={(e)=>{
-                            e.preventDefault()
-                            history.push(`/users/${username}/search`)}}>
-                            <SearchIcon />
-                        </IconButton>
-                    </div>
+                        <div className='title-list-of-works'>
+                            <h3>My List of Works</h3>
+                        </div>
+                        
+                        <div className="list-search-icon">
+                            <IconButton color="default" aria-label="go to search page" component="span" onClick={(e)=>{
+                                e.preventDefault()
+                                history.push(`/users/${username}/search`)}}>
+                                <SearchIcon />
+                            </IconButton>
+                        </div>
                     </div>
                     
                         {   

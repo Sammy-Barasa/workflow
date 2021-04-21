@@ -1,5 +1,6 @@
 import React,{ useContext,useState } from 'react'
 import StateContext from '../Context/stateContext'
+import MenuPerson from './MenuPerson'
 import { Bar } from 'react-chartjs-2'
 import '../App.css'
 
@@ -63,6 +64,9 @@ const PersonDetail = (props) => {
     return (
         <div className='App-body'>
             <div className='person-info'>
+                <div className='person-menu'>
+                    <MenuPerson/>
+                </div>
                 <div className="account-image"> 
                     <h1>{initialLetter}</h1>
                 </div>

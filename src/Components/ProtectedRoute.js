@@ -10,7 +10,7 @@ export const  ProtectedRoute=({component:Component,...rest})=>{
     return(<Route
             {...rest}
             render={(props) => (
-                 token&&Auth.isAuthenticated()===true?(
+                 token&&Auth.isAuthenticated()?(
                     <Component {...props}/>)
                     : (<Redirect push to={{
                         pathname: "/login",
