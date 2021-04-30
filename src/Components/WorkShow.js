@@ -39,16 +39,17 @@ const WorkShow = (props) => {
         <div className='App-body'>
             <div className='show-page'>
             <div className="show">
-                <div>
+                <div className="show-header-h2">
+                    <h2>Work detail</h2>
+                </div>           
+                
+                <div className="show-header">
+                    
                     <IconButton color="default" aria-label="back button" component="span" onClick={(e)=>{
                         e.preventDefault()
                         history.goBack()}}>
                         <ArrowBackIosIcon />
                     </IconButton>
-                </div>           
-                
-                <div className="show-header">
-                    <h2>Work detail</h2>
                     <div>
                         <MenuWorkEdit workId={workId}/>
                     </div>

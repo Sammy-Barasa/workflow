@@ -172,11 +172,10 @@ export const CreatePerson = (userID,personData) =>(dispatch)=> {
     })
     axiosFetch().post(`users/${userID}/personcreate/`,personData)
     .then((response)=>{
-        console.log(response.data)
-        // console.log(response.status)
+        console.log(response)
         dispatch({
         type:actionTypes.CREATE_PERSON_SUCCESS,
-        payload:response.data
+        payload:response
     })
     }).catch((error)=>{
         console.log(error)

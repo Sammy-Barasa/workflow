@@ -23,6 +23,7 @@ export const actionTypes = {
   CREATE_PERSON_LOADING:"CREATE_PERSON_LOADING",
   CREATE_PERSON_SUCCESS:"CREATE_PERSON_SUCCESS",
   CREATE_PERSON_ERROR:"CREATE_PERSON_ERROR",
+  CREATE_PERSON_COMPLETE:"CREATE_PERSON_COMPLETE",
   UPDATE_PERSON_LOADING:"UPDATE_PERSON_LOADING",
   UPDATE_PERSON_SUCCESS:"UPDATE_PERSON_SUCCESS",
   UPDATE_PERSON_COMPLETE:"UPDATE_PERSON_COMPLETE",
@@ -278,7 +279,48 @@ const stateReducer = (state,action) =>{
                     error:action.payload
                   },
         };
+      case actionTypes.CREATE_PERSON_LOADING:
+        return {
+            ...state,
+            personcreate: {
+                    ...state.personcreate,
+                    loading:true,
+                    data:null,
+                    error:null,
+                  },
+        };
+      case actionTypes.CREATE_PERSON_SUCCESS:
+        return {
+            ...state,
+            personcreate: {
+                    ...state.personcreate,
+                    loading:false,
+                    data:action.payload,
+                    error:null,
+                  },
+        };
 
+      case actionTypes.CREATE_PERSON_ERROR:
+        return {
+            ...state,
+            personcreate: {
+                    ...state.personcreate,
+                    loading:false,
+                    data:null,
+                    error: action.payload,
+                  },
+        };
+
+      case actionTypes.CREATE_PERSON_COMPLETE:
+        return {
+            ...state,
+            personcreate: {
+                    ...state.personcreate,
+                    loading:false,
+                    data:null,
+                    error: null,
+                  },
+        };
       case actionTypes.UPDATE_PERSON_LOADING:
         return {
             ...state,

@@ -211,7 +211,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 20px;
-  margin: 10px;
+  margin: 5px;
   padding: 2px;
   justify-content: center;
   
@@ -222,7 +222,7 @@
   justify-content: space-between;
   align-items: center;
 }
-.show-header h2{
+.show-header-h2{
   margin-left: 10px;
 }
 .show-header-right {
@@ -257,7 +257,7 @@
 
 .show-body {
   display:flex;
-  margin: 10px;
+  margin: 5px;
   padding: 10px;
 }
 
@@ -266,15 +266,14 @@
   display: flex;
   justify-content: flex-start;
   padding: 10px;
-  margin: 10px;
 }
 .show-body-bottom{
   flex: 2;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 20px;
-  margin: 20px 20px 20px 20px;
+  padding: 10px;
+  margin: 20px 10px 20px 10px;
   
 }
 
@@ -283,7 +282,7 @@
   display: flex;
   justify-content: flex-end;
   padding: 10px;
-  margin: 10px;
+
 }
 
 /* WORK SHOW PAGE END*/
@@ -539,8 +538,8 @@ align-items: center;
   justify-content: center;
   align-items: center;
   margin: 2px;
-  padding: 10px 20px;
-  font-size: 18px;
+  padding: 6px 10px;
+  font-size: 15px;
   border:none;
   outline: none;
   border-radius: 20px;

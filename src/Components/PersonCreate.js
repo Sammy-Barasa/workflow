@@ -1,4 +1,4 @@
-import React,{useState,useContext} from 'react'
+import React,{useState,useContext,useEffect} from 'react'
 import StateContext from '../Context/stateContext';
 import { Button, Form, Icon } from 'semantic-ui-react'
 import {CreatePerson,GetUsersPersons} from '../API/api'
@@ -6,23 +6,40 @@ import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+import { actionTypes } from '../Context/stateReducer'
 
 const PersonCreate = (props) => {
 
     const {dispatch,state}= useContext(StateContext)
     const history = useHistory()
     const[form,setForm] = useState({})
-    const loading = state.persons.loading
-    const errorMessage = state.persons.error
+    const[error,setError] = useState(null)
+    const data = state.personcreate.data
+    const loading = state.personcreate.loading
+    const errorMessage = state.personcreate.error
     const userId = state.user.id
+
+    useEffect(()=>{
+        if(data?.status===200){
+            GetUsersPersons(userId)(dispatch)
+            
+            dispatch({
+                type:actionTypes.CREATE_PERSON_COMPLETE,
+            })
+            history.goBack()
+        }  
+    },[data?.status, dispatch, history, userId])
 
     async function handleCreate(e) {
         e.preventDefault();
         // console.log(form);
-        CreatePerson(userId, form)(dispatch);
-        GetUsersPersons(userId)(dispatch)
-        // console.log(state)
-        history.goBack()
+        try {
+            CreatePerson(userId, form)(dispatch);
+        
+        } catch (error) {
+            setError(error)
+        }
+        
         
     }
 
@@ -47,6 +64,7 @@ const PersonCreate = (props) => {
                 <Form success warning onSubmit={handleCreate}> 
                     
                         {errorMessage?FormError(errorMessage):""}
+                        {error?FormError(error):""}
                         <Form.Field>
                             <label>Name</label>
                             <input type="text" name='name' placeholder='Name of the person' value={form.name} onChange={onchange}/>

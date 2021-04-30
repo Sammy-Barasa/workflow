@@ -51,6 +51,12 @@ const StateProvider = (props) =>{
         },
           error:null
         },
+    personcreate: {
+            
+            loading:false,
+            data:null,
+            error: null,
+          },
     personupdate:{
       loading:false,
           data:null,
