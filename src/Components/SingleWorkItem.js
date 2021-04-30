@@ -65,10 +65,21 @@ const SingleWorkItem = ({workItem,index}) => {
                                                     </List.Content> 
                                                 </div>
                                                 <div className="list-center">
-                                                    <List.Content>
+                                                    <div className="list-center">
+                                                        <List.Content>
                                                         <List.Description as='p'>{`Assigned by:`}</List.Description>
                                                         <List.Description>{` ${workItem.assigned_by.name}`}</List.Description> 
                                                     </List.Content> 
+                                                    </div>
+                                                    <div>
+                                                        
+                                                    </div>
+                                                    <div className="list-center-order">
+                                                        <List.Content>
+                                                        <List.Description>{` ${workItem.order_number==='#0000'||workItem.order_number==='#00000'?'':workItem.order_number}`}</List.Description> 
+                                                        </List.Content> 
+                                                    </div>
+                                                    
                                                 </div>
 
                                                 <div className="list-body-right">
@@ -76,7 +87,8 @@ const SingleWorkItem = ({workItem,index}) => {
                                                     <List.Description as='h4'>Work description: </List.Description>
                                                     <List.Description >{`${workItem.number_of_words} number of words, `}</List.Description>
                                                     <List.Description >{`${workItem.pages} pages`}</List.Description>
-                                                    <List.Description as='h5'>{workItem.paid?`Amount received:        Ksh ${workItem.amount_received}`:`Expected Amount:          Ksh ${workItem.expected_amount}`}</List.Description>
+                                                    <List.Description as='h5'>{workItem.paid?`Amount received: `:`Expected Amount: `}</List.Description>
+                                                    <List.Description as='p'>{workItem.paid?`Ksh ${workItem.amount_received}`:`Ksh ${workItem.expected_amount}`}</List.Description>
                                                    </List.Content>
                                                 </div>
                                                 

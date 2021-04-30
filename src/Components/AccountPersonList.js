@@ -38,47 +38,66 @@ const AccountPersonList = () => {
             {scope.hasNoList?<EmptyList list='assigners'path='/employer/create'width='50px' height='200px'/>:persons.map((person)=>{
                 return (<div>
                     <Divider variant="inset" component="li" /> 
-                    <ListItem
-                            alignItems="flex-start"
-                        >
-                        <ListItemAvatar>
-                            <Avatar alt="Remy Sharp" src=".../public/contactplaceholder.jpg" />
-                        </ListItemAvatar>
-                        <ListItemText
-                            primary={person.name}
-                            secondary={
-                                <React.Fragment>
-                                    <PhoneInTalkRoundedIcon fontSize='medium'/>
-                                    <Typography
-                                        component="span"
-                                        variant="body2"
-                                        className={classes.inline}
-                                        color="textPrimary"
-                                    >
-                                        {person.phone}
-                                    </Typography>
-                                    <EmailIcon fontSize='medium'/>
-                                    <Typography
-                                        component="span"
-                                        variant="body2"
-                                        className={classes.inline}
-                                        color="textPrimary"
-                                    >
-                                        {person.email}
-                                    </Typography>
+                        <ListItem
+                                justifyContent="center"
+                                alignItems="center"
+                            >
+                            <div className='assigners-list'>
+                                <div className='assigners-list-avatar'>
+                                    <ListItemAvatar>
+                                        <Avatar alt={person.name.slice(0,1).toUpperCase()} src=".../public/contactplaceholder.jpg" />
+                                    </ListItemAvatar>
+                                </div>
+                                <div className='assigners-list-details'>
+                                    <ListItemText
+                                        primary={person.name}
+                                        secondary={
+                                    <React.Fragment>
+                                        <div className='assigners-list'>
+                                            <div className='assigners-list-icon'>
+                                                <PhoneInTalkRoundedIcon fontSize='medium'/>
+                                            </div>
+                                            <div  className='assigners-list-typography'>
+                                                <Typography
+                                                component="span"
+                                                variant="body2"
+                                                className={classes.inline}
+                                                color="textPrimary"
+                                            >
+                                                {person.phone}
+                                            </Typography>
+                                            </div>
+                                            </div>
+                                            <div className='assigners-list'>
+                                            <div className='assigners-list-icon'>
+                                                <EmailIcon fontSize='medium'/>
+                                            </div>
+                                            <div className='assigners-list-typography'>
+                                                <Typography
+                                                component="span"
+                                                variant="body2"
+                                                className={classes.inline}
+                                                color="textPrimary"
+                                                >
+                                                {person.email}
+                                                </Typography>
+                                            </div>
+                                        </div>
+                
+                                        <Button onClick={(e)=>{
+                                            e.preventDefault()
+                                            history.push(`/users/${state.user.username}/account/persons/${person.id}`)
+                                            }}>
+                                            View more
+                                        </Button>
+                                    </React.Fragment>
+                                }
+                            /> 
+                                </div>
+                            </div>
+                            
                                     
-            
-                                    <Button onClick={(e)=>{
-                                        e.preventDefault()
-                                        history.push(`/users/${state.user.username}/account/persons/${person.id}`)
-                                        }}>
-                                        View more
-                                    </Button>
-                                </React.Fragment>
-                            }
-                        /> 
-                                  
-                </ListItem>
+                    </ListItem>
                 <Divider variant="inset" component="li" /> 
                 </div>)
             })}

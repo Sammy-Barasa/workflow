@@ -9,6 +9,8 @@ import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
 //import EmptyList from "../Utils/EmptyList"
 import { actionTypes } from '../Context/stateReducer'
+import IconButton from '@material-ui/core/IconButton'
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 // import {  toast } from 'react-toastify';
 //   import 'react-toastify/dist/ReactToastify.css';
 // import { actionTypes } from '../Context/stateReducer'
@@ -81,6 +83,12 @@ const WorkCreate = (props) => {
     return (
         <div className='App-body'>
         <div className="work-create">
+            
+                <IconButton color="default" aria-label="back button" component="span" onClick={(e)=>{
+                        e.preventDefault()
+                        history.goBack()}}>
+                        <ArrowBackIosIcon />
+                </IconButton>
             <h2>Create Work Record</h2>
             <Form success warning onSubmit={handleCreate}> 
                 

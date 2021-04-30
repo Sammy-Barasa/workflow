@@ -25,6 +25,7 @@ export const actionTypes = {
   CREATE_PERSON_ERROR:"CREATE_PERSON_ERROR",
   UPDATE_PERSON_LOADING:"UPDATE_PERSON_LOADING",
   UPDATE_PERSON_SUCCESS:"UPDATE_PERSON_SUCCESS",
+  UPDATE_PERSON_COMPLETE:"UPDATE_PERSON_COMPLETE",
   UPDATE_PERSON_ERROR:"UPDATE_PERSON_ERROR",
   GET_OPTIONS_LOADING:"GET_OPTIONS_LOADING",
   GET_OPTIONS_SUCCESS:"GET_OPTIONS_SUCCESS",
@@ -281,7 +282,7 @@ const stateReducer = (state,action) =>{
       case actionTypes.UPDATE_PERSON_LOADING:
         return {
             ...state,
-            workupdate: {
+            personupdate: {
                     ...state.personupdate,
                     loading:true,
                     data:null,
@@ -292,7 +293,7 @@ const stateReducer = (state,action) =>{
       case actionTypes.UPDATE_PERSON_SUCCESS:
         return {
             ...state,
-            workupdate: {
+            personupdate: {
                     ...state.personupdate,
                     loading:false,
                     data:action.payload,
@@ -303,7 +304,7 @@ const stateReducer = (state,action) =>{
       case actionTypes.UPDATE_PERSON_ERROR:
         return {
             ...state,
-            workupdate: {
+            personupdate: {
                     ...state.personupdate,
                     loading:false,
                     data:null,
@@ -311,10 +312,10 @@ const stateReducer = (state,action) =>{
                   },
         };
 
-      case actionTypes.UPDATE_PERSON__COMPLETE:
+      case actionTypes.UPDATE_PERSON_COMPLETE:
         return {
             ...state,
-            workupdate: {
+            personupdate: {
                     ...state.personupdate,
                     loading:false,
                     data:null,

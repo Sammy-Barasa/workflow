@@ -1,18 +1,23 @@
-import React,{ useContext,useState } from 'react'
+import React,{ useContext,useState, useEffect } from 'react'
 import StateContext from '../Context/stateContext'
 import MenuPerson from './MenuPerson'
 import { Bar } from 'react-chartjs-2'
+import IconButton from '@material-ui/core/IconButton'
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+import {useHistory} from 'react-router-dom'
 import '../App.css'
 
 const PersonDetail = (props) => {
     
     const { state } = useContext(StateContext)
+    const history = useHistory()
     const personId=props.match.params.id
     const works = state.work.data.data
     const persons=state.persons.data.data
+    const loading =state.persons.loading
     let date =new Date()
     const [year,setYear] = useState(date.getFullYear())
-    const [month,setMonth] = useState(date.getMonth()-1)
+    const [month,setMonth] = useState(date.getMonth())
     
     
     // eslint-disable-next-line eqeqeq
@@ -60,13 +65,24 @@ const PersonDetail = (props) => {
     const chosenMonth = month_name(year,month)
    
  
-    
+    useEffect(() => {
+        
+    }, [loading])
     return (
         <div className='App-body'>
+            <div className='person-detail-page'>
+            <div  className='person-menu'>
+                <IconButton color="default" aria-label="back button" component="span" onClick={(e)=>{
+                        e.preventDefault()
+                        history.goBack()}}>
+                        <ArrowBackIosIcon />
+                </IconButton>
+                
+                    <MenuPerson personId={personId}/>
+                
+            </div>
             <div className='person-info'>
-                <div className='person-menu'>
-                    <MenuPerson/>
-                </div>
+                
                 <div className="account-image"> 
                     <h1>{initialLetter}</h1>
                 </div>
@@ -134,7 +150,8 @@ const PersonDetail = (props) => {
                 <p>{`Expected amount in ${chosenMonth}: ${sumOfexpectedAmount}`}</p>
                 <p>{`Amount received in ${chosenMonth}: ${sumOfreceivedAmount}`}</p>
             </div>
-            
+            <hr></hr>
+            </div>
         </div>
     )
 }

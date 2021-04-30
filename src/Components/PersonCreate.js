@@ -4,6 +4,8 @@ import { Button, Form, Icon } from 'semantic-ui-react'
 import {CreatePerson,GetUsersPersons} from '../API/api'
 import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
+import IconButton from '@material-ui/core/IconButton'
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 
 const PersonCreate = (props) => {
 
@@ -35,7 +37,12 @@ const PersonCreate = (props) => {
 
     return (
         <div className='App-body'>
-            <div className="person-create">
+            <div className="person-create">  
+                <IconButton color="default" aria-label="back button" component="span" onClick={(e)=>{
+                        e.preventDefault()
+                        history.goBack()}}>
+                        <ArrowBackIosIcon />
+                </IconButton>
                 <h2>Add person to your records</h2>
                 <Form success warning onSubmit={handleCreate}> 
                     

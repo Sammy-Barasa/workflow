@@ -51,6 +51,11 @@ const StateProvider = (props) =>{
         },
           error:null
         },
+    personupdate:{
+      loading:false,
+          data:null,
+          error:null
+    },
     workOptions:{
           loading:false,
           data:null,

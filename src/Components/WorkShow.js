@@ -4,11 +4,15 @@ import SinglelistSkeleton from '../Utils/SinglelistSkeleton'
 import { List,Icon } from 'semantic-ui-react'
 import StateContext from '../Context/stateContext'
 import MenuWorkEdit from './MenuWorkEdit'
+import IconButton from '@material-ui/core/IconButton'
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+import {useHistory,Link} from 'react-router-dom'
 
 
 const WorkShow = (props) => {
 
     const { state } = useContext(StateContext)
+    const history = useHistory()
     const loading = state.work.loading
     // const Loading= state.workupdate.loading
     useEffect(()=>{},[loading])
@@ -33,8 +37,16 @@ const WorkShow = (props) => {
     const timeTodisplay = time.toLocaleTimeString()
     return (
         <div className='App-body'>
-        
+            <div className='show-page'>
             <div className="show">
+                <div>
+                    <IconButton color="default" aria-label="back button" component="span" onClick={(e)=>{
+                        e.preventDefault()
+                        history.goBack()}}>
+                        <ArrowBackIosIcon />
+                    </IconButton>
+                </div>           
+                
                 <div className="show-header">
                     <h2>Work detail</h2>
                     <div>
@@ -43,16 +55,15 @@ const WorkShow = (props) => {
                     
                 </div>
                 
-                {/* <div className="worklist-container"> */}
                     {
                         loading?<SinglelistSkeleton/>:
                         <div className="work-show-container">
                                             <div className="row-header">
-                                                <div className="list-header-left">
+                                                <div className="show-header-left">
                                                     
                                                         <List.Icon name='sticky note' size='large'color='grey' verticalAlign='middle' />
                                                 </div>
-                                                <div className="list-header-center" >
+                                                <div className="show-header-center" >
                                                         <List.Content>
                                                             <List.Header as="h4">
                                                                 
@@ -62,7 +73,7 @@ const WorkShow = (props) => {
                                                         </List.Content>
                                                     
                                                 </div>
-                                                <div className="list-header-right">
+                                                <div className="show-header-right">
                                                 
                                                     <div>
                                                         { workItem.cancelled?<Icon name='check square'  color='green' size='large'/>:""}
@@ -85,9 +96,9 @@ const WorkShow = (props) => {
                                                     
                                                 </div>
                                             </div>
-                                            <div className="list-body">
+                                            <div className="show-body">
                                                 
-                                                    <div className="list-body-left">
+                                                    <div className="show-body-left">
                                                         <List.Content>
                                                             <List.Description as='h4'>{`Date assigned:   `}</List.Description>
                                                             <List.Description as='h5'>{dateTodisplay}</List.Description>
@@ -95,18 +106,21 @@ const WorkShow = (props) => {
                                                             <List.Description >{` ${workItem.category_of_work.work_type}`}</List.Description>
                                                             <List.Description as='h4'>Expected Amount</List.Description>
                                                             <List.Description as='p'>{`Ksh. ${workItem.expected_amount}`}</List.Description>
+                                                            <List.Description as='h4'>Date paid:</List.Description>
+                                                            <List.Description as='p'>{workItem.paid?workItem.date_paid?`${workItem.date_paid}`:"Date paid not recorded":"Not yet"}</List.Description>
                                                             <List.Description as='h4'>Last modified date:</List.Description>
                                                             <List.Description as='p'>{`${datemodefTodisplay}`}</List.Description>
+                                                            
                                                         </List.Content> 
                                                     </div>
-                                                    <div className="list-body-bottom">
+                                                    <div className="show-body-bottom">
                                                         <List.Content className="person-detail">
                                                             <List.Description as='h5'>{`Assigned by:`}</List.Description>
-                                                            <List.Description as='h5'><Icon name='user circle outline' size="large" >{`${workItem.assigned_by.name}`}</Icon></List.Description> 
+                                                            <Link to={`/users/${state.user.username}/account/persons/${workItem.assigned_by.id}`}><List.Description as='h5'><Icon name='user circle outline' size="large" >{`${workItem.assigned_by.name}`}</Icon></List.Description></Link>
                                                         </List.Content> 
                                                     </div>
 
-                                                    <div className="list-body-right">
+                                                    <div className="show-body-right">
                                                     <List.Content>
                                                         <List.Description as='h4'>Work description: </List.Description>
                                                         <List.Description >{`${workItem.number_of_words} number of words, `}</List.Description>
@@ -115,6 +129,9 @@ const WorkShow = (props) => {
                                                         <List.Description >{`${workItem.order_number}`}</List.Description>
                                                         <List.Description as='h4'>Amount received</List.Description>
                                                         <List.Description as='p'>{`Ksh. ${workItem.amount_received}`}</List.Description>
+                                                        <List.Description as='p'></List.Description>
+                                                        <List.Description as='p'>_</List.Description>
+                                                        <List.Description as='p'>_</List.Description>
                                                         <List.Description as='h4'>at:</List.Description>
                                                         <List.Description as='p'>{`${timeTodisplay}`}</List.Description>
                                                     </List.Content>
@@ -127,7 +144,7 @@ const WorkShow = (props) => {
                         {/* </div> */}
                         
             </div>
-    
+    </div>
 </div>
     )
 }

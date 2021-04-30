@@ -12,6 +12,8 @@ import {  toast } from 'react-toastify';
 import DeleteModal from './DeleteModal'
 import { actionTypes } from '../Context/stateReducer'
 import 'react-toastify/dist/ReactToastify.css';
+import IconButton from '@material-ui/core/IconButton'
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 
 toast.configure()
 const WorkEdit = (props) => {
@@ -64,6 +66,11 @@ const WorkEdit = (props) => {
     return (
         <div className='App-body'>
         <div className="work-edit">
+                <IconButton color="default" aria-label="back button" component="span" onClick={(e)=>{
+                        e.preventDefault()
+                        history.goBack()}}>
+                        <ArrowBackIosIcon />
+                </IconButton>
             <h2>Work Edit</h2>
             <Form success warning> 
                 

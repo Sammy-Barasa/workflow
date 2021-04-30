@@ -1,39 +1,47 @@
 import React, {useContext,useState,useEffect}from 'react'
 import StateContext from '../Context/stateContext';
-import { Button, Form, Icon } from 'semantic-ui-react'
-import {UpdatePerson,GetUsersPersons} from '../API/api'
+import { Button, Form } from 'semantic-ui-react'
+import { UpdatePerson, GetUsersPersons} from '../API/api'
 import { useHistory } from "react-router-dom"
 import  FormError  from "./FormError"
 import { actionTypes } from '../Context/stateReducer'
+import IconButton from '@material-ui/core/IconButton'
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 
 const PersonEdit = (props) => {
 
     const {dispatch,state}= useContext(StateContext)
     const history = useHistory()
-    const[form,setForm] = useState(state.person.data.find(element=>{
-            // eslint-disable-next-line
-            return element.id==workId}))
-
     const loading =state.personupdate.loading
-    const error = state.personupdate.error
+    const error = state.persons.error
+    const data = state.personupdate.data
     const personId=props.match.params.id
+    const[form,setForm] = useState(state.persons.data.data.find(element=>{
+            // eslint-disable-next-line
+            return element.id==personId}))
+    const [updateError,setError] = useState(null) 
     const userId = state.user.id
     async function handleEdit(e) {
         e.preventDefault();
-        // console.log(form);
-        UpdatePerson(userId,personId,form)(dispatch);
-        
-        // console.log(state)
-        history.goBack()
-        
+        try {
+            UpdatePerson(userId,personId,form)(dispatch);
+            
+        } catch (error) {
+            setError(error)
+        }
+           
     }
+   
     useEffect(()=>{
-        GetUsersPersons(userId)(dispatch)
+        if(data?.status===200){
+            GetUsersPersons(userId)(dispatch)
             dispatch({
-                type:actionTypes.UPDATE_WORK_COMPLETE,
+                type:actionTypes.UPDATE_PERSON_COMPLETE,
             })
             history.goBack()
-    },[dispatch, history, loading, userId])
+        }  
+    },[data?.status, dispatch, history, userId])
+
     function onchange(e) {
         setForm((form) => {
             return {
@@ -47,10 +55,17 @@ const PersonEdit = (props) => {
     return (
         <div className='App-body'>
             <div>
-            <h2>Add person to your records</h2>
+
+                <IconButton color="default" aria-label="back button" component="span" onClick={(e)=>{
+                        e.preventDefault()
+                        history.goBack()}}>
+                        <ArrowBackIosIcon />
+                </IconButton>
+            <h2>{`Update ${form.name}'s details`}</h2>
             <Form success warning onSubmit={handleEdit}> 
                 
                     {error?FormError(error):""}
+                    {updateError?FormError(updateError):""}
                     <Form.Field>
                         <label>Name</label>
                         <input type="text" name='name' placeholder='Name of the person' value={form.name} onChange={onchange}/>
@@ -63,7 +78,7 @@ const PersonEdit = (props) => {
                         <label>Phone number</label>
                         <input type='number' name='phone' placeholder='Phone number of the person' value={form.phone} onChange={onchange}/>
                     </Form.Field>
-                    <Button  loading={loading} fluid primary type='submit'><Icon name="plus" size="small"/>Add person</Button>
+                    <Button  loading={loading} fluid primary type='submit'>Update person</Button>
             </Form>
         </div>
     </div>

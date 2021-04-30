@@ -1,4 +1,4 @@
-const CACHE_NAME= "v76"
+const CACHE_NAME= "v77"
 const urlsToCache=[
     '/',
     'index.html',
@@ -7,7 +7,13 @@ const urlsToCache=[
     'contactplaceholder.jpg',
     'favicon.ico'
 ]
-let token = 'x'
+
+let token ={}
+let headers = {
+    'Accept':'application/json',
+    'Content-Type':'application/json',
+    'X-Requested-With': 'XMLHttpRequest'
+}
 
 const self=this
 
@@ -26,6 +32,8 @@ self.addEventListener('install',(event)=>{
 // Activate the serviceWorker
 self.addEventListener('activate',(event)=>{
     console.log("Ready!!!")
+    event.waitUntil(
+        self.clients.claim())
     event.waitUntil(
         caches.keys().then((cacheNames)=>{
            return Promise.all(cacheNames.map(
@@ -66,35 +74,45 @@ self.addEventListener('fetch',(event)=>{
         )  
 })
 
-self.addEventListener('message',(event) =>{
+ self.addEventListener('message',(event) =>{
     if(event.data && event.data.type==="TOK"){
-        token = event.data.message
-        console.log(token)
+        token['refresh'] = event.data.message
+        // headers["X-CSRFToken"] = event.data.message.csrf
+
+       return token
     }
-})
+    if(event.data && event.data.type==="CSR"){
+        headers["X-CSRFToken"] = event.data.message
+
+       return headers
+    }
+   })
 
 self.addEventListener('periodicsync', event => {
   if (event.tag === 'refresh-token') {
-    event.waitUntil(RefreshToken(token));
+    event.waitUntil(
+        RefreshToken(token.refresh)
+        );
   }
 });
 
 
 
 
-const RefreshToken = (accessToken)=>{
-    console.log(token)
-    return () => {
-        
-        fetch("https://work-record-manager.herokuapp.com/auth/token/refresh/",{method:"POST",body:{"refresh":accessToken}})
-            .then((response) => {
+
+const RefreshToken = async (accessToken)=>{
+   
+    console.log(accessToken)
+   await fetch("https://work-record-manager.herokuapp.com/auth/token/refresh/",{method:"POST",body:JSON.stringify({
+  "refresh": accessToken}),headers:headers})
+            .then(async (response) => {
                 // console.log(response.data)
                 // console.log(response.status)
-
-                localStorage.setItem('token',response.data)
+                console.log('status',response.status)
+                let res = await response.json()
+                console.log('token',res.access)
             }).catch((error) => {
                 console.log(error)
                 
             })
-    }
 }

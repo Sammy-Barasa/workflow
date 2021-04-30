@@ -11,6 +11,7 @@ import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search'
 import MenuAppOptions from './MenuAppOptions'
 import HeaderRight from './HeaderRight'
+import Cookies from "js-cookie";
 import '../App.css'
 
 
@@ -19,16 +20,30 @@ const UserWorkList = (props) => {
     const { state,dispatch } = useContext(StateContext)
     // console.log(state)
     const loading = state.work.loading
+    const refresh = state.user.tokens.refresh
 
     useEffect(()=>{
         registerPeriodicTokenRefresh()
-        
-        navigator.serviceWorker.controller.postMessage({
-        type:"TOK",
-        message:localStorage.getItem('token')
-    })
-  
     },[])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(async ()=>{
+        
+        const registration = await navigator.serviceWorker.ready;
+       
+        if(registration){
+           navigator.serviceWorker.controller.postMessage({
+                type: "TOK",
+                message: refresh
+                // {'refresh':refresh,'csrf':Cookies.get("csrftoken")}
+            })
+            navigator.serviceWorker.controller.postMessage({
+            type:"CSR",
+            message:Cookies.get("csrftoken")
+            // {'refresh':refresh,'csrf':}
+        })
+        }
+  
+    },[refresh])
 
     useEffect(()=>{
     },[loading]) 
