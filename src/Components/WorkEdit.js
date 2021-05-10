@@ -139,7 +139,7 @@ const WorkEdit = (props) => {
                     </Form.Field>
                     <Form.Field>
                         <label>Amount received</label>
-                        <input type='number' name='amount_received' placeholder='Amount received... (optional)' value={form.amount_received} onChange={onchange}/>
+                        <input type='number' name='date_paid' placeholder='Amount received... (optional)' value={form.amount_received} onChange={onchange}/>
                     </Form.Field>
                     <Form.Field >
                         <FormHelperText>Has the order been paid?</FormHelperText>
@@ -152,7 +152,11 @@ const WorkEdit = (props) => {
                                 setPaid(event.target.checked)
                                 form.paid= event.target.checked
                                 if (event.target.checked===true){
-                                form["date_paid"] = new Date().toUTCString()
+                                    const paid_date = new Date().toUTCString()
+                                    setForm({ ...form, 
+                                        [event.target.name] : paid_date
+                                    })
+                                
                                 }
                             }}  
                         />}
