@@ -130,7 +130,7 @@ const WorkEdit = (props) => {
                             event.preventDefault()
                             setCompleted(event.target.checked)
                             form.completed=event.target.checked
-                            form["date_paid"] = new Date().toUTCString()
+                            
                         }}
                         
                         />}
@@ -151,7 +151,9 @@ const WorkEdit = (props) => {
                             onChange={(event)=>{
                                 setPaid(event.target.checked)
                                 form.paid= event.target.checked
-                                
+                                if (event.target.checked===true){
+                                form["date_paid"] = new Date().toUTCString()
+                                }
                             }}  
                         />}
                         label="Paid" 
