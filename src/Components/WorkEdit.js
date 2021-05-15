@@ -52,7 +52,7 @@ const WorkEdit = (props) => {
     
     async function handleEdit(e) {
         e.preventDefault()
-        // console.log(form)
+        console.log(form)
         UpdateWork(workId,form)(dispatch);
         
     }
@@ -152,6 +152,8 @@ const WorkEdit = (props) => {
                                 setPaid(event.target.checked)
                                 form.paid= event.target.checked
                                 if (event.target.checked===true){
+                                    console.log(event.target.name)
+                                    console.log(event.target.checked)
                                     const paid_date = new Date().toUTCString()
                                     setForm({ ...form, 
                                         [event.target.name] : paid_date
