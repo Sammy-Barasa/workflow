@@ -8,7 +8,7 @@ import  FormError  from "./FormError"
 import Auth from '../Utils/Auth'
 import { Link } from 'react-router-dom'
 import {InfoFunc} from '../Utils/InfoFunc'
-import { actionTypes } from '../Context/stateReducer'
+// import { actionTypes } from '../Context/stateReducer'
 import '../App.css'
 
 
