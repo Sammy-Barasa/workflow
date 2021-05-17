@@ -23,7 +23,8 @@ const DeletePersonModal = (props) => {
             dispatch({
                 type:actionTypes.DELETE_PERSON_COMPLETE,
             })
-            history.go(-1)
+            history.go(-2)
+            setOpen(false)
         }
 
     },[data?.status, dispatch, history, userId])

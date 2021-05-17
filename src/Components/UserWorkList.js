@@ -20,7 +20,7 @@ const UserWorkList = (props) => {
     const { state,dispatch } = useContext(StateContext)
     // console.log(state)
     const loading = state.work.loading
-    const refresh = state.user.tokens.refresh
+    const refresh = state.user.tokens?.refresh||""
 
     useEffect(()=>{
         registerPeriodicTokenRefresh()

@@ -8,6 +8,7 @@ import  FormError  from "./FormError"
 import Auth from '../Utils/Auth'
 import { Link } from 'react-router-dom'
 import {InfoFunc} from '../Utils/InfoFunc'
+import { actionTypes } from '../Context/stateReducer'
 import '../App.css'
 
 
@@ -27,6 +28,9 @@ const Login = (props) => {
     useEffect(() => {
         if (data?.status === 200) {
             setRedirectTrue(true)
+            // dispatch({
+            //     type:actionTypes.LOGIN_COMPLETE
+            // })
         }
         
     }, [data?.status])
@@ -50,6 +54,7 @@ const Login = (props) => {
         Auth.authenticate()
         InfoFunc( state.user.id,dispatch)
         history.push(`/users/${state.user.username}`)
+        
     }
     if(fromRoute){
         return <Redirect to={fromRoute.pathname}/>

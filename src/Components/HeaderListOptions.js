@@ -10,6 +10,7 @@ import PowerSettingsNewRoundedIcon from '@material-ui/icons/PowerSettingsNewRoun
 import Auth from '../Utils/Auth'
 import StateContext from '../Context/stateContext'
 import { useHistory } from "react-router-dom"
+import { actionTypes } from '../Context/stateReducer'
 
 
 
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HeaderListOption() {
   const classes = useStyles();
-  const { state } = useContext(StateContext)
+  const { state,dispatch } = useContext(StateContext)
   const history = useHistory()
   const username = state.user.username
 
@@ -50,6 +51,10 @@ export default function HeaderListOption() {
                 <ListItem button onClick={(e)=>{
                       e.preventDefault()
                       Auth.signOut()
+                      localStorage.removeItem("token")
+                      
+                      history.replace('/login')
+
                     }}>
                     <ListItemIcon>
                     <PowerSettingsNewRoundedIcon fontSize='medium'/>

@@ -5,6 +5,7 @@ export const actionTypes = {
   REGISTER_ERROR:"REGISTER_ERROR",
   LOGIN_LOADING:"LOGIN_LOADING",
   LOGIN_SUCCESS:"LOGIN_SUCCESS",
+  LOGIN_COMPLETE:"LOGIN_COMPLETE",
   LOGIN_ERROR:"LOGIN_ERROR",
   WORK_LOADING:"WORK_LOADING",
   WORK_SUCCESS:"WORK_SUCCESS",
@@ -31,9 +32,11 @@ export const actionTypes = {
   DELETE_PERSON_SUCCESS:"DELETE_PERSON_SUCCESS",
   DELETE_PERSON_COMPLETE:"DELETE_PERSON_COMPLETE",
   DELETE_PERSON_ERROR:"DELETE_PERSON_ERROR",
+  DELETE_PERSON_LOADING:"DELETE_PERSON_LOADING",
   GET_OPTIONS_LOADING:"GET_OPTIONS_LOADING",
   GET_OPTIONS_SUCCESS:"GET_OPTIONS_SUCCESS",
   GET_OPTIONS_ERROR:"GET_OPTIONS_ERROR",
+  UNSET_USER:"UNSET_USER",
 
 };
 
@@ -46,6 +49,12 @@ const stateReducer = (state,action) =>{
         return {
           ...state,
           user: action.payload,
+        };
+      case actionTypes.UNSET_USER:
+        return {
+          ...state,
+          user:null,
+          
         };
       case actionTypes.REGISTER_LOADING:
         return {
@@ -103,6 +112,20 @@ const stateReducer = (state,action) =>{
                               ...state.auth.login,
                               loading:false,
                               data:action.payload
+                            },
+                    },    
+      };
+      
+      case actionTypes.LOGIN_COMPLETE:
+        return {
+          ...state,
+              auth: {
+                      ...state.auth,
+                      login:{
+                              ...state.auth.login,
+                              loading:false,
+                              data:null,
+                              error:null,
                             },
                     },    
       };
@@ -365,6 +388,16 @@ const stateReducer = (state,action) =>{
                     loading:false,
                     data:null,
                     error:null,
+                  },
+        };
+      case actionTypes.DELETE_PERSON_LOADING:
+        return {
+            ...state,
+            persondelete: {
+                    ...state.persondelete,
+                    loading:true,
+                    data:null,
+                    error:null
                   },
         };
       case actionTypes.DELETE_PERSON_SUCCESS:

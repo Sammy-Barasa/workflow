@@ -213,6 +213,10 @@ export const UpdatePerson = (userID,personID,personData) =>(dispatch)=> {
 
 export const DeletePerson = (userID,personID) =>(dispatch)=> {
     
+    dispatch({
+        type:actionTypes.DELETE_PERSON_LOADING
+        
+    })
     axiosFetch().delete(`users/${userID}/person/${personID}/`)
     .then((response)=>{
                       console.log(response)

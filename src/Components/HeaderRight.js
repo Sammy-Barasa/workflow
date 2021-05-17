@@ -6,6 +6,7 @@ import RefreshIcon from '@material-ui/icons/Refresh'
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import {InfoFunc} from '../Utils/InfoFunc'
+// import { actionTypes } from '../Context/stateReducer'
 import '../App.css'
 
 const HeaderRight = ({user,dispatch}) => {
@@ -32,6 +33,7 @@ const HeaderRight = ({user,dispatch}) => {
                       e.preventDefault()
                       Auth.signOut()
                       localStorage.removeItem("token")
+                     
                       history.replace('/login')
                     }}>
                       <PowerSettingsNewIcon fontSize="large"/>
