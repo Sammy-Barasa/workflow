@@ -10,7 +10,7 @@ import PowerSettingsNewRoundedIcon from '@material-ui/icons/PowerSettingsNewRoun
 import Auth from '../Utils/Auth'
 import StateContext from '../Context/stateContext'
 import { useHistory } from "react-router-dom"
-import { actionTypes } from '../Context/stateReducer'
+// import { actionTypes } from '../Context/stateReducer'
 
 
 
