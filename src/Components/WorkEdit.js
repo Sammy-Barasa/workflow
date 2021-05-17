@@ -171,6 +171,7 @@ const WorkEdit = (props) => {
                     </Form.Field>
                     {form.paid && !form.date_paid?
                     <Form.Field>
+                    <FormHelperText>Date when payment was received hs not been recorded, you can fill below</FormHelperText>
                         <input id="date_paid" type="datetime-local" onChange={
                             (event)=>{
                                 event.preventDefault()
