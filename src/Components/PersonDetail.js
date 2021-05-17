@@ -2,6 +2,7 @@ import React,{ useContext,useState, useEffect } from 'react'
 import StateContext from '../Context/stateContext'
 import MenuPerson from './MenuPerson'
 import { Bar } from 'react-chartjs-2'
+import { Form } from 'semantic-ui-react'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import {useHistory} from 'react-router-dom'
@@ -78,7 +79,7 @@ const PersonDetail = (props) => {
                         <ArrowBackIosIcon />
                 </IconButton>
                 
-                    <MenuPerson personId={personId}/>
+                    <MenuPerson personId={personId} stats={{'total_works':workTotals,'works_paid':worksPaid,'works_not_paid':worksNotPaid,'percentage':workPercentage,'expected_amount':0,'received_amount':0}}/>
                 
             </div>
             <div className='person-info'>
@@ -132,14 +133,16 @@ const PersonDetail = (props) => {
                 <h2>Monthly statistics</h2>
                 <div className='monthly-header'>
                     
-                
-               
+               <Form> 
+               <Form.Field>
                 <input type="date" name="month" onChange={(e)=>{
                                 e.preventDefault()
                                 console.log(new Date(e.target.value))
                                 setMonth(new Date(e.target.value).getMonth())
                                 setYear(new Date(e.target.value).getFullYear())
                             }}></input>
+                            </Form.Field>
+                </Form>
                 </div>
                 
                             

@@ -35,6 +35,7 @@ const WorkShow = (props) => {
     })
     const time = new Date(workItem.last_modified)
     const timeTodisplay = time.toLocaleTimeString()
+    const datePaidToDisplay = new Date(workItem.date_paid).toLocaleString()
     return (
         <div className='App-body'>
             <div className='show-page'>
@@ -108,7 +109,7 @@ const WorkShow = (props) => {
                                                             <List.Description as='h4'>Expected Amount</List.Description>
                                                             <List.Description as='p'>{`Ksh. ${workItem.expected_amount}`}</List.Description>
                                                             <List.Description as='h4'>Date paid:</List.Description>
-                                                            <List.Description as='p'>{workItem.paid?workItem.date_paid?`${workItem.date_paid}`:"Date paid not recorded":"Not yet"}</List.Description>
+                                                            <List.Description as='p'>{workItem.paid?workItem.date_paid?`${datePaidToDisplay}`:"Date paid not recorded":"Not yet"}</List.Description>
                                                             <List.Description as='h4'>Last modified date:</List.Description>
                                                             <List.Description as='p'>{`${datemodefTodisplay}`}</List.Description>
                                                             

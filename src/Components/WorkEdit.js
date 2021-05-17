@@ -38,6 +38,7 @@ const WorkEdit = (props) => {
     const [Completed,setCompleted] = useState(form.completed)
     const [Paid,setPaid] = useState(form.paid)
     
+    
 
     useEffect(()=>{
         if(data?.status===200){
@@ -152,11 +153,12 @@ const WorkEdit = (props) => {
                             onChange={(event)=>{
                                 event.preventDefault()
                                 setPaid(event.target.checked)
-                                form.paid= event.target.checked
+                                 form.paid= event.target.checked
                                 if (event.target.checked===true){
-                                    console.log(event.target.name)
-                                    console.log(event.target.checked)
-                                    const paid_date = new Date().toUTCString()
+                                    const paid_date = new Date().toISOString()
+
+                                    // YYYY-MM-DDThh:mm[:ss[.uuuuuu]][+HH:MM|-HH:MM|Z]
+                                    console.log(paid_date)
                                     setForm({ ...form, 
                                         [event.target.name] : paid_date
                                     })
@@ -167,16 +169,29 @@ const WorkEdit = (props) => {
                         label="Paid" 
                         />
                     </Form.Field>
-                    <Form.Group widths='equal' unstackable inline>
+                    {form.paid && !form.date_paid?
+                    <Form.Field>
+                        <input id="date_paid" type="datetime-local" onChange={
+                            (event)=>{
+                                event.preventDefault()
+                                
+                                const paiddate = new Date(event.target.value).toISOString()
+                                setForm({ ...form, 
+                                        [event.target.id] : paiddate,
+                                    })
+                                }}
+                        ></input>
+                    </Form.Field>:''}
+                    
                         <div className="update-action-butons">
-                            <div>
+                            
                                 <DeleteModal workItem={form} workId={workId} userId={userId} dispatch={dispatch}/>
-                            </div>
-                            <div>
+                            
+                            
                                 <Button color="green" loading={loading} onClick={handleEdit}><Icon name='refresh' />Update order</Button>
-                            </div>
+                            
                         </div>
-                    </Form.Group> 
+                   
                 </Form>
             </div>
         </div>

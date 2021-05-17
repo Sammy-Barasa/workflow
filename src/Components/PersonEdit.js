@@ -2,20 +2,23 @@ import React, {useContext,useState,useEffect}from 'react'
 import StateContext from '../Context/stateContext';
 import { Button, Form } from 'semantic-ui-react'
 import { UpdatePerson, GetUsersPersons} from '../API/api'
-import { useHistory } from "react-router-dom"
+import { useHistory,useLocation } from "react-router-dom"
 import  FormError  from "./FormError"
 import { actionTypes } from '../Context/stateReducer'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+import DeletePersonModal from './DeletePersonModal'
 
 const PersonEdit = (props) => {
 
     const {dispatch,state}= useContext(StateContext)
     const history = useHistory()
+    const location = useLocation()
     const loading =state.personupdate.loading
-    const error = state.persons.error
+    const error = state.personupdate.error
     const data = state.personupdate.data
     const personId=props.match.params.id
+    const stats = location.state
     const[form,setForm] = useState(state.persons.data.data.find(element=>{
             // eslint-disable-next-line
             return element.id==personId}))
@@ -54,7 +57,7 @@ const PersonEdit = (props) => {
 
     return (
         <div className='App-body'>
-            <div>
+            <div className='work-edit'>
 
                 <IconButton color="default" aria-label="back button" component="span" onClick={(e)=>{
                         e.preventDefault()
@@ -62,7 +65,7 @@ const PersonEdit = (props) => {
                         <ArrowBackIosIcon />
                 </IconButton>
             <h2>{`Update ${form.name}'s details`}</h2>
-            <Form success warning onSubmit={handleEdit}> 
+            <Form success warning > 
                 
                     {error?FormError(error):""}
                     {updateError?FormError(updateError):""}
@@ -78,7 +81,18 @@ const PersonEdit = (props) => {
                         <label>Phone number</label>
                         <input type='number' name='phone' placeholder='Phone number of the person' value={form.phone} onChange={onchange}/>
                     </Form.Field>
-                    <Button  loading={loading} fluid primary type='submit'>Update person</Button>
+                    
+                    <div className="update_person_options">
+                        
+                        <DeletePersonModal personId={personId} stats={stats}/>
+                        
+                       
+                        <Button  loading={loading} primary onClick={handleEdit}>Update person</Button>
+                        
+                    
+                    </div>
+                    
+                    
             </Form>
         </div>
     </div>

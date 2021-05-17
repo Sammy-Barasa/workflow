@@ -28,6 +28,9 @@ export const actionTypes = {
   UPDATE_PERSON_SUCCESS:"UPDATE_PERSON_SUCCESS",
   UPDATE_PERSON_COMPLETE:"UPDATE_PERSON_COMPLETE",
   UPDATE_PERSON_ERROR:"UPDATE_PERSON_ERROR",
+  DELETE_PERSON_SUCCESS:"DELETE_PERSON_SUCCESS",
+  DELETE_PERSON_COMPLETE:"DELETE_PERSON_COMPLETE",
+  DELETE_PERSON_ERROR:"DELETE_PERSON_ERROR",
   GET_OPTIONS_LOADING:"GET_OPTIONS_LOADING",
   GET_OPTIONS_SUCCESS:"GET_OPTIONS_SUCCESS",
   GET_OPTIONS_ERROR:"GET_OPTIONS_ERROR",
@@ -364,6 +367,36 @@ const stateReducer = (state,action) =>{
                     error:null,
                   },
         };
+      case actionTypes.DELETE_PERSON_SUCCESS:
+        return {
+            ...state,
+            persondelete: {
+                    ...state.persondelete,
+                    loading:false,
+                    data:action.payload,
+                    error:null
+                  },
+        };
+      case actionTypes.DELETE_PERSON_ERROR:
+        return {
+            ...state,
+            persondelete: {
+                    ...state.persondelete,
+                    loading:false,
+                    data:null,
+                    error:action.payload
+                  },
+        };
+      case actionTypes.DELETE_PERSON_COMPLETE:
+        return {
+            ...state,
+            persondelete: {
+                    ...state.persondelete,
+                    loading:false,
+                    data:null,
+                    error:null
+                  },
+        }; 
       case actionTypes.GET_OPTIONS_SUCCESS:
         return {
             ...state,

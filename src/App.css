@@ -190,7 +190,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 10px;
 
 }
@@ -615,7 +614,11 @@ background: linear-gradient(148deg, rgba(95,90,209,1) 12%, rgba(183,112,221,1) 9
   width: 400px;
 }
 
-
+.update_person_options{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
 /* 
 @keyframes App-logo-spin {

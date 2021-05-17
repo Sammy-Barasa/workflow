@@ -9,7 +9,7 @@ import { Icon } from 'semantic-ui-react'
 import { useHistory } from "react-router-dom"
 import "../App.css"
 
-const MenuPerson = ({personId}) => {
+const MenuPerson = ({personId,stats}) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const history = useHistory()
     const open = Boolean(anchorEl);
@@ -56,7 +56,10 @@ const MenuPerson = ({personId}) => {
                 <MenuItem onClick={(e)=>{
                       e.preventDefault()
                       setAnchorEl(null)
-                      history.push(`${personId}/edit/`)
+                      history.push({
+                          pathname:`${personId}/edit/`,
+                          state: stats
+                        })
                     }}>
                     <ListItemIcon>
                         <Icon name="edit" size="large" />
