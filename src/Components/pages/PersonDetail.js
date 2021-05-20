@@ -1,12 +1,13 @@
 import React,{ useContext,useState, useEffect } from 'react'
-import StateContext from '../Context/stateContext'
-import MenuPerson from './MenuPerson'
+import StateContext from '../../Context/stateContext'
+import MenuPerson from '../menus/MenuPerson'
+import ExportModal from '../modals/ExportModal'
 import { Bar } from 'react-chartjs-2'
 import { Form } from 'semantic-ui-react'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import {useHistory} from 'react-router-dom'
-import '../App.css'
+import '../../App.css'
 
 const PersonDetail = (props) => {
     
@@ -38,8 +39,29 @@ const PersonDetail = (props) => {
         return (workdate.getMonth()===month&&workdate.getFullYear()===year)
            
     })
-    
-   
+    console.log(workItemsChosenMonth)
+    let completedAndNotCancelled = workItemsChosenMonth.filter((work)=>{
+        
+        
+        return (work.completed && !work.cancelled)
+           
+    })
+    console.log(completedAndNotCancelled)
+    let dataToExport = completedAndNotCancelled.map((item,index)=>{
+        
+        return {
+                "No.":index+1,
+                "Type":item.category_of_work.work_type,
+                "Topic":item.topic,
+                "Date assigned":item.date,
+                "Order Number":item.order_number,
+                "Number of pages":item.pages,
+                "Number of words":item.number_of_words,
+                "Expected amount":item.expected_amount,
+                "Amount received":item.amount_received
+                }
+    })
+    console.log(dataToExport)
     // Monthly calculations
     let workItemsChosenMonthPaid=workItemsChosenMonth.filter((work)=>{return work.paid===true}).length
     
@@ -65,7 +87,8 @@ const PersonDetail = (props) => {
 
     const chosenMonth = month_name(year,month)
    
- 
+    let from = new Date(year,month).toDateString()
+    let to = new Date(year,month+1,0).toDateString()
     useEffect(() => {
         
     }, [loading])
@@ -146,7 +169,7 @@ const PersonDetail = (props) => {
                 </div>
                 
                             
-                <p>{new Date(year,month).toDateString()} - {new Date(year,month+1,0).toDateString()}</p>
+                <p>{from} - {to}</p>
                 <p>{`Total works in ${chosenMonth}: ${workItemsChosenMonth.length}`}</p>
                 <p>{`Total works paid in ${chosenMonth}: ${workItemsChosenMonthPaid}`}</p>
                 <p>{`Total works not paid ${chosenMonth}: ${workItemsChosenMonthNotPaid}`}</p>
@@ -154,6 +177,10 @@ const PersonDetail = (props) => {
                 <p>{`Amount received in ${chosenMonth}: ${sumOfreceivedAmount}`}</p>
             </div>
             <hr></hr>
+            <div>
+                <ExportModal from={from} to={to} Month={month_name(year,month)} year={year} wassignedBy={person[0].name} 
+                totalWorks={workItemsChosenMonth.length} totalExpectd={sumOfexpectedAmount} totalPaid={sumOfreceivedAmount} data={dataToExport}/>
+            </div>
             </div>
         </div>
     )

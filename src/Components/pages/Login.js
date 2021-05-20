@@ -1,15 +1,15 @@
 import React, { useState,useContext,useEffect } from 'react'
 import { Button, Form , Header} from 'semantic-ui-react'
-import { LoginUser } from '../API/api'
-import StateContext from '../Context/stateContext';
+import { LoginUser } from '../../API/api'
+import StateContext from '../../Context/stateContext';
 import { useHistory,Redirect } from "react-router-dom"
 // import FormSuccess  from "./FormSuccess"
-import  FormError  from "./FormError"
-import Auth from '../Utils/Auth'
+import  FormError  from "../FormError"
+import Auth from '../../Utils/Auth'
 import { Link } from 'react-router-dom'
-import {InfoFunc} from '../Utils/InfoFunc'
+import {InfoFunc} from '../../Utils/InfoFunc'
 // import { actionTypes } from '../Context/stateReducer'
-import '../App.css'
+import '../../App.css'
 
 
 

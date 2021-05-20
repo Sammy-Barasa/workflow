@@ -1,13 +1,13 @@
 import React,{useContext,useEffect} from 'react'
-import SinglelistSkeleton from '../Utils/SinglelistSkeleton'
+import SinglelistSkeleton from '../../Utils/SinglelistSkeleton'
 // import ListSkeleton from "../Utils/ListSkeleton"
 import { List,Icon } from 'semantic-ui-react'
-import StateContext from '../Context/stateContext'
-import MenuWorkEdit from './MenuWorkEdit'
+import StateContext from '../../Context/stateContext'
+import MenuWorkEdit from '../menus/MenuWorkEdit'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import {useHistory,Link} from 'react-router-dom'
-
+import '../../App.css'
 
 const WorkShow = (props) => {
 

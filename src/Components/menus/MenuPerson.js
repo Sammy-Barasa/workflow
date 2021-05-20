@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import { Icon } from 'semantic-ui-react'
 import { useHistory } from "react-router-dom"
-import "../App.css"
+import "../../App.css"
 
 const MenuPerson = ({personId,stats}) => {
     const [anchorEl, setAnchorEl] = useState(null);

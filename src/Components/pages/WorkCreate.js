@@ -3,12 +3,12 @@ import { Button, Form,  Dropdown, Icon} from 'semantic-ui-react'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import Checkbox from '@material-ui/core/Checkbox';
-import {CreateWork,UsersWork} from '../API/api'
-import StateContext from '../Context/stateContext';
+import {CreateWork,UsersWork} from '../../API/api'
+import StateContext from '../../Context/stateContext';
 import { useHistory } from "react-router-dom"
-import  FormError  from "./FormError"
+import  FormError  from "../FormError"
 //import EmptyList from "../Utils/EmptyList"
-import { actionTypes } from '../Context/stateReducer'
+import { actionTypes } from '../../Context/stateReducer'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 // import {  toast } from 'react-toastify';
@@ -60,6 +60,9 @@ const WorkCreate = (props) => {
        async function handleCreate(e) {
         e.preventDefault();
         // console.log(form);
+        if(form.order_number===""){
+            form.order_number="#0000"
+        }
         CreateWork(userId, form)(dispatch);    
     }
 

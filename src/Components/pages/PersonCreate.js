@@ -1,12 +1,12 @@
 import React,{useState,useContext,useEffect} from 'react'
-import StateContext from '../Context/stateContext';
+import StateContext from '../../Context/stateContext';
 import { Button, Form, Icon } from 'semantic-ui-react'
-import {CreatePerson,GetUsersPersons} from '../API/api'
+import {CreatePerson,GetUsersPersons} from '../../API/api'
 import { useHistory } from "react-router-dom"
-import  FormError  from "./FormError"
+import  FormError  from "../FormError"
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
-import { actionTypes } from '../Context/stateReducer'
+import { actionTypes } from '../../Context/stateReducer'
 
 const PersonCreate = (props) => {
 

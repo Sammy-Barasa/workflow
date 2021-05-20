@@ -7,8 +7,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
 import PowerSettingsNewRoundedIcon from '@material-ui/icons/PowerSettingsNewRounded';
-import Auth from '../Utils/Auth'
-import StateContext from '../Context/stateContext'
+import Auth from '../../Utils/Auth'
+import StateContext from '../../Context/stateContext'
 import { useHistory } from "react-router-dom"
 // import { actionTypes } from '../Context/stateReducer'
 
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HeaderListOption() {
   const classes = useStyles();
-  const { state,dispatch } = useContext(StateContext)
+  const { state } = useContext(StateContext)
   const history = useHistory()
   const username = state.user.username
 
@@ -42,7 +42,7 @@ export default function HeaderListOption() {
                 <ListItem button onClick={(e)=>{
                       e.preventDefault()
                       history.push(`users/${username}/account`)
-                    }}>>
+                    }}>
                     <ListItemIcon>
                     <AccountCircleRoundedIcon fontSize='medium'/>
                     </ListItemIcon>

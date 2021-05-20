@@ -1,11 +1,11 @@
 import React, { useState,useContext,useEffect } from 'react'
 import { Button, Form , Header} from 'semantic-ui-react'
-import { RegisterUser } from '../API/api'
-import StateContext from '../Context/stateContext';
+import { RegisterUser } from '../../API/api'
+import StateContext from '../../Context/stateContext';
 // import FormSuccess  from "./FormSuccess"
-import  FormError  from "./FormError"
+import  FormError  from "../FormError"
 // import { useHistory } from 'react-router-dom'
-import '../App.css'
+import '../../App.css'
 
 const Register = (props) => {
     const [form,setForm]= useState({});

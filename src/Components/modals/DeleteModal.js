@@ -1,9 +1,9 @@
 import React,{useState,useContext,useEffect} from 'react'
 import { Button, Header, Icon, Modal } from 'semantic-ui-react'
-import {UsersWork, DeleteWork} from '../API/api'
+import {UsersWork, DeleteWork} from '../../API/api'
 import { useHistory } from "react-router-dom"
-import StateContext from '../Context/stateContext'
-import { actionTypes } from '../Context/stateReducer'
+import StateContext from '../../Context/stateContext'
+import { actionTypes } from '../../Context/stateReducer'
 
 const DeleteModal = ({workItem, workId,userId,dispatch}) => {
 

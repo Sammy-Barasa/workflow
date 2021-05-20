@@ -4,13 +4,13 @@ import { Button, Form,Icon } from 'semantic-ui-react'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import Checkbox from '@material-ui/core/Checkbox';
-import {UpdateWork,UsersWork} from '../API/api'
-import StateContext from '../Context/stateContext';
+import {UpdateWork,UsersWork} from '../../API/api'
+import StateContext from '../../Context/stateContext';
 import { useHistory } from "react-router-dom"
-import  FormError  from "./FormError"
+import  FormError  from "../FormError"
 import {  toast } from 'react-toastify';
-import DeleteModal from './DeleteModal'
-import { actionTypes } from '../Context/stateReducer'
+import DeleteModal from '../modals/DeleteModal'
+import { actionTypes } from '../../Context/stateReducer'
 import 'react-toastify/dist/ReactToastify.css';
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'

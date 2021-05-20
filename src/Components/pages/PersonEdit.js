@@ -1,13 +1,13 @@
 import React, {useContext,useState,useEffect}from 'react'
-import StateContext from '../Context/stateContext';
+import StateContext from '../../Context/stateContext';
 import { Button, Form } from 'semantic-ui-react'
-import { UpdatePerson, GetUsersPersons} from '../API/api'
+import { UpdatePerson, GetUsersPersons} from '../../API/api'
 import { useHistory,useLocation } from "react-router-dom"
-import  FormError  from "./FormError"
-import { actionTypes } from '../Context/stateReducer'
+import  FormError  from "../FormError"
+import { actionTypes } from '../../Context/stateReducer'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
-import DeletePersonModal from './DeletePersonModal'
+import DeletePersonModal from '../modals/DeletePersonModal'
 
 const PersonEdit = (props) => {
 

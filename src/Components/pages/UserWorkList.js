@@ -1,18 +1,18 @@
 import React, { useContext,useEffect } from 'react'
 // import { Button } from 'semantic-ui-react'
-import StateContext from '../Context/stateContext'
+import StateContext from '../../Context/stateContext'
 import { List } from 'semantic-ui-react'
-import SingleWorkItem from "./SingleWorkItem"
-import FloatingActionButton from "./FloatingActionButton"
-import ListSkeleton from "../Utils/ListSkeleton"
-import EmptyList from "../Utils/EmptyList"
+import SingleWorkItem from "../SingleWorkItem"
+import FloatingActionButton from "../FloatingActionButton"
+import ListSkeleton from "../../Utils/ListSkeleton"
+import EmptyList from "../../Utils/EmptyList"
 import {useHistory} from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search'
-import MenuAppOptions from './MenuAppOptions'
-import HeaderRight from './HeaderRight'
+import MenuAppOptions from '../menus/MenuAppOptions'
+import HeaderRight from '../HeaderRight'
 import Cookies from "js-cookie";
-import '../App.css'
+import '../../App.css'
 
 
 

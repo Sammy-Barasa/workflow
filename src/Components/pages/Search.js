@@ -1,15 +1,15 @@
 import React,{useState,useContext} from 'react'
 import { List,Icon } from 'semantic-ui-react'
-import StateContext from '../Context/stateContext'
-import SingleWorkItem from "./SingleWorkItem"
+import StateContext from '../../Context/stateContext'
+import SingleWorkItem from "../SingleWorkItem"
 import {useHistory} from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton'
 // import Button from '@material-ui/core/Button'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import ClearIcon from '@material-ui/icons/Clear';
-import EmptyList from "../Utils/EmptyList"
-import '../App.css'
+import EmptyList from "../../Utils/EmptyList"
+import '../../App.css'
 
 const Search = (props) => {
 

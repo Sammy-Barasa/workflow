@@ -8,11 +8,11 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import RefreshIcon from '@material-ui/icons/Refresh';
-import Auth from '../Utils/Auth'
-import StateContext from '../Context/stateContext'
+import Auth from '../../Utils/Auth'
+import StateContext from '../../Context/stateContext'
 import { useHistory } from "react-router-dom"
-import {InfoFunc} from '../Utils/InfoFunc'
-import "../App.css"
+import {InfoFunc} from '../../Utils/InfoFunc'
+import "../../App.css"
 
 const MenuAppOptions = () => {
     const [anchorEl, setAnchorEl] = useState(null);

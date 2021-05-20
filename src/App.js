@@ -2,24 +2,24 @@ import React, { useEffect }from 'react';
 
 import './App.css'
 import { Route, Switch } from 'react-router-dom';
-import UserWorkList from './Components/UserWorkList'
-import Account from './Components/Account'
-import WorkShow from './Components/WorkShow'
-import WorkCreate from './Components/WorkCreate'
-import WorkEdit from './Components/WorkEdit'
-import PersonCreate from './Components/PersonCreate'
-import PersonEdit from './Components/PersonEdit'
-import PersonDetail from './Components/PersonDetail'
-import Navigation from './Components/Navigation'
-import Search from './Components/Search'
+import UserWorkList from './Components/pages/UserWorkList'
+import Account from './Components/pages/Account'
+import WorkShow from './Components/pages/WorkShow'
+import WorkCreate from './Components/pages/WorkCreate'
+import WorkEdit from './Components/pages/WorkEdit'
+import PersonCreate from './Components/pages/PersonCreate'
+import PersonEdit from './Components/pages/PersonEdit'
+import PersonDetail from './Components/pages/PersonDetail'
+import Navigation from './Components/pages/Navigation'
+import Search from './Components/pages/Search'
 import './App.css'
-import Login from './Components/Login'
-import Register from './Components/Register'
+import Login from './Components/pages/Login'
+import Register from './Components/pages/Register'
 import { ProtectedRoute } from "./Components/ProtectedRoute"
 import { PublicRoute } from "./Components/PublicRoute"
 // import { Icon } from 'semantic-ui-react'
 // import Auth from '../Utils/Auth'
-import PageNotFound from './Components/PageNotFound'
+import PageNotFound from './Components/pages/PageNotFound'
 
 function App() {
  

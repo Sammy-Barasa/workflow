@@ -1,12 +1,12 @@
 import React,{useContext} from 'react'
-import UserStatistic from "./UserStatistic"
-import StateContext from '../Context/stateContext'
-import AccountPersonList from './AccountPersonList'
-import AccountSupport from './AccountSupport'
+import UserStatistic from "../UserStatistic"
+import StateContext from '../../Context/stateContext'
+import AccountPersonList from '../AccountPersonList'
+import AccountSupport from '../AccountSupport'
 import IconButton from '@material-ui/core/IconButton'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import {useHistory} from 'react-router-dom'
-import '../App.css'
+import '../../App.css'
 
 const Account = (props) => {
 
