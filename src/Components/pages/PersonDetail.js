@@ -39,14 +39,14 @@ const PersonDetail = (props) => {
         return (workdate.getMonth()===month&&workdate.getFullYear()===year)
            
     })
-    console.log(workItemsChosenMonth)
+    // console.log(workItemsChosenMonth)
     let completedAndNotCancelled = workItemsChosenMonth.filter((work)=>{
         
         
         return (work.completed && !work.cancelled)
            
     })
-    console.log(completedAndNotCancelled)
+    // console.log(completedAndNotCancelled)
     let dataToExport = completedAndNotCancelled.map((item,index)=>{
         
         return {
@@ -61,7 +61,7 @@ const PersonDetail = (props) => {
                 "Amount received":item.amount_received
                 }
     })
-    console.log(dataToExport)
+    // console.log(dataToExport)
     // Monthly calculations
     let workItemsChosenMonthPaid=workItemsChosenMonth.filter((work)=>{return work.paid===true}).length
     
