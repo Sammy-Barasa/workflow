@@ -158,7 +158,7 @@ const PersonDetail = (props) => {
                     
                <Form> 
                <Form.Field>
-                <input type="date" name="month" onChange={(e)=>{
+                <input placeholder="select date to view" type="date" name="month" onChange={(e)=>{
                                 e.preventDefault()
                                 console.log(new Date(e.target.value))
                                 setMonth(new Date(e.target.value).getMonth())
